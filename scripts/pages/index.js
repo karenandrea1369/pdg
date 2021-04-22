@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 var cursos = [];
 
+
 // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
 //     querySnapshot.forEach((doc) => {
 //         console.log(`${doc.id} => ${doc.data()}`);
@@ -35,7 +36,7 @@ var titulo = document.querySelector('titulo');
 db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
     if (doc.exists) {
         console.log("Document data:", doc.data());
-        titulo.innerHTML = `${doc.data()}`;
+        //titulo.innerHTML = `${doc.data()}`;
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");

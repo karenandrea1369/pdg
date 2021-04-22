@@ -7,11 +7,18 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Este es el registro</h2>
     
-    <h1 class="titulo">Hola mundo</h1>
-  
-    <a href="/signUp.html">Registrarme</a>
-
+    <form>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email">
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass">
+        <label for="confirmPass">Confirmar contraseña</label>
+        <input type="password" id="confirmPass">
+        <button type="button" id="signUpBtn">Registrarme</button>
+    </form>
+    
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
 
@@ -23,8 +30,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <!-- mi js-->
-    <script src="./scripts/pages/index.js"></script>
-
-
+    <script src="./scripts/pages/signUp.js"></script>
 </body>
 </html>
