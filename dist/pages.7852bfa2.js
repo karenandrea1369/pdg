@@ -143,10 +143,11 @@ var cursos = []; // db.collection("Cursos").doc("Curso1").collection("2021-1").g
 //     // });
 // });
 
-var titulo = document.querySelector('titulo');
+var titulo = document.querySelector('.titulo');
 db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then(function (doc) {
   if (doc.exists) {
-    console.log("Document data:", doc.data()); //titulo.innerHTML = `${doc.data()}`;
+    console.log("Document data:", doc.data());
+    titulo.innerHTML = "Hola ".concat(doc.data().Profesor);
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
@@ -180,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57807" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53140" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

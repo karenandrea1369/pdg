@@ -131,32 +131,53 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   var email = document.getElementById('email');
+  var idDoc = document.getElementById('idDoc');
   var pass = document.getElementById('pass');
   var confirmPass = document.getElementById('confirmPass');
   var signUpBtn = document.getElementById('signUpBtn');
   var auth = firebase.auth();
+  var db = firebase.firestore();
   var myUser;
-  auth.onAuthStateChanged(function (user) {
-    console.log(user.uid);
+  auth.onAuthStateChanged(function (user) {//console.log(user.uid); 
   });
   signUpBtn.addEventListener('click', function () {
     if (validate()) {
       auth.createUserWithEmailAndPassword(email.value, pass.value).then(function (credential) {
-        console.log("Exitoo");
+        console.log("wachu", idDoc.value);
+        goToRole(idDoc.value); //window.location.href = "algo.html";
       }).catch(function (error) {
         console.log(error.code);
       });
     }
   });
 
+  function goToRole(idDoc) {
+    db.collection("people").doc(idDoc).get().then(function (doc) {
+      if (doc.exists) {
+        if (doc.data().student) {
+          console.log("Hola estudiante");
+          window.location.href = "src/studentDash.html";
+        } else if (doc.data().teacher == true && doc.data().boss == false) {
+          window.location.href = './teacherDash.html';
+        } else if (doc.data().teacher && doc.data().boss) {
+          window.location.href = './teacherBossDash.html';
+        }
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    });
+  }
+
   function validate() {
     if (confirmPass.value != pass.value) {
       console.log("Contraseñas no iguales :(");
-      return false;
+      return false; //poner para mostrar el error
     } //aqui validar correos
 
 
-    return true;
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email.value).toLowerCase()); //poner para mostrar el error
   }
 
   ;
@@ -189,7 +210,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57807" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53140" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

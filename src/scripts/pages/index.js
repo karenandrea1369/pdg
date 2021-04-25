@@ -31,12 +31,12 @@ var cursos = [];
 
 // });
 
-var titulo = document.querySelector('titulo');
+var titulo = document.querySelector('.titulo');
 
 db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
     if (doc.exists) {
         console.log("Document data:", doc.data());
-        //titulo.innerHTML = `${doc.data()}`;
+        titulo.innerHTML = `Hola ${doc.data().Profesor}`;
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
