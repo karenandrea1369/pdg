@@ -130,28 +130,29 @@ var firebaseConfig = {
   measurementId: "G-SBDH6RW0HW"
 }; // Initialize Firebase
 
-firebase.initializeApp(firebaseConfig); //-----------------------------------------------------------
+firebase.initializeApp(firebaseConfig);
+window.addEventListener('load', function () {
+  //-----------------------------------------------------------
+  var db = firebase.firestore();
+  var cursos = []; // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //         console.log(`${doc.id} => ${doc.data()}`);
+  //         cursos.push(doc.data());
+  //     });
+  //     // cursos.forEach((curso)=>{
+  //     //     console.log(curso.Semestre);
+  //     // });
+  // });
 
-var db = firebase.firestore();
-var cursos = []; // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data()}`);
-//         cursos.push(doc.data());
-//     });
-//     // cursos.forEach((curso)=>{
-//     //     console.log(curso.Semestre);
-//     // });
-// });
-
-var titulo = document.querySelector('.titulo');
-db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then(function (doc) {
-  if (doc.exists) {
-    console.log("Document data:", doc.data());
-    titulo.innerHTML = "Hola ".concat(doc.data().Profesor);
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
+  var titulo = document.querySelector('.titulo'); // db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
+  //     if (doc.exists) {
+  //         console.log("Document data:", doc.data());
+  //         titulo.innerHTML = `Hola ${doc.data().Profesor}`;
+  //     } else {
+  //         // doc.data() will be undefined in this case
+  //         console.log("No such document!");
+  //     } 
+  // });
 });
 },{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -181,7 +182,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53140" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50848" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

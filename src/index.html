@@ -8,9 +8,18 @@
 </head>
 <body>
     
-    <h1 class="titulo">Hola mundo</h1>
-  
-    <a href="/signUp.html">Registrarme</a>
+    <h1 class="titulo">Inicia sesión</h1>
+
+    <form>
+        <label for="email">Email</label>
+        <input type="email" name="" id="email">
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass">
+        <button type="button" id="signUpBtn">Iniciar sesión</button>
+    </form>
+
+    <p>¿No tienes cuenta?</p>
+    <a href="./signUp.html">Regístrate</a>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>

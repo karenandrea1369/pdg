@@ -21,18 +21,25 @@ window.addEventListener('load', ()=>{
 
     var auth = firebase.auth();
     var db = firebase.firestore();
-    var myUser;
+
+    
     auth.onAuthStateChanged(user =>{
-        //console.log(user.uid); 
+        //console.log(user.uid);
+        if(user){
+            console.log("user", user.uid);
+            let actualUser = db.collection("people").where("id", "==", user.uid);
+            console.log('Lo encontré', actualUser);
+            console.log('Este es su idDoc', actualUser.idDoc);
+        }
     });
     
     signUpBtn.addEventListener('click', ()=>{
         if(validate()){
             auth.createUserWithEmailAndPassword(email.value, pass.value)
             .then(credential=>{
-                console.log("wachu",idDoc.value);
-                goToRole(idDoc.value);
-                //window.location.href = "algo.html";
+                console.log("credential", credential.user.uid);
+                addId(idDoc.value, credential.user.uid)
+                //goToRole(idDoc.value);
             })
             .catch(error=>{
                 console.log(error.code);
@@ -40,22 +47,45 @@ window.addEventListener('load', ()=>{
         }
     });
 
+    function addId(idDoc, id){
+        db.collection("people").doc(idDoc).set({
+            id : id
+        }, { merge: true })
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+    }
+
     function goToRole(idDoc){
         db.collection("people").doc(idDoc).get().then((doc) => {
             if (doc.exists) {
                 if(doc.data().student){
-                    console.log("Hola estudiante");
-                    window.location.href = "src/studentDash.html"; 
+                    window.location.href = "studentDash.html"; 
                 } else if(doc.data().teacher == true && doc.data().boss == false){
-                    window.location.href = './teacherDash.html';
+                    window.location.href = "teacherDash.html";
                 } else if(doc.data().teacher && doc.data().boss){
-                    window.location.href = './teacherBossDash.html';
+                    window.location.href = "teacherBossDash.html";
                 }
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             } 
         
+        });
+    }
+
+    function persistence(){
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(() => {
+            //return firebase.auth().signInWithEmailAndPassword(email, pass);
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            // var errorCode = error.code;
+            // var errorMessage = error.message;
         });
     }
 

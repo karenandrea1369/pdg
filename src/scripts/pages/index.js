@@ -1,4 +1,3 @@
-
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
@@ -14,32 +13,34 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-//-----------------------------------------------------------
+window.addEventListener('load', ()=>{
+    
+    //-----------------------------------------------------------
+    var db = firebase.firestore();
+    var cursos = [];
 
-var db = firebase.firestore();
-var cursos = [];
 
+    // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //         console.log(`${doc.id} => ${doc.data()}`);
+    //         cursos.push(doc.data());
+    //     });
+    //     // cursos.forEach((curso)=>{
+    //     //     console.log(curso.Semestre);
+    //     // });
 
-// db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data()}`);
-//         cursos.push(doc.data());
-//     });
-//     // cursos.forEach((curso)=>{
-//     //     console.log(curso.Semestre);
-//     // });
+    // });
 
-// });
+    var titulo = document.querySelector('.titulo');
 
-var titulo = document.querySelector('.titulo');
+    // db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
+    //     if (doc.exists) {
+    //         console.log("Document data:", doc.data());
+    //         titulo.innerHTML = `Hola ${doc.data().Profesor}`;
+    //     } else {
+    //         // doc.data() will be undefined in this case
+    //         console.log("No such document!");
+    //     } 
 
-db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-        titulo.innerHTML = `Hola ${doc.data().Profesor}`;
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    } 
-
+    // });
 });

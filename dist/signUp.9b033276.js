@@ -137,35 +137,60 @@ window.addEventListener('load', function () {
   var signUpBtn = document.getElementById('signUpBtn');
   var auth = firebase.auth();
   var db = firebase.firestore();
-  var myUser;
-  auth.onAuthStateChanged(function (user) {//console.log(user.uid); 
+  auth.onAuthStateChanged(function (user) {
+    //console.log(user.uid);
+    if (user) {
+      console.log("user", user.uid);
+      var actualUser = db.collection("people").where("id", "==", user.uid);
+      console.log('Lo encontré', actualUser);
+      console.log('Este es su idDoc', actualUser.idDoc);
+    }
   });
   signUpBtn.addEventListener('click', function () {
     if (validate()) {
       auth.createUserWithEmailAndPassword(email.value, pass.value).then(function (credential) {
-        console.log("wachu", idDoc.value);
-        goToRole(idDoc.value); //window.location.href = "algo.html";
+        console.log("credential", credential.user.uid);
+        addId(idDoc.value, credential.user.uid); //goToRole(idDoc.value);
       }).catch(function (error) {
         console.log(error.code);
       });
     }
   });
 
+  function addId(idDoc, id) {
+    db.collection("people").doc(idDoc).set({
+      id: id
+    }, {
+      merge: true
+    }).then(function () {
+      console.log("Document successfully written!");
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
+  }
+
   function goToRole(idDoc) {
     db.collection("people").doc(idDoc).get().then(function (doc) {
       if (doc.exists) {
         if (doc.data().student) {
-          console.log("Hola estudiante");
-          window.location.href = "src/studentDash.html";
+          window.location.href = "studentDash.html";
         } else if (doc.data().teacher == true && doc.data().boss == false) {
-          window.location.href = './teacherDash.html';
+          window.location.href = "teacherDash.html";
         } else if (doc.data().teacher && doc.data().boss) {
-          window.location.href = './teacherBossDash.html';
+          window.location.href = "teacherBossDash.html";
         }
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
       }
+    });
+  }
+
+  function persistence() {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function () {//return firebase.auth().signInWithEmailAndPassword(email, pass);
+    }).catch(function (error) {// Handle Errors here.
+      // var errorCode = error.code;
+      // var errorMessage = error.message;
     });
   }
 
@@ -210,7 +235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53140" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50848" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
