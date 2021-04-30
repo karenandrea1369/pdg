@@ -19,6 +19,19 @@ window.addEventListener('load', ()=>{
     var db = firebase.firestore();
     var cursos = [];
 
+    auth.onAuthStateChanged(user =>{
+        //console.log(user.uid);
+        if(user){
+            console.log("user", user.uid);
+            let actualUser = db.collection("people").where("id", "==", user.uid).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, ' => ', doc.data());
+                    console.log('Este es su idDoc', doc.data().iddoc);
+                    goToRole(doc.data().iddoc);
+                });
+            });
+        }
+    });
 
     // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
     //     querySnapshot.forEach((doc) => {
@@ -41,6 +54,5 @@ window.addEventListener('load', ()=>{
     //         // doc.data() will be undefined in this case
     //         console.log("No such document!");
     //     } 
-
     // });
 });

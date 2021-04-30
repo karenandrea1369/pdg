@@ -27,9 +27,13 @@ window.addEventListener('load', ()=>{
         //console.log(user.uid);
         if(user){
             console.log("user", user.uid);
-            let actualUser = db.collection("people").where("id", "==", user.uid);
-            console.log('Lo encontré', actualUser);
-            console.log('Este es su idDoc', actualUser.idDoc);
+            let actualUser = db.collection("people").where("id", "==", user.uid).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, ' => ', doc.data());
+                    console.log('Este es su idDoc', doc.data().iddoc);
+                    goToRole(doc.data().iddoc);
+                });
+            });
         }
     });
     

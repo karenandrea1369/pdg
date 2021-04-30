@@ -141,9 +141,13 @@ window.addEventListener('load', function () {
     //console.log(user.uid);
     if (user) {
       console.log("user", user.uid);
-      var actualUser = db.collection("people").where("id", "==", user.uid);
-      console.log('Lo encontré', actualUser);
-      console.log('Este es su idDoc', actualUser.idDoc);
+      var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          console.log(doc.id, ' => ', doc.data());
+          console.log('Este es su idDoc', doc.data().iddoc);
+          goToRole(doc.data().iddoc);
+        });
+      });
     }
   });
   signUpBtn.addEventListener('click', function () {
@@ -235,7 +239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54003" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

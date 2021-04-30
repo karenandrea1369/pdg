@@ -134,7 +134,20 @@ firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   //-----------------------------------------------------------
   var db = firebase.firestore();
-  var cursos = []; // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
+  var cursos = [];
+  auth.onAuthStateChanged(function (user) {
+    //console.log(user.uid);
+    if (user) {
+      console.log("user", user.uid);
+      var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          console.log(doc.id, ' => ', doc.data());
+          console.log('Este es su idDoc', doc.data().iddoc);
+          goToRole(doc.data().iddoc);
+        });
+      });
+    }
+  }); // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
   //     querySnapshot.forEach((doc) => {
   //         console.log(`${doc.id} => ${doc.data()}`);
   //         cursos.push(doc.data());
@@ -182,7 +195,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54003" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
