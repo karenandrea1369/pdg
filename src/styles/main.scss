@@ -101,5 +101,17 @@ a{
             background-color: var(--first-color);
         }
     }
+
+    &__icon{
+        font-size: 1.25rem;
+    }
+
+    &__name{
+        font-size: var(--small-font-size);
+    }
 }
 
+/* expander */
+.expand{
+    width: calc(var(--nav-width) + 9.25rem);
+}

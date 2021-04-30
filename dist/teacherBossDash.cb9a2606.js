@@ -117,7 +117,57 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"scripts/pages/teacherBossDash.js":[function(require,module,exports) {
+})({"scripts/classes/ExpandMenu.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* Expander menu */
+var ExpandMenu = /*#__PURE__*/function () {
+  function ExpandMenu(toggleId, navBarId) {
+    _classCallCheck(this, ExpandMenu);
+
+    this.toggle = document.getElementById(toggleId);
+    this.navBar = document.getElementById(navBarId);
+  }
+
+  _createClass(ExpandMenu, [{
+    key: "expand",
+    value: function expand() {
+      var _this = this;
+
+      if (this.toggle && this.navBar) {
+        console.log(this.toggle);
+        console.log(this.navBar);
+        this.toggle.addEventListener('click', function () {
+          _this.navBar.classList.toggle('expand');
+        });
+      }
+    }
+  }]);
+
+  return ExpandMenu;
+}();
+
+var _default = ExpandMenu;
+exports.default = _default;
+},{}],"scripts/pages/teacherBossDash.js":[function(require,module,exports) {
+"use strict";
+
+var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//imports
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
   apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
@@ -133,6 +183,8 @@ firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   var auth = firebase.auth();
   var db = firebase.firestore();
+  var expander = new _ExpandMenu.default('nav-toggle', 'navBar');
+  expander.expand();
   var signOutBtn = document.getElementById('signOutBtn');
   signOutBtn.addEventListener('click', function () {
     auth.signOut().then(function () {
@@ -142,7 +194,7 @@ window.addEventListener('load', function () {
     });
   });
 });
-},{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -170,7 +222,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58808" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49272" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

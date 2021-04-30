@@ -1,3 +1,6 @@
+//imports
+import ExpandMenu from '../classes/ExpandMenu'
+
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
     apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
@@ -16,6 +19,9 @@ window.addEventListener('load',()=>{
 
     var auth = firebase.auth();
     var db = firebase.firestore();
+
+    var expander = new ExpandMenu('nav-toggle', 'navBar');
+    expander.expand();
 
     var signOutBtn = document.getElementById('signOutBtn');
 

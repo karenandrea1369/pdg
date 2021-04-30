@@ -97,5 +97,16 @@ a {
 .nav__link:hover {
   background-color: var(--first-color);
 }
+.nav__icon {
+  font-size: 1.25rem;
+}
+.nav__name {
+  font-size: var(--small-font-size);
+}
+
+/* expander */
+.expand {
+  width: calc(var(--nav-width) + 9.25rem);
+}
 
 /*# sourceMappingURL=/main.48b3db1d.css.map */
