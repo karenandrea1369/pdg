@@ -24,7 +24,6 @@ window.addEventListener('load',()=>{
     expander.expand();
 
     var signOutBtn = document.getElementById('signOutBtn');
-
     signOutBtn.addEventListener('click', ()=>{
         auth.signOut().then(() => {
             console.log("Cerró sesión exitosamente");

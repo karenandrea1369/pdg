@@ -1,50 +1,6 @@
-/* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
-/* Variables */
-:root {
-  --nav-width: 92px;
-  /* Colors */
-  --first-color: #2981D5;
-  --bg-color: #3227AB;
-  --white-color: #F4F4F4;
-  --sub-color: #FF9D09;
-  /* Fonts */
-  --body-font: "Mulish", sans-serif;
-  --normal-font-size: 1rem;
-  --small-font-size: .875rem;
-  /*z z index */
-  --z-fixed: 100;
-}
-
-/* Base */
-*, ::before, ::after {
-  box-sizing: border-box;
-}
-
-body {
-  position: relative;
-  margin: 0;
-  padding: 2rem 0 0 6.75rem;
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  transition: 0.5s;
-}
-
-h1 {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
+/* Others styles */
 /* l nav */
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
 .l-navbar {
   position: fixed;
   top: 0;
@@ -107,6 +63,197 @@ a {
 /* expander */
 .expand {
   width: calc(var(--nav-width) + 9.25rem);
+}
+
+.login {
+  display: grid;
+  grid-template-columns: 100%;
+  height: 100vh;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.login__content {
+  display: grid;
+}
+.login__img {
+  justify-self: center;
+}
+.login__img img {
+  margin-top: 1.5rem;
+}
+.login__title {
+  font-size: var(--h1-font-size);
+  margin-bottom: 2rem;
+}
+.login__form {
+  position: relative;
+  height: 368px;
+}
+.login__registre {
+  bottom: 1rem;
+  display: block;
+  width: 100%;
+  background-color: var(--white-color);
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+}
+.login__inputbox {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background-color: #fff;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+.login__icon {
+  font-size: 1.5rem;
+  color: var(--first-color);
+}
+.login__input {
+  border: none;
+  outline: none;
+  font-size: var(--normal-font-size);
+  color: var(--first-color-dark);
+}
+.login__input::placeholder {
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+  color: var(--first-color-light);
+}
+.login__forgot {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-top: 0.5rem;
+  font-size: var(--small-font-size);
+  font-weight: 600;
+  color: var(--first-color-light);
+}
+.login__button {
+  display: block;
+  padding: 0.5rem;
+  margin: 2rem 0;
+  background-color: var(--first-color);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+.login__button:hover {
+  background-color: var(--first-color-dark);
+}
+.login__signin {
+  font-weight: 600;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  cursor: pointer;
+}
+.login__account {
+  font-weight: 600;
+  font-size: var(--small-font-size);
+  color: var(--first-color-dark);
+}
+
+@media screen and (min-width: 576px) {
+  .login__fomr {
+    width: 348px;
+    justify-self: center;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .login__content {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+    margin-left: 10rem;
+  }
+  .login__img {
+    display: flex;
+    width: 500px;
+    height: auto;
+    background-color: var(--first-color-lighten);
+    border-radius: 1rem;
+    padding-left: 1rem;
+  }
+  .login__img img {
+    width: 100%;
+    margin-top: 0;
+  }
+  .login__registre {
+    left: -5rem;
+  }
+}
+/* Fonts */
+/* Variables */
+:root {
+  --nav-width: 92px;
+  /* Colors */
+  --first-color: #2981D5;
+  --bg-color: #3227AB;
+  --white-color: #F4F4F4;
+  --sub-color: #FF9D09;
+  /* Other colors */
+  --first-color-dark: #23004D;
+  --first-color-light: #A49EAC;
+  --first-color-lighten: #F2F2F2;
+  /* Fonts */
+  --body-font: "Mulish", sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  --h1-font-size: 1.5rem;
+  /*z z index */
+  --z-fixed: 100;
+}
+
+/* Base */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 2rem 0 0 6.75rem;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  transition: 0.5s;
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    /* Fonts */
+    --normal-font-size: 1.2rem;
+    --small-font-size: .9rem;
+  }
 }
 
 /*# sourceMappingURL=/main.48b3db1d.css.map */

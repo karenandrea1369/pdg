@@ -4,11 +4,61 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
+        <link rel="stylesheet" href="/main.48b3db1d.css">
+        <title>Registrarse</title>
+    <script src="/main.48b3db1d.js"></script></head>
     <body>
 
-        <h2>Este es el registro</h2>
+        <main>
+            <div class="login">
+                <div class="login__content">
+                    <div class="login__img">
+                        <img src="/58.8c7502e2.jpg" alt="">
+                    </div>
+    
+                    <div class="login__form">
+                        <h1 class="titulo login__tittle">Registrarse</h1>
+                    
+                        <form class="login__registre" id="login-up">
+    
+                            <label for="email" class="login__label">Email</label>
+                            <div class="login__inputbox">
+                                <ion-icon name="person-outline" class="login__icon"></ion-icon>
+                                <input type="email" name="" id="email" placeholder="Correo" class="login__input">
+                            </div>
+
+                            <label for="idDoc" class="login__label">Documento de identificación</label>
+                            <div class="login__inputbox">
+                                <ion-icon name="id-card-outline" class="login__icon"></ion-icon>
+                                <input type="text" name="" id="idDoc" placeholder="Documento" class="login__input">
+                            </div>
+    
+                            <label for="pass" class="login__label">Contraseña</label>
+                            <div class="login__inputbox">
+                                <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
+                                <input type="password" name="" id="pass" placeholder="Contraseña" class="login__input">
+                            </div>
+
+                            <label for="confirmPass" class="login__label">Repite contraseña</label>
+                            <div class="login__inputbox">
+                                <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
+                                <input type="password" name="" id="confirmPass" placeholder="Contraseña" class="login__input">
+                            </div>
+
+                            <a href="#" class="login__button">Registrarse</a>
+                            
+                            <div>
+                                <span class="login__account">¿Ya tienes cuenta?</span>
+                                <span class="login__signin" id="sign-in"><a href="/index.html">Inicia sesión</a></span>
+                            </div>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- <h2>Este es el registro</h2>
         
         <form>
             <label for="email">Email</label>
@@ -20,11 +70,14 @@
             <label for="confirmPass">Confirmar contraseña</label>
             <input type="password" id="confirmPass">
             <button type="button" id="signUpBtn">Registrarme</button>
-        </form>
+        </form> 
 
         <p>¿Ya tienes cuenta?</p>
-        <a href="/index.html">Inicia sesión</a>
+        <a href="./index.html">Inicia sesión</a> -->
 
+
+        <!-- IonIcons -->
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
