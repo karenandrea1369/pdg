@@ -24,6 +24,7 @@
     /* Fonts */
     --body-font: 'Mulish', sans-serif;
     --normal-font-size: 1rem;
+    --medium-font-size: .93rem;
     --small-font-size: .875rem;
     --h1-font-size: 1.5rem;
 
@@ -38,7 +39,7 @@
 body{
     position: relative;
     margin: 0;
-    padding: 2rem 0 0 6.75rem;
+    padding: 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     transition: .5s;
