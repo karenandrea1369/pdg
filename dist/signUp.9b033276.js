@@ -200,29 +200,52 @@ window.addEventListener('load', function () {
   }
 
   function validate() {
-    /*  if(confirmPass.value != pass.value){
-          console.log("Contraseñas no iguales :(");
-          return false;
-          //poner para mostrar el error
-      }
-      //aqui validar correos
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email.value).toLowerCase());
-      //poner para mostrar el error*/
     var emailValue = email.value.trim();
-    var edDocValue = idDoc.value.trim();
+    var idDocValue = idDoc.value.trim();
     var passValue = pass.value.trim();
     var confirmPassValue = confirmPass.value.trim();
-    var inputsBoxes = document.querySelectorAll('.login__inputBox');
-    inputsBoxes.forEach(function (inputBox) {
-      var input = inputBox.querySelector('input');
+    var val1 = false,
+        val2 = false,
+        val3 = false;
 
-      if (input.value === "") {
-        setErrorFor(input, 'El campo es obligatorio');
-      } else {
-        setSuccessFor(input);
-      }
-    });
+    if (emailValue === '') {
+      setErrorFor(email, 'El campo es obligatorio');
+    } else if (!isEmail(emailValue)) {
+      setErrorFor(email, 'El correo no es válido');
+    } else {
+      setSuccessFor(email);
+      val1 = true;
+    }
+
+    if (idDocValue === '') {
+      setErrorFor(idDoc, 'El campo es obligatorio');
+    } else {
+      setSuccessFor(idDoc);
+      val2 = true;
+    }
+
+    if (passValue === '') {
+      setErrorFor(pass, 'El campo es obligatorio');
+    } else {
+      setSuccessFor(pass);
+    }
+
+    if (confirmPassValue === '') {
+      setErrorFor(confirmPass, 'El campo es obligatorio');
+    } else if (confirmPassValue != passValue) {
+      setErrorFor(confirmPass, 'Las contraseñas no coinciden');
+    } else {
+      setSuccessFor(confirmPass);
+      val3 = true;
+    }
+
+    if (val1 && val2 && val3) {
+      console.log('todo okkkkkkkk');
+      return true;
+    } else {
+      console.log('algo mal');
+      return false;
+    }
   }
 
   ;
@@ -234,11 +257,39 @@ window.addEventListener('load', function () {
     inputBox.classList.add('login__inputError');
   }
 
+  ;
+
   function setSuccessFor(input) {
     var inputBox = input.parentElement;
     inputBox.classList.remove('login__inputError');
   }
-});
+
+  ;
+
+  function isEmail(email) {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  }
+
+  ;
+}); //console.log(input.getAttribute('id'));
+
+/* if(input.value.trim() === ""){
+    setErrorFor(input, 'El campo es obligatorio');
+} else if(input.getAttribute('id') === 'email'){
+    if(!isEmail(emailValue)){
+        setErrorFor(input, 'El correo no es válido');
+    }else{
+        setSuccessFor(input);
+    }
+} else if(input.getAttribute('id') === 'confirmPass'){
+    if(confirmPassValue != passValue){
+        setErrorFor(input, 'Las contraseñas no coinciden');
+    }else{
+        setSuccessFor(input);
+    }
+} else{
+    setSuccessFor(input);
+}*/
 },{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -267,7 +318,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55050" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
