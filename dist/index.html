@@ -17,9 +17,9 @@
                 </div>
 
                 <div class="login__form">
-                    <h1 class="titulo login__tittle">Iniciar sesión</h1>
-                
-                    <form class="login__registre" id="login-in">
+                    
+                    <form class="login__registre" id="sign-in">
+                        <h1 class="titulo login__tittle">Iniciar sesión</h1>
 
                         <label for="email" class="login__inputLabel">Email</label>
                         <div class="login__inputBox">
@@ -32,13 +32,15 @@
                             <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
                             <input type="password" name="" id="pass" placeholder="Contraseña" class="login__input">
                         </div>
-                        <a href="#" class="login__forgot">¿Olvidaste tu contraseña?</a>
+                        <div class="login__forgot">
+                            <a href="#">¿Olvidaste tu contraseña?</a>
+                        </div>
 
                         <a href="#" class="login__button">Iniciar sesión</a>
 
                         <div class="login__account">
                             <span class="login__accountAlready">¿No tienes cuenta?</span>
-                            <span class="login__accountChange" id="sign-up"><a href="/signUp.html">Regístrate</a></span>
+                            <span class="login__accountChange" id="sign-up-change"><a href="/signUp.html">Regístrate</a></span>
                         </div>
                     </form>
                 </div>

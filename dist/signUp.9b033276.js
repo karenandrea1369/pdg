@@ -130,11 +130,12 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
+  var form = document.getElementById('sign-up');
   var email = document.getElementById('email');
   var idDoc = document.getElementById('idDoc');
   var pass = document.getElementById('pass');
   var confirmPass = document.getElementById('confirmPass');
-  var signUpBtn = document.getElementById('signUpBtn');
+  var signUpBtn = document.querySelector('.login__button');
   var auth = firebase.auth();
   var db = firebase.firestore();
   auth.onAuthStateChanged(function (user) {
@@ -199,17 +200,44 @@ window.addEventListener('load', function () {
   }
 
   function validate() {
-    if (confirmPass.value != pass.value) {
-      console.log("Contraseñas no iguales :(");
-      return false; //poner para mostrar el error
-    } //aqui validar correos
+    /*  if(confirmPass.value != pass.value){
+          console.log("Contraseñas no iguales :(");
+          return false;
+          //poner para mostrar el error
+      }
+      //aqui validar correos
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email.value).toLowerCase());
+      //poner para mostrar el error*/
+    var emailValue = email.value.trim();
+    var edDocValue = idDoc.value.trim();
+    var passValue = pass.value.trim();
+    var confirmPassValue = confirmPass.value.trim();
+    var inputsBoxes = document.querySelectorAll('.login__inputBox');
+    inputsBoxes.forEach(function (inputBox) {
+      var input = inputBox.querySelector('input');
 
-
-    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email.value).toLowerCase()); //poner para mostrar el error
+      if (input.value === "") {
+        setErrorFor(input, 'El campo es obligatorio');
+      } else {
+        setSuccessFor(input);
+      }
+    });
   }
 
   ;
+
+  function setErrorFor(input, message) {
+    var inputBox = input.parentElement;
+    var small = inputBox.querySelector('small');
+    small.innerText = message;
+    inputBox.classList.add('login__inputError');
+  }
+
+  function setSuccessFor(input) {
+    var inputBox = input.parentElement;
+    inputBox.classList.remove('login__inputError');
+  }
 });
 },{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -239,7 +267,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63501" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59225" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -13,11 +13,13 @@ firebase.initializeApp(firebaseConfig);
 
 window.addEventListener('load', ()=>{
 
+    const form = document.getElementById('sign-up');
+
     const email = document.getElementById('email');
     const idDoc = document.getElementById('idDoc');
     const pass = document.getElementById('pass');
     const confirmPass = document.getElementById('confirmPass');
-    const signUpBtn = document.getElementById('signUpBtn');
+    const signUpBtn = document.querySelector('.login__button');
 
     var auth = firebase.auth();
     var db = firebase.firestore();
@@ -94,7 +96,7 @@ window.addEventListener('load', ()=>{
     }
 
     function validate (){
-        if(confirmPass.value != pass.value){
+      /*  if(confirmPass.value != pass.value){
             console.log("Contraseñas no iguales :(");
             return false;
             //poner para mostrar el error
@@ -102,8 +104,36 @@ window.addEventListener('load', ()=>{
         //aqui validar correos
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email.value).toLowerCase());
-        //poner para mostrar el error
+        //poner para mostrar el error*/
+
+        const emailValue = email.value.trim();
+        const edDocValue = idDoc.value.trim();
+        const passValue = pass.value.trim();
+        const confirmPassValue = confirmPass.value.trim();
+
+        const inputsBoxes = document.querySelectorAll('.login__inputBox');
+        inputsBoxes.forEach(inputBox =>{
+            const input = inputBox.querySelector('input');
+            if(input.value === ""){
+                setErrorFor(input, 'El campo es obligatorio');
+            } else{
+                setSuccessFor(input);
+            }
+        });
+
+        
     };
 
+    function setErrorFor(input, message){
+        const inputBox = input.parentElement;
+        const small = inputBox.querySelector('small');
+        small.innerText = message;
+        inputBox.classList.add('login__inputError');
+    }
+
+    function setSuccessFor(input){
+        const inputBox = input.parentElement;
+        inputBox.classList.remove('login__inputError');
+    }
 
 });

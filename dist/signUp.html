@@ -18,38 +18,42 @@
     
                     <div class="login__form">
                         
-                        <form class="login__registre" id="login-up">
+                        <form class="login__registre" id="sign-up">
                             <h1 class="titulo login__tittle">Registrarse</h1>
     
-                            <label for="email" class="login__inputLabel">Email</label>
+                            <label for="email" class="login__inputLabel">Email*</label>
                             <div class="login__inputBox">
                                 <ion-icon name="person-outline" class="login__icon"></ion-icon>
                                 <input type="email" name="" id="email" placeholder="Correo" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
                             </div>
 
-                            <label for="idDoc" class="login__inputLabel">Documento de identificación</label>
+                            <label for="idDoc" class="login__inputLabel">Documento de identificación*</label>
                             <div class="login__inputBox">
                                 <ion-icon name="id-card-outline" class="login__icon"></ion-icon>
                                 <input type="text" name="" id="idDoc" placeholder="Documento" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
                             </div>
     
-                            <label for="pass" class="login__inputLabel">Contraseña</label>
+                            <label for="pass" class="login__inputLabel">Contraseña*</label>
                             <div class="login__inputBox">
                                 <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
                                 <input type="password" name="" id="pass" placeholder="Contraseña" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
                             </div>
 
-                            <label for="confirmPass" class="login__inputLabel">Repite contraseña</label>
+                            <label for="confirmPass" class="login__inputLabel">Verifica contraseña*</label>
                             <div class="login__inputBox">
                                 <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
-                                <input type="password" name="" id="confirmPass" placeholder="Contraseña" class="login__input">
+                                <input type="password" name="" id="confirmPass" placeholder="Verifica contraseña" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
                             </div>
 
                             <a href="#" class="login__button">Registrarse</a>
                             
                             <div class="login__account">
                                 <span class="login__accountAlready">¿Ya tienes cuenta? </span>
-                                <span class="login__accountChange" id="sign-in"><a href="/index.html">Inicia sesión</a></span>
+                                <span class="login__accountChange" id="sign-in-change"><a href="/index.html">Inicia sesión</a></span>
                             </div>
                         </form>
                     
