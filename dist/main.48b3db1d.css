@@ -2,7 +2,7 @@
 /* l nav */
 @import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
 .l-navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: var(--nav-width);
@@ -227,19 +227,55 @@
     padding: 1rem 2rem;
   }
 }
+.container {
+  display: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard__container {
+  position: absolute;
+  padding-left: 100px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard__header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+.dashboard__headerright {
+  display: flex;
+}
+
 /* Fonts */
 /* Variables */
 :root {
-  --nav-width: 92px;
+  --nav-width: 90px;
   /* Colors */
   --first-color: #2981D5;
-  --bg-color: #3227AB;
-  --white-color: #F4F4F4;
+  --first-color-dark: #3227AB;
+  --first-color-light: #8EC3F7;
   --sub-color: #FF9D09;
-  /* Other colors */
-  --first-color-dark: #23004D;
-  --first-color-light: #A49EAC;
+  --orange-gradient: linear-gradient(#FE6B00, #FF9D09, #FE6B00);
+  --blue-gradient: linear-gradient(#FE6B00, #FF9D09, #FE6B00);
+  --third-color: #6247A8;
+  --white-color: #F4F4F4;
+  --black-color: #444444;
+  --bg-color: #3227AB;
   --first-color-lighten: #F2F2F2;
+  /* Other colors */
+  --lilac-color: #BBACE5;
+  --lilac-color-dark: #9683CD;
+  --skyblue-color: #C4E0F9;
+  --skyblue-color-dark: #81B4E2;
+  --pink-color: #F5B0ED;
+  --pink-color-dark: #E57CD7;
+  /* Box Shadow */
+  --shadow1: 14px 0px 4px -11px rgba(170, 151, 223, 0.38), -14px 17px 8px -11px rgba(170, 151, 223, 0.38);
   /* Fonts */
   --body-font: "Mulish", sans-serif;
   --normal-font-size: 1rem;
