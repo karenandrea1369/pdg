@@ -16,8 +16,9 @@
     --first-color-dark: #3227AB;
     --first-color-light: #8EC3F7;
     --sub-color: #FF9D09;
-    --orange-gradient: linear-gradient(#FE6B00, #FF9D09, #FE6B00);
-    --blue-gradient: linear-gradient(#FE6B00, #FF9D09, #FE6B00);
+    --second-color: #FF9D09;
+    --orange-gradient: #FE6B00, #FF9D09, #FE6B00;
+    --blue-gradient: #FE6B00, #FF9D09, #FE6B00;
     --third-color: #6247A8;
     --white-color: #F4F4F4;
     --black-color: #444444;
@@ -56,7 +57,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: var(--body-font);
-    font-size: var(--normal-font-size);
+    //font-size: var(--normal-font-size);
     transition: .5s;
 }
 h1{
