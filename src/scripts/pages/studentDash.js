@@ -27,6 +27,7 @@ window.addEventListener('load',()=>{
     signOutBtn.addEventListener('click', ()=>{
         auth.signOut().then(() => {
             console.log("Cerró sesión exitosamente");
+            window.location.href = "index.html";
           }).catch((error) => {
             console.log(error.code);
           });

@@ -136,11 +136,12 @@ window.addEventListener('load', function () {
   var pass = document.getElementById('pass');
   var confirmPass = document.getElementById('confirmPass');
   var signUpBtn = document.querySelector('.login__button');
+  var confirmUser = true;
   var auth = firebase.auth();
   var db = firebase.firestore();
   auth.onAuthStateChanged(function (user) {
     //console.log(user.uid);
-    if (user) {
+    if (user && confirmUser) {
       console.log("user", user.uid);
       var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -149,15 +150,19 @@ window.addEventListener('load', function () {
           goToRole(doc.data().iddoc);
         });
       });
+    } else {
+      console.log("No hay usuario iniciado");
     }
   });
   signUpBtn.addEventListener('click', function () {
+    confirmUser = false;
+
     if (validate()) {
       auth.createUserWithEmailAndPassword(email.value, pass.value).then(function (credential) {
         console.log("credential", credential.user.uid);
         addId(idDoc.value, credential.user.uid); //goToRole(idDoc.value);
       }).catch(function (error) {
-        console.log(error.code);
+        console.log("Error creating user", error.code);
       });
     }
   });
@@ -318,7 +323,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57871" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

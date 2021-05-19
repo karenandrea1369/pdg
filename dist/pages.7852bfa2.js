@@ -134,6 +134,7 @@ firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   //-----------------------------------------------------------
   var db = firebase.firestore();
+  var auth = firebase.auth();
   var cursos = [];
   auth.onAuthStateChanged(function (user) {
     //console.log(user.uid);
@@ -146,6 +147,8 @@ window.addEventListener('load', function () {
           goToRole(doc.data().iddoc);
         });
       });
+    } else {
+      console.log("No hay usuario");
     }
   }); // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
   //     querySnapshot.forEach((doc) => {
@@ -195,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55050" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54268" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

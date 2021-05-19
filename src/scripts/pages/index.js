@@ -17,6 +17,7 @@ window.addEventListener('load', ()=>{
     
     //-----------------------------------------------------------
     var db = firebase.firestore();
+    var auth = firebase.auth();
     var cursos = [];
 
     auth.onAuthStateChanged(user =>{
@@ -30,6 +31,8 @@ window.addEventListener('load', ()=>{
                     goToRole(doc.data().iddoc);
                 });
             });
+        }else{
+            console.log("No hay usuario");
         }
     });
 

@@ -21,13 +21,15 @@ window.addEventListener('load', ()=>{
     const confirmPass = document.getElementById('confirmPass');
     const signUpBtn = document.querySelector('.login__button');
 
+    var confirmUser = true;
+
     var auth = firebase.auth();
     var db = firebase.firestore();
 
     
     auth.onAuthStateChanged(user =>{
         //console.log(user.uid);
-        if(user){
+        if(user && confirmUser){
             console.log("user", user.uid);
             let actualUser = db.collection("people").where("id", "==", user.uid).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -36,10 +38,13 @@ window.addEventListener('load', ()=>{
                     goToRole(doc.data().iddoc);
                 });
             });
+        } else {
+            console.log("No hay usuario iniciado");
         }
     });
     
     signUpBtn.addEventListener('click', ()=>{
+        confirmUser = false;
         if(validate()){
             auth.createUserWithEmailAndPassword(email.value, pass.value)
             .then(credential=>{
@@ -48,7 +53,7 @@ window.addEventListener('load', ()=>{
                 //goToRole(idDoc.value);
             })
             .catch(error=>{
-                console.log(error.code);
+                console.log("Error creating user", error.code);
             });
         }
     });
