@@ -28,13 +28,12 @@ window.addEventListener('load', ()=>{
 
     
     auth.onAuthStateChanged(user =>{
-        //console.log(user.uid);
         if(user && confirmUser){
-            console.log("user", user.uid);
             let actualUser = db.collection("people").where("id", "==", user.uid).get().then((querySnapshot) => {
+                console.log(querySnapshot);
                 querySnapshot.forEach((doc) => {
-                    console.log(doc.id, ' => ', doc.data());
-                    console.log('Este es su idDoc', doc.data().iddoc);
+                    //console.log(doc.id, ' => ', doc.data());
+                    //console.log('Este es su idDoc', doc.data().iddoc);
                     goToRole(doc.data().iddoc);
                 });
             });
@@ -50,7 +49,7 @@ window.addEventListener('load', ()=>{
             .then(credential=>{
                 console.log("credential", credential.user.uid);
                 addId(idDoc.value, credential.user.uid)
-                //goToRole(idDoc.value);
+                goToRole(idDoc.value);
             })
             .catch(error=>{
                 console.log("Error creating user", error.code);
@@ -88,17 +87,17 @@ window.addEventListener('load', ()=>{
         });
     }
 
-    function persistence(){
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(() => {
-            //return firebase.auth().signInWithEmailAndPassword(email, pass);
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            // var errorCode = error.code;
-            // var errorMessage = error.message;
-        });
-    }
+    // function persistence(){
+    //     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    //     .then(() => {
+    //         //return firebase.auth().signInWithEmailAndPassword(email, pass);
+    //     })
+    //     .catch((error) => {
+    //         // Handle Errors here.
+    //         // var errorCode = error.code;
+    //         // var errorMessage = error.message;
+    //     });
+    // }
 
     function validate (){
 

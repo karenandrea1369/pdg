@@ -140,13 +140,12 @@ window.addEventListener('load', function () {
   var auth = firebase.auth();
   var db = firebase.firestore();
   auth.onAuthStateChanged(function (user) {
-    //console.log(user.uid);
     if (user && confirmUser) {
-      console.log("user", user.uid);
       var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
+        console.log(querySnapshot);
         querySnapshot.forEach(function (doc) {
-          console.log(doc.id, ' => ', doc.data());
-          console.log('Este es su idDoc', doc.data().iddoc);
+          //console.log(doc.id, ' => ', doc.data());
+          //console.log('Este es su idDoc', doc.data().iddoc);
           goToRole(doc.data().iddoc);
         });
       });
@@ -160,7 +159,8 @@ window.addEventListener('load', function () {
     if (validate()) {
       auth.createUserWithEmailAndPassword(email.value, pass.value).then(function (credential) {
         console.log("credential", credential.user.uid);
-        addId(idDoc.value, credential.user.uid); //goToRole(idDoc.value);
+        addId(idDoc.value, credential.user.uid);
+        goToRole(idDoc.value);
       }).catch(function (error) {
         console.log("Error creating user", error.code);
       });
@@ -194,15 +194,18 @@ window.addEventListener('load', function () {
         console.log("No such document!");
       }
     });
-  }
+  } // function persistence(){
+  //     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  //     .then(() => {
+  //         //return firebase.auth().signInWithEmailAndPassword(email, pass);
+  //     })
+  //     .catch((error) => {
+  //         // Handle Errors here.
+  //         // var errorCode = error.code;
+  //         // var errorMessage = error.message;
+  //     });
+  // }
 
-  function persistence() {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function () {//return firebase.auth().signInWithEmailAndPassword(email, pass);
-    }).catch(function (error) {// Handle Errors here.
-      // var errorCode = error.code;
-      // var errorMessage = error.message;
-    });
-  }
 
   function validate() {
     var emailValue = email.value.trim();
@@ -323,7 +326,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54268" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63141" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
