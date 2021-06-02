@@ -1,9 +1,7 @@
-.container{
-    position: relative;
-    margin: 0;
-    padding: 0;
-    color: var(--black-color);
-}
+/* Others styles */
+
+
+
 
 .dashboard{
     &__container{
@@ -81,91 +79,11 @@
             width: 100%;
             margin-top: 1rem;
 
-            & .alert{
-                border-radius: 10px;
-                box-shadow: var(--shadow1);
-                display: flex;
-                padding: 0.8rem;
-                margin-top: 15px;
-                justify-content: space-between;
-                //border: blue solid 1px;
-
-                &__content{
-                    margin: auto 0;
-                    display: flex;
-                    align-items: center;
-
-                    &message{
-                        display: flex;
-                        flex-direction: column;
-                        margin-left: 1rem;
-                    }
-                }
-
-                & ion-icon{
-                    color: var(--second-color);
-                    font-size: var(--normal-font-size);
-                }
-
-                &__subject{
-                    font-size: var(--normal-font-size);
-                    font-weight: 700;
-                }
-
-                &__message{
-                    font-size: var(--medium-font-size);
-                }
-
-                &__button{
-                    margin: auto 0;
-                    display: flex;
-                    align-items: center;
-                }
-            }
         }
 
         &chartsContainer{
             display: flex;
             justify-content: space-between;
-
-            & .chart{
-                display: inline-block;
-                margin: 0;
-                box-shadow: var(--shadow1);
-                width: 48%;
-                border-radius: 10px ;
-                margin-top: 15px;
-                padding: 20px;
-
-                &__tittle{
-                    font-size: var(--normal-font-size);
-                    text-align: center;
-                    color: var(--first-color);
-                    margin: 0;
-
-                    & h3{
-                        font-size: var(--normal-font-size);
-                        margin: 0;
-                    }
-                }
-
-                &__statistics{
-                    display: flex;
-                    & h4{
-                        font-size: var(--medium-font-size);
-                    }
-
-                    
-
-                    &left{
-                        width: 40%;
-                    }
-
-                    &right{
-                        width: 60%;
-                    }
-                }
-            }
         }
 
         &notificacions{

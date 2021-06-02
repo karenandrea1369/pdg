@@ -146,8 +146,8 @@ var ExpandMenu = /*#__PURE__*/function () {
       var _this = this;
 
       if (this.toggle && this.navBar) {
-        console.log(this.toggle);
-        console.log(this.navBar);
+        //console.log(this.toggle);
+        //console.log(this.navBar);
         this.toggle.addEventListener('click', function () {
           _this.navBar.classList.toggle('expand');
         });
@@ -160,7 +160,7 @@ var ExpandMenu = /*#__PURE__*/function () {
 
 var _default = ExpandMenu;
 exports.default = _default;
-},{}],"scripts/pages/teacherBossDash.js":[function(require,module,exports) {
+},{}],"scripts/pages/teacherDash.js":[function(require,module,exports) {
 "use strict";
 
 var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
@@ -186,12 +186,19 @@ window.addEventListener('load', function () {
   var expander = new _ExpandMenu.default('nav-toggle', 'navBar');
   expander.expand();
   var signOutBtn = document.getElementById('signOutBtn');
+  console.log("Cerrar sesión", signOutBtn);
   signOutBtn.addEventListener('click', function () {
     auth.signOut().then(function () {
       console.log("Cerró sesión exitosamente");
+      window.location.href = "index.html";
     }).catch(function (error) {
       console.log(error.code);
     });
+  });
+  var createCourse = document.getElementById('createCourseBtn');
+  createCourse.addEventListener('click', function () {
+    console.log("Crear curso");
+    window.location.href = "createCourse.html";
   });
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -222,7 +229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49272" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53626" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -398,5 +405,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/teacherBossDash.js"], null)
-//# sourceMappingURL=/teacherBossDash.cb9a2606.js.map
+},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/teacherDash.js"], null)
+//# sourceMappingURL=/teacherDash.2246e381.js.map
