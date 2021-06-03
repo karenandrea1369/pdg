@@ -15,22 +15,29 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 window.addEventListener('load',()=>{
+    var auth = firebase.auth();
+    var db = firebase.firestore();
 
-    var datass = '';
-    var DataArr = [];
+    // var datass = '';
+    // var DataArr = [];
     PDFJS.workerSrc = '';
+
+
+    var expander = new ExpandMenu('nav-toggle', 'navBar');
+    expander.expand();
 
     var input = document.getElementById("file-id");
 
     input.addEventListener('change', ()=>{
+        ExtractText(input);
+    })
+    function ExtractText(fileinput) {
         var fReader = new FileReader();
-        fReader.readAsDataURL(input.files[0]);
+        fReader.readAsDataURL(fileinput.files[0]);
         // console.log(input.files[0]);
         fReader.onloadend = function (event) {
             convertDataURIToBinary(event.target.result);
         }
-    })
-    function ExtractText() {
     }
 
     var BASE64_MARKER = ';base64,';
@@ -47,7 +54,7 @@ window.addEventListener('load',()=>{
             array[i] = raw.charCodeAt(i);
         }
         pdfAsArray(array)
-
+        
     }
 
     function getPageText(pageNum, PDFDocumentInstance) {
@@ -88,24 +95,28 @@ window.addEventListener('load',()=>{
                     pagesPromises.push(getPageText(pageNumber, pdfDocument));
                 })(i + 1);
             }
-
             // Execute all the promises
             Promise.all(pagesPromises).then(function (pagesText) {
 
                 // Display text of all the pages in the console
                 // e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
-                console.log(pagesText); // representing every single page of PDF Document by array indexing
-                console.log(pagesText.length);
+                console.log("Pages text---->", pagesText); // representing every single page of PDF Document by array indexing
+               // console.log("Pages text length ---->", pagesText.length);
                 var outputStr = "";
                 for (var pageNum = 0; pageNum < pagesText.length; pageNum++) {
-                    console.log(pagesText[pageNum]);
-                    outputStr = "";
-                    outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
-
-                    var div = document.getElementById('output');
-
-                    div.innerHTML += (outputStr + pagesText[pageNum]);
-
+                    //console.log("Pages text pagenum ---->", pagesText[pageNum]);
+                    //outputStr = "";
+                    //outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
+                    //var div = document.getElementById('output');
+                    //div.innerHTML += (outputStr + pagesText[pageNum]);
+                    var texto = pagesText[pageNum];
+                    var codcourseindex = texto.search("Código - Curso:");
+                    var prerrindex = texto.search("Tiene como prerrequisito:");
+                    var codcourse = texto.substring(codcourseindex, prerrindex);
+                    console.log(texto.lastIndexOf("Código - Curso:"));
+                    console.log("codigo index",codcourseindex);
+                    // console.log("pre index",prerrindex);
+                    // console.log("codcourde", codcourse)
                 }
             });
         }, function (reason) {
