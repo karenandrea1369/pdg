@@ -8,6 +8,12 @@
     <title>Document</title>
 <script src="/main.48b3db1d.js"></script></head>
 <body>
+    <input type="file" id="file-id" name="file_name">
+
+
+    <!-- a container for the output -->
+    <div id="output"></div>
+    
     <div class="container">
         <div class="l-navbar" id="navBar">
             <nav class="nav">
@@ -55,7 +61,36 @@
     
         <div class="course__container">
             <div class="createcourse__form">
-                <form action="">
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- IonIcons -->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+        
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+    <!-- mi js-->
+    <script src="/createcourse.e8ac2d96.js"></script>
+
+    <!-- Read pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.entry.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.worker.min.js"></script>
+</body>
+</html>
+
+<!--
+     <form action="">
                     <div class="createcourse__sectionone">
                         <h2>Información curso</h2>
                             <label for="name" class="login__inputLabel">Nombre del curso*</label>
@@ -95,10 +130,10 @@
                             </div>
                     </div>
                     <div class="createcourse__sectiontwo">
-                        <h2>Objetivo específico</h2>
-                            <label for="specificobj" class="login__inputLabel">Objetivo general*</label>
+                        <h2>Objetivo general</h2>
+                            <label for="generalobj" class="login__inputLabel">Objetivo general*</label>
                             <div class="login__inputBox">
-                                <input type="textarea" name="" id="specificobj" placeholder="Objetivo general" class="login__input">
+                                <input type="textarea" name="" id="generalobj" placeholder="Objetivo general" class="login__input login__textarea">
                                 <small class="login__inputErrorMessage">Error message</small>
                             </div>
                         </div>
@@ -106,37 +141,22 @@
                             <h2>Objetivos terminales</h2>
                             <label for="terminalcobj" class="login__inputLabel">Objetivo general*</label>
                             <div class="login__inputBox">
-                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="login__input">
+                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="login__input login__textarea">
                                 <small class="login__inputErrorMessage">Error message</small>
                             </div>
                     </div>
                     <div class="createcourse__sectionfour">
                         <h2>objetivos específicos</h2>
-                            <label for="terminalcobj" class="login__inputLabel">Objetivo general*</label>
+                            <label for="unitname" class="login__inputLabel">Unidad 1:</label>
                             <div class="login__inputBox">
-                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="login__input">
+                                <input type="text" name="" id="credits" placeholder="Intensidad semanal" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="terminalcobj" class="login__inputLabel">Objetivos de la Unidad 1*</label>
+                            <div class="login__inputBox">
+                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="login__input login__textarea">
                                 <small class="login__inputErrorMessage">Error message</small>
                             </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- IonIcons -->
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-        
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
-
-    <!-- mi js-->
-    <script src="/createcourse.e8ac2d96.js"></script>
-</body>
-</html>
+-->

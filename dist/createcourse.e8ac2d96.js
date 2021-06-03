@@ -117,9 +117,159 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"scripts/pages/createcourse.js":[function(require,module,exports) {
+})({"scripts/classes/ExpandMenu.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* Expander menu */
+var ExpandMenu = /*#__PURE__*/function () {
+  function ExpandMenu(toggleId, navBarId) {
+    _classCallCheck(this, ExpandMenu);
+
+    this.toggle = document.getElementById(toggleId);
+    this.navBar = document.getElementById(navBarId);
+  }
+
+  _createClass(ExpandMenu, [{
+    key: "expand",
+    value: function expand() {
+      var _this = this;
+
+      if (this.toggle && this.navBar) {
+        //console.log(this.toggle);
+        //console.log(this.navBar);
+        this.toggle.addEventListener('click', function () {
+          _this.navBar.classList.toggle('expand');
+        });
+      }
+    }
+  }]);
+
+  return ExpandMenu;
+}();
+
+var _default = ExpandMenu;
+exports.default = _default;
+},{}],"scripts/pages/createcourse.js":[function(require,module,exports) {
+"use strict";
+
+var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+var firebaseConfig = {
+  apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
+  authDomain: "pdg-db.firebaseapp.com",
+  projectId: "pdg-db",
+  storageBucket: "pdg-db.appspot.com",
+  messagingSenderId: "848702577304",
+  appId: "1:848702577304:web:89c4212e674efb5c3bceed",
+  measurementId: "G-SBDH6RW0HW"
+}; // Initialize Firebase
+
+firebase.initializeApp(firebaseConfig);
+window.addEventListener('load', function () {
+  var datass = '';
+  var DataArr = [];
+  PDFJS.workerSrc = '';
+  var input = document.getElementById("file-id");
+  input.addEventListener('change', function () {
+    var fReader = new FileReader();
+    fReader.readAsDataURL(input.files[0]); // console.log(input.files[0]);
+
+    fReader.onloadend = function (event) {
+      convertDataURIToBinary(event.target.result);
+    };
+  });
+
+  function ExtractText() {}
+
+  var BASE64_MARKER = ';base64,';
+
+  function convertDataURIToBinary(dataURI) {
+    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+    var base64 = dataURI.substring(base64Index);
+    var raw = window.atob(base64);
+    var rawLength = raw.length;
+    var array = new Uint8Array(new ArrayBuffer(rawLength));
+
+    for (var i = 0; i < rawLength; i++) {
+      array[i] = raw.charCodeAt(i);
+    }
+
+    pdfAsArray(array);
+  }
+
+  function getPageText(pageNum, PDFDocumentInstance) {
+    // Return a Promise that is solved once the text of the page is retrieven
+    return new Promise(function (resolve, reject) {
+      PDFDocumentInstance.getPage(pageNum).then(function (pdfPage) {
+        // The main trick to obtain the text of the PDF page, use the getTextContent method
+        pdfPage.getTextContent().then(function (textContent) {
+          var textItems = textContent.items;
+          var finalString = ""; // Concatenate the string of the item to the final string
+
+          for (var i = 0; i < textItems.length; i++) {
+            var item = textItems[i];
+            finalString += item.str + " ";
+          } // Solve promise with the text retrieven from the page
+
+
+          resolve(finalString);
+        });
+      });
+    });
+  }
+
+  function pdfAsArray(pdfAsArray) {
+    PDFJS.getDocument(pdfAsArray).then(function (pdf) {
+      var pdfDocument = pdf; // Create an array that will contain our promises
+
+      var pagesPromises = [];
+
+      for (var i = 0; i < pdf.pdfInfo.numPages; i++) {
+        // Required to prevent that i is always the total of pages
+        (function (pageNumber) {
+          // Store the promise of getPageText that returns the text of a page
+          pagesPromises.push(getPageText(pageNumber, pdfDocument));
+        })(i + 1);
+      } // Execute all the promises
+
+
+      Promise.all(pagesPromises).then(function (pagesText) {
+        // Display text of all the pages in the console
+        // e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
+        console.log(pagesText); // representing every single page of PDF Document by array indexing
+
+        console.log(pagesText.length);
+        var outputStr = "";
+
+        for (var pageNum = 0; pageNum < pagesText.length; pageNum++) {
+          console.log(pagesText[pageNum]);
+          outputStr = "";
+          outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
+          var div = document.getElementById('output');
+          div.innerHTML += outputStr + pagesText[pageNum];
+        }
+      });
+    }, function (reason) {
+      // PDF loading error
+      console.error(reason);
+    });
+  }
+});
+},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +297,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53626" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63109" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
