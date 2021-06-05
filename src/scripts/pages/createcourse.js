@@ -22,11 +22,103 @@ window.addEventListener('load',()=>{
     // var DataArr = [];
     PDFJS.workerSrc = '';
 
-
     var expander = new ExpandMenu('nav-toggle', 'navBar');
     expander.expand();
 
     var input = document.getElementById("file-id");
+
+    var fields = [
+        {
+            "field" : "Código-Curso:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Código - Curso:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Tiene como prerrequisito:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Programa-Semestre:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Programa - Semestre:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Intensidad semanal:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Créditos:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Objetivo General:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Objetivos terminales",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 1:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 2:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 3:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 4:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 5:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+        {
+            "field" : "Unidad 6:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0
+        },
+    ]
 
     input.addEventListener('change', ()=>{
         ExtractText(input);
@@ -102,21 +194,20 @@ window.addEventListener('load',()=>{
                 // e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
                 console.log("Pages text---->", pagesText); // representing every single page of PDF Document by array indexing
                // console.log("Pages text length ---->", pagesText.length);
-                var outputStr = "";
                 for (var pageNum = 0; pageNum < pagesText.length; pageNum++) {
                     //console.log("Pages text pagenum ---->", pagesText[pageNum]);
                     //outputStr = "";
                     //outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
                     //var div = document.getElementById('output');
                     //div.innerHTML += (outputStr + pagesText[pageNum]);
+                    console.log(pagesText[pageNum].length);
                     var texto = pagesText[pageNum];
                     var codcourseindex = texto.search("Código - Curso:");
                     var prerrindex = texto.search("Tiene como prerrequisito:");
                     var codcourse = texto.substring(codcourseindex, prerrindex);
-                    console.log(texto.lastIndexOf("Código - Curso:"));
                     console.log("codigo index",codcourseindex);
-                    // console.log("pre index",prerrindex);
-                    // console.log("codcourde", codcourse)
+                    console.log("pre index",prerrindex);
+                    // console.log("codcourse", codcourse)
                 }
             });
         }, function (reason) {
