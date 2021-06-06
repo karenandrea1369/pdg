@@ -27,102 +27,105 @@ window.addEventListener('load',()=>{
 
     var input = document.getElementById("file-id");
 
+    var pdftext = "";
     var fields = [
         {
             "field" : "Código-Curso:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
-        },
-        {
-            "field" : "Código - Curso:",
-            "exist" : false,
-            "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Tiene como prerrequisito:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Programa-Semestre:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
-        },
-        {
-            "field" : "Programa - Semestre:",
-            "exist" : false,
-            "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Intensidad semanal:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Créditos:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Objetivo General:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Objetivos terminales",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 1:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 2:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 3:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 4:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 5:",
             "exist" : false,
             "start" : 0,
-            "end" : 0
+            "end" : 0,
+            "content" : ""
         },
         {
             "field" : "Unidad 6:",
             "exist" : false,
-            "start" : 0,
-            "end" : 0
+            "start" : "",
+            "end" : 0,
+            "content" : ""
         },
     ]
 
     input.addEventListener('change', ()=>{
         ExtractText(input);
     })
+
     function ExtractText(fileinput) {
         var fReader = new FileReader();
         fReader.readAsDataURL(fileinput.files[0]);
@@ -157,12 +160,11 @@ window.addEventListener('load',()=>{
                 pdfPage.getTextContent().then(function (textContent) {
                     var textItems = textContent.items;
                     var finalString = "";
-
+                    
                     // Concatenate the string of the item to the final string
                     for (var i = 0; i < textItems.length; i++) {
                         var item = textItems[i];
-
-                        finalString += item.str + " ";
+                        finalString += item.str + "";
                     }
 
                     // Solve promise with the text retrieven from the page
@@ -192,27 +194,61 @@ window.addEventListener('load',()=>{
 
                 // Display text of all the pages in the console
                 // e.g ["Text content page 1", "Text content page 2", "Text content page 3" ... ]
-                console.log("Pages text---->", pagesText); // representing every single page of PDF Document by array indexing
-               // console.log("Pages text length ---->", pagesText.length);
+                // representing every single page of PDF Document by array indexing
+                //console.log("Pages text---->", pagesText);
+                // console.log("Pages text length ---->", pagesText.length);
                 for (var pageNum = 0; pageNum < pagesText.length; pageNum++) {
                     //console.log("Pages text pagenum ---->", pagesText[pageNum]);
                     //outputStr = "";
                     //outputStr = "<br/><br/>Page " + (pageNum + 1) + " contents <br/> <br/>";
                     //var div = document.getElementById('output');
                     //div.innerHTML += (outputStr + pagesText[pageNum]);
-                    console.log(pagesText[pageNum].length);
-                    var texto = pagesText[pageNum];
-                    var codcourseindex = texto.search("Código - Curso:");
-                    var prerrindex = texto.search("Tiene como prerrequisito:");
-                    var codcourse = texto.substring(codcourseindex, prerrindex);
-                    console.log("codigo index",codcourseindex);
-                    console.log("pre index",prerrindex);
-                    // console.log("codcourse", codcourse)
+                    pdftext = pdftext.concat(pagesText[pageNum]);
                 }
+                findFields(pdftext);
+                
             });
         }, function (reason) {
             // PDF loading error
             console.error(reason);
+        });
+    }
+
+    function findFields(text){
+        //if found the field, save the begin and end position of it in the string
+        fields.forEach(field =>{
+            if(text.search(field.field) != -1){
+                field.exist = true;
+                field.start = text.search(field.field);
+                field.end = text.search(field.field) + field.field.length;
+                //console.log(field.field, field.start, field.end);
+            }
+        });
+
+        //sort fields in order of start
+        fields.sort(sortFields);
+        putFieldsContent(fields, text);
+    }
+
+    function sortFields( a, b ) {
+        return a.start - b.start;
+    }
+
+    function putFieldsContent(array, originText){
+        array.forEach((obj, index) =>{
+            if(obj.end != 0){ //to all fields that exist
+                if(index+1 < array.length){
+                    var content = originText.substring(obj.end, array[index+1].start).trim();
+                    var contentlinebreak = content.replace("  ", "<br>");
+                    obj.content = contentlinebreak;
+                    console.log(obj.field, obj.content);
+                }else{
+                    var content = originText.substring(obj.end);
+                    var contentlinebreak = content.replace("  ", "<br>");
+                    obj.content = contentlinebreak;
+                    console.log(obj.field, obj.content);
+                }
+            }
         });
     }
 
