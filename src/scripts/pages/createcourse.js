@@ -204,9 +204,9 @@ window.addEventListener('load',()=>{
                     //var div = document.getElementById('output');
                     //div.innerHTML += (outputStr + pagesText[pageNum]);
                     pdftext = pdftext.concat(pagesText[pageNum]);
-                }
+                };
+                addLineBreak();
                 findFields(pdftext);
-                
             });
         }, function (reason) {
             // PDF loading error
@@ -230,6 +230,19 @@ window.addEventListener('load',()=>{
         putFieldsContent(fields, text);
     }
 
+    function addLineBreak(){
+        var regexp = / [0-9]\./g;
+        var originText = pdftext.split('');
+        var results = [...pdftext.matchAll(regexp)];
+        for (let i = 0; i < results.length; i++) {
+            originText.splice(((results[i].index)+i), 0, "<br>");
+            //console.log("regexp", results2[0].index);
+            //results = [...text.matchAll(regexp)];
+        }
+        pdftext = originText.join('');
+        console.log(pdftext);
+    }
+
     function sortFields( a, b ) {
         return a.start - b.start;
     }
@@ -239,17 +252,16 @@ window.addEventListener('load',()=>{
             if(obj.end != 0){ //to all fields that exist
                 if(index+1 < array.length){
                     var content = originText.substring(obj.end, array[index+1].start).trim();
-                    var contentlinebreak = content.replace("  ", "<br>");
-                    obj.content = contentlinebreak;
+                    obj.content = content;
                     console.log(obj.field, obj.content);
                 }else{
                     var content = originText.substring(obj.end);
-                    var contentlinebreak = content.replace("  ", "<br>");
-                    obj.content = contentlinebreak;
+                    obj.content = content;
                     console.log(obj.field, obj.content);
                 }
             }
         });
+        
     }
 
 });
