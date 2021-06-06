@@ -27,8 +27,17 @@ window.addEventListener('load',()=>{
 
     var input = document.getElementById("file-id");
 
-    var pdftext = "";
+    var pdftext;
+
+    //--------------------------- SYLLABUS FIELDS ------------------------------
     var fields = [
+        {
+            "field" : "Parte 1:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0,
+            "content" : ""
+        },
         {
             "field" : "Código-Curso:",
             "exist" : false,
@@ -72,7 +81,21 @@ window.addEventListener('load',()=>{
             "content" : ""
         },
         {
+            "field" : "Parte 2:",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0,
+            "content" : ""
+        },
+        {
             "field" : "Objetivos terminales",
+            "exist" : false,
+            "start" : 0,
+            "end" : 0,
+            "content" : ""
+        },
+        {
+            "field" : "Parte 3: Objetivos Específicos",
             "exist" : false,
             "start" : 0,
             "end" : 0,
@@ -122,7 +145,15 @@ window.addEventListener('load',()=>{
         },
     ]
 
+    //--------------------------- READ PDF ------------------------------
     input.addEventListener('change', ()=>{
+        pdftext = "";
+        fields.forEach(field =>{
+            field.exist = false;
+            field.start = 0;
+            field.end = 0;
+            field.content = "";
+        })
         ExtractText(input);
     })
 
@@ -214,6 +245,17 @@ window.addEventListener('load',()=>{
         });
     }
 
+    //--------------------------- SEPARATE PDF ------------------------------
+    function addLineBreak(){
+        var regexp = / [0-9]\./g;
+        var originText = pdftext.split('');
+        var results = [...pdftext.matchAll(regexp)];
+        for (let i = 0; i < results.length; i++) {
+            originText.splice(((results[i].index)+i), 0, "<br>");
+        }
+        pdftext = originText.join('');
+    }
+
     function findFields(text){
         //if found the field, save the begin and end position of it in the string
         fields.forEach(field =>{
@@ -228,19 +270,6 @@ window.addEventListener('load',()=>{
         //sort fields in order of start
         fields.sort(sortFields);
         putFieldsContent(fields, text);
-    }
-
-    function addLineBreak(){
-        var regexp = / [0-9]\./g;
-        var originText = pdftext.split('');
-        var results = [...pdftext.matchAll(regexp)];
-        for (let i = 0; i < results.length; i++) {
-            originText.splice(((results[i].index)+i), 0, "<br>");
-            //console.log("regexp", results2[0].index);
-            //results = [...text.matchAll(regexp)];
-        }
-        pdftext = originText.join('');
-        console.log(pdftext);
     }
 
     function sortFields( a, b ) {
@@ -261,7 +290,6 @@ window.addEventListener('load',()=>{
                 }
             }
         });
-        
     }
 
 });

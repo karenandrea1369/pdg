@@ -200,8 +200,15 @@ window.addEventListener('load', function () {
   var expander = new _ExpandMenu.default('nav-toggle', 'navBar');
   expander.expand();
   var input = document.getElementById("file-id");
-  var pdftext = "";
+  var pdftext; //--------------------------- SYLLABUS FIELDS ------------------------------
+
   var fields = [{
+    "field": "Parte 1:",
+    "exist": false,
+    "start": 0,
+    "end": 0,
+    "content": ""
+  }, {
     "field": "Código-Curso:",
     "exist": false,
     "start": 0,
@@ -238,7 +245,19 @@ window.addEventListener('load', function () {
     "end": 0,
     "content": ""
   }, {
+    "field": "Parte 2:",
+    "exist": false,
+    "start": 0,
+    "end": 0,
+    "content": ""
+  }, {
     "field": "Objetivos terminales",
+    "exist": false,
+    "start": 0,
+    "end": 0,
+    "content": ""
+  }, {
+    "field": "Parte 3: Objetivos Específicos",
     "exist": false,
     "start": 0,
     "end": 0,
@@ -279,8 +298,16 @@ window.addEventListener('load', function () {
     "start": "",
     "end": 0,
     "content": ""
-  }];
+  }]; //--------------------------- READ PDF ------------------------------
+
   input.addEventListener('change', function () {
+    pdftext = "";
+    fields.forEach(function (field) {
+      field.exist = false;
+      field.start = 0;
+      field.end = 0;
+      field.content = "";
+    });
     ExtractText(input);
   });
 
@@ -368,6 +395,20 @@ window.addEventListener('load', function () {
       // PDF loading error
       console.error(reason);
     });
+  } //--------------------------- SEPARATE PDF ------------------------------
+
+
+  function addLineBreak() {
+    var regexp = / [0-9]\./g;
+    var originText = pdftext.split('');
+
+    var results = _toConsumableArray(pdftext.matchAll(regexp));
+
+    for (var i = 0; i < results.length; i++) {
+      originText.splice(results[i].index + i, 0, "<br>");
+    }
+
+    pdftext = originText.join('');
   }
 
   function findFields(text) {
@@ -382,21 +423,6 @@ window.addEventListener('load', function () {
 
     fields.sort(sortFields);
     putFieldsContent(fields, text);
-  }
-
-  function addLineBreak() {
-    var regexp = / [0-9]\./g;
-    var originText = pdftext.split('');
-
-    var results = _toConsumableArray(pdftext.matchAll(regexp));
-
-    for (var i = 0; i < results.length; i++) {
-      originText.splice(results[i].index + i, 0, "<br>"); //console.log("regexp", results2[0].index);
-      //results = [...text.matchAll(regexp)];
-    }
-
-    pdftext = originText.join('');
-    console.log(pdftext);
   }
 
   function sortFields(a, b) {
@@ -448,7 +474,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61569" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50105" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
