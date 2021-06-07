@@ -1,7 +1,7 @@
 .container{
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -35,11 +35,39 @@
         }
     }
 
+    &__main{
+        background-color: var(--white-color);
+        margin: 20px 20px 0px;
+        padding: 30px 30px 20px;
+        border-start-start-radius: 5px;
+        border-start-end-radius: 5px;
+
+        & .form__inputBox{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between ;
+            width: 100%;
+        }
+
+        & .form__inputLabel{
+           width: 25%;
+        }
+
+        & .form__input{
+            width: 75%;
+        }
+
+        & .form__textarea{
+            width: 75%;
+        }
+    }
+
     &__notes{
         //position: absolute;
         width: 25%;
         right: 0;
-        height: 100vh;
+        height: auto;
         background-color: var(--white-color);
     }
 }

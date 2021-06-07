@@ -6,6 +6,7 @@
 @import "./pages/course";
 @import "./objects/alert";
 @import "./objects/statisticschart";
+@import "./objects/form";
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
@@ -39,7 +40,7 @@
     --shadow1: 0px 2px 6px rgba(0, 0, 0, 0.16);
 
     /* Fonts */
-    --body-font: 'Mulish', sans-serif;
+    --body-font: 'Work Sans', sans-serif;
     --normal-font-size: 1rem;
     --medium-font-size: .93rem;
     --small-font-size: .875rem;
@@ -67,7 +68,7 @@ body{
 h1{
     margin: 0;
     color: var(--first-color);
-    font-size: 25px;
+    font-size: 22px;
 }
 h2{
     margin: 0;
