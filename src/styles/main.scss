@@ -3,7 +3,7 @@
 @import "./pages/signup";
 @import "./pages/signin";
 @import "./pages/dash";
-@import "./pages/createcourse";
+@import "./pages/course";
 @import "./objects/alert";
 @import "./objects/statisticschart";
 
@@ -15,27 +15,24 @@
 :root{
     --nav-width: 90px;
 
+    --first-color-dark: blue;
+    --sub-color: blue;
+    --third-color: blue; 
+    --first-color-lighten: blue;
+
     /* Colors */
-    --first-color: #2981D5;
-    --first-color-dark: #3227AB;
-    --first-color-light: #8EC3F7;
-    --sub-color: #FF9D09;
-    --second-color: #FF9D09;
-    --orange-gradient: #FE6B00, #FF9D09, #FE6B00;
-    --blue-gradient: #FE6B00, #FF9D09, #FE6B00;
-    --third-color: #6247A8;
-    --white-color: #F4F4F4;
-    --black-color: #444444;
-    
-    --bg-color: #3227AB;
-    --first-color-lighten: #F2F2F2;
-    /* Other colors */
-    --lilac-color: #BBACE5;
-    --lilac-color-dark: #9683CD;
-    --skyblue-color: #C4E0F9;
-    --skyblue-color-dark: #81B4E2;
-    --pink-color: #F5B0ED;
-    --pink-color-dark: #E57CD7;
+    --first-color: #FC440F;
+    --first-color-light: #FF7D57;
+    --second-color: #7B2CBF;
+    --second-color-medium: #5A189A;
+    --second-color-dark: #3C096C;
+    --second-color-light: #9D4EDD;
+    --second-color-lilac: #C175FF;
+    --white-color: #FFFFFF;
+    --black-color: #162036;
+    --bg-color: #F1F2F6;
+    --tx-color: #162036;
+   
 
     /* Box Shadow */
     //--shadow1: 14px 0px 4px -11px rgba(170, 151, 223, 0.38), -14px 17px 8px -11px rgba(170, 151, 223, 0.38);
@@ -48,6 +45,7 @@
     --small-font-size: .875rem;
     --xsmall-font-size: .8rem;
     --h1-font-size: 1.5rem;
+    --nav-icon-text: 25px;
 
     /*z z index */
     --z-fixed: 100;
@@ -64,9 +62,17 @@ body{
     font-family: var(--body-font);
     //font-size: var(--normal-font-size);
     transition: .5s;
+    background-color: var(--bg-color);
 }
 h1{
     margin: 0;
+    color: var(--first-color);
+    font-size: 25px;
+}
+h2{
+    margin: 0;
+    color: var(--second-color);
+    font-size: 20px;
 }
 ul{
     margin: 0;

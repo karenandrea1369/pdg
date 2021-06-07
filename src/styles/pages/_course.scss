@@ -1,0 +1,45 @@
+.container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course{
+    &__container{
+        //position: absolute;
+        margin-left:var(--nav-width) ;
+        width:75%;
+        height: 100vh;
+        
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--white-color);
+        margin: 0px 20px;
+        padding: 30px 30px 20px;
+        border-end-end-radius: 5px;
+        border-end-start-radius: 5px;
+        &name{
+            display: inline-block;
+        }
+        &units{
+            display: inline-block;
+             & a{
+                 color: var(--second-color-light);
+                 margin-left: 15px;
+             }
+        }
+    }
+
+    &__notes{
+        //position: absolute;
+        width: 25%;
+        right: 0;
+        height: 100vh;
+        background-color: var(--white-color);
+    }
+}

@@ -34,10 +34,10 @@ window.addEventListener('load',()=>{
         });
     })
     
-    var createCourse = document.getElementById('createCourseBtn');
+    var createCourse = document.getElementById('course1Btn');
     createCourse.addEventListener('click', ()=>{
         console.log("Crear curso");
-        window.location.href = "createCourse.html";
+        window.location.href = "course1.html";
     });
 
 });

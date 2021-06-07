@@ -10,8 +10,6 @@ class ExpandMenu{
 
     expand(){
         if(this.toggle && this.navBar){
-            //console.log(this.toggle);
-            //console.log(this.navBar);
             this.toggle.addEventListener('click', ()=>{
                 this.navBar.classList.toggle('expand');
             })

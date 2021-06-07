@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.scss">
+    <link rel="stylesheet" href="/main.48b3db1d.css">
     <title>Document</title>
-</head>
+<script src="/main.48b3db1d.js"></script></head>
 <body>
     
-    
     <div class="container">
-        <div class="l-navbar" id="navBar">
+        <div class="l-navbar course__navbar" id="navBar">
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
@@ -19,29 +18,25 @@
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="homeBtn">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course1Btn">
                             <span class="nav__icon">DS</span>
                             <span class="nav__name">Diseño y sociedad</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course2Btn">
                             <span class="nav__icon">ED</span>
                             <span class="nav__name">Ética y democracia</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course3Btn">
                             <span class="nav__icon">F</span>
                             <span class="nav__name">Fotografía</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course4Btn">
                             <span class="nav__icon">PI</span>
                             <span class="nav__name">Proyecto integrador II</span>
-                        </a>
-                        <a href="#" class="nav__link">
-                            <span class="nav__icon">+</span>
-                            <span class="nav__name">Nuevo curso</span>
                         </a>
                     </div>
                 </div>
@@ -54,10 +49,48 @@
         </div>
 
         <div class="course__container">
-            <input type="file" id="file-id" name="file_name" >
+            <nav class="course__header">
+                <div class="course__headername">
+                    <h2>Proyecto Integrador II</h2>
+                </div>
+                <div class="course__headerunits">
+                    <a href="#">Unidad 1</a>
+                    <a href="#">Unidad 2</a>
+                    <a href="#">Unidad 3</a>
+                    <a href="#">Unidad 4</a>
+                    <a href="#">Unidad 5</a>
+                    <a href="#">Reporte</a>
+                </div>
+            </nav>
+
+            <main class="course__main">
+
+            </main>
+
+            <input type="file" id="file-id" name="file_name">
             <!-- a container for the output -->
             <div id="output"></div>
             <div class="createcourse__form"></div>
+        </div>
+
+        <div class="course__notes">
+            <h2>Notificaciones</h2>
+            <div class="notification">
+                <h4 class="notification__subject">Diseño y sociedad</h4>
+                <p class="notification__message">Todos tus estudiantes realizaron la evaluación</p>
+                <div class="notification__button">
+                    <a href="#">Ir</a>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="notification">
+                <h4 class="notification__subject">Diseño y sociedad</h4>
+                <p class="notification__message">Todos tus estudiantes realizaron la evaluación</p>
+                <div class="notification__button">
+                    <a href="#">Ir</a>
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+            </div>  
         </div>
     </div>
 
@@ -75,7 +108,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <!-- mi js-->
-    <script src="./scripts/pages/createcourse.js"></script>
+    <script src="/course1.aa7442f0.js"></script>
 
     <!-- Read pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
