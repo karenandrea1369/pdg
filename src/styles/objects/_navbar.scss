@@ -36,25 +36,45 @@
     }
 
     &__logo{
-        color: var(--white-color);
+        color: var(--second-color);
         font-weight: 600;
     }
 
     &__link{
-        background-color: var(--second-color);
+        
         display: grid;
         grid-template-columns: max-content max-content;
         align-items: center;
         column-gap: .75rem;
-        padding: 10px 8px;
+        
         color: var(--white-color);
-        border-radius: 5px;
+        
         margin-bottom: 25px;
         transition: .3s;
         cursor: pointer;
 
         &:hover{
-            background-color: var(--first-color);
+            &> :first-child{
+                color: var(--first-color);
+                &:not(ion-icon){
+                background-color: var(--first-color);
+                color: var(--white-color);
+                }
+            }
+        }
+
+        &> :first-child{       
+            padding: 10px 8px;
+            border-radius: 5px;
+            
+            &:not(ion-icon){
+                width: 50px;
+                background-color: var(--second-color);
+            }
+        }
+
+        &> :last-child{
+            
         }
     }
 
@@ -62,10 +82,19 @@
         font-size: var(--nav-icon-text);
         width: 30px;
         text-align: center;
+        
+        &:not(span){
+            color: var(--second-color);
+        }
     }
 
     &__name{
         font-size: var(--small-font-size);
+        width: 100%;
+        padding: 15px 8px;
+            border-radius: 5px;
+        background-color: #F7F8FA;
+            color: var(--first-color-dark);
     }
 
     & #signOutBtn{
@@ -77,4 +106,5 @@
 /* expander */
 .expand{
     width: calc(var(--nav-width) + 160px);
+    box-shadow: var(--shadow1);
 }

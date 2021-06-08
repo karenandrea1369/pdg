@@ -146,8 +146,11 @@ var ExpandMenu = /*#__PURE__*/function () {
       var _this = this;
 
       if (this.toggle && this.navBar) {
-        this.toggle.addEventListener('click', function () {
-          _this.navBar.classList.toggle('expand');
+        this.toggle.addEventListener('mouseenter', function () {
+          _this.navBar.classList.add('expand');
+        });
+        this.toggle.addEventListener('mouseleave', function () {
+          _this.navBar.classList.remove('expand');
         });
       }
     }
@@ -362,7 +365,7 @@ firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   var auth = firebase.auth();
   var db = firebase.firestore();
-  var expander = new _ExpandMenu.default('nav-toggle', 'navBar');
+  var expander = new _ExpandMenu.default('navBar', 'navBar');
   expander.expand();
   var input = document.getElementById("file-id"); //--------------------------- SYLLABUS FIELDS ------------------------------
 
@@ -503,7 +506,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59568" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63953" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -10,8 +10,12 @@ class ExpandMenu{
 
     expand(){
         if(this.toggle && this.navBar){
-            this.toggle.addEventListener('click', ()=>{
-                this.navBar.classList.toggle('expand');
+            this.toggle.addEventListener('mouseenter', ()=>{
+                this.navBar.classList.add('expand');
+            })
+
+            this.toggle.addEventListener('mouseleave', ()=>{
+                this.navBar.classList.remove('expand');
             })
         }
     }

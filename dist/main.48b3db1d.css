@@ -37,32 +37,49 @@
   cursor: pointer;
 }
 .nav__logo {
-  color: var(--white-color);
+  color: var(--second-color);
   font-weight: 600;
 }
 .nav__link {
-  background-color: var(--second-color);
   display: grid;
   grid-template-columns: max-content max-content;
   align-items: center;
   column-gap: 0.75rem;
-  padding: 10px 8px;
   color: var(--white-color);
-  border-radius: 5px;
   margin-bottom: 25px;
   transition: 0.3s;
   cursor: pointer;
 }
-.nav__link:hover {
+.nav__link:hover > :first-child {
+  color: var(--first-color);
+}
+.nav__link:hover > :first-child:not(ion-icon) {
   background-color: var(--first-color);
+  color: var(--white-color);
+}
+.nav__link > :first-child {
+  padding: 10px 8px;
+  border-radius: 5px;
+}
+.nav__link > :first-child:not(ion-icon) {
+  width: 50px;
+  background-color: var(--second-color);
 }
 .nav__icon {
   font-size: var(--nav-icon-text);
   width: 30px;
   text-align: center;
 }
+.nav__icon:not(span) {
+  color: var(--second-color);
+}
 .nav__name {
   font-size: var(--small-font-size);
+  width: 100%;
+  padding: 15px 8px;
+  border-radius: 5px;
+  background-color: #F7F8FA;
+  color: var(--first-color-dark);
 }
 .nav #signOutBtn {
   background-color: var(--white-color);
@@ -72,6 +89,7 @@
 /* expander */
 .expand {
   width: calc(var(--nav-width) + 160px);
+  box-shadow: var(--shadow1);
 }
 
 .login {
@@ -539,6 +557,7 @@
   --black-color: #162036;
   --bg-color: #F1F2F6;
   --tx-color: #162036;
+  --color-lighten: #F6EBFF;
   /* Box Shadow */
   --shadow1: 0px 2px 6px rgba(0, 0, 0, 0.16);
   /* Fonts */

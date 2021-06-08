@@ -19,7 +19,7 @@ window.addEventListener('load',()=>{
     var auth = firebase.auth();
     var db = firebase.firestore();
 
-    var expander = new ExpandMenu('nav-toggle', 'navBar');
+    var expander = new ExpandMenu('navBar', 'navBar');
     expander.expand();
 
 
