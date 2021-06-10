@@ -134,6 +134,10 @@ class ReadPdf{
         });
     }
 
+    getFields(){
+        return this.fields;
+    }
+
 }
 
 export default ReadPdf;

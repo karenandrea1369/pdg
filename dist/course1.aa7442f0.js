@@ -334,6 +334,11 @@ var ReadPdf = /*#__PURE__*/function () {
         }
       });
     }
+  }, {
+    key: "getFields",
+    value: function getFields() {
+      return this.fields;
+    }
   }]);
 
   return ReadPdf;
@@ -341,12 +346,69 @@ var ReadPdf = /*#__PURE__*/function () {
 
 var _default = ReadPdf;
 exports.default = _default;
+},{}],"scripts/classes/FillFields.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var FillFields = /*#__PURE__*/function () {
+  function FillFields(fields) {
+    _classCallCheck(this, FillFields);
+
+    // console.log(fields);
+    this.fields = fields; //this.input = input;
+    // this.name = document.getElementById("name");
+    // this.code = document.getElementById("code");
+    // this.pre = document.getElementById("pre");
+    // this.career = document.getElementById("career");
+    // this.semester = document.getElementById("semester");
+    // this.weekhours = document.getElementById("weekhours");
+    // this.credits = document.getElementById("credits");
+    // this.generalobj = document.getElementById("generalobj");
+    // this.terminalobj = document.getElementById("terminalobj");
+    //console.log(this.name);
+  }
+
+  _createClass(FillFields, [{
+    key: "setTexts",
+    value: function setTexts(fields) {
+      var fieldsArray = fields;
+      console.log(fieldsArray);
+      fieldsArray.forEach(function (fi) {
+        console.log(fi);
+
+        if (fi.exist) {}
+      });
+    }
+  }, {
+    key: "getFields",
+    value: function getFields() {
+      return this.fields;
+    }
+  }]);
+
+  return FillFields;
+}();
+
+var _default = FillFields;
+exports.default = _default;
 },{}],"scripts/pages/course1.js":[function(require,module,exports) {
 "use strict";
 
 var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
 
 var _ReadPdf = _interopRequireDefault(require("../classes/ReadPdf"));
+
+var _FillFields = _interopRequireDefault(require("../classes/FillFields"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -378,36 +440,42 @@ window.addEventListener('load', function () {
   }, {
     "field": "Código-Curso:",
     "exist": false,
+    "input": "name",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Tiene como prerrequisito:",
     "exist": false,
+    "input": "pre",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Programa-Semestre:",
     "exist": false,
+    "input": "career",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Intensidad semanal:",
     "exist": false,
+    "input": "weekhours",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Créditos:",
     "exist": false,
+    "input": "credits",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Objetivo General:",
     "exist": false,
+    "input": "generalobj",
     "start": 0,
     "end": 0,
     "content": ""
@@ -420,6 +488,7 @@ window.addEventListener('load', function () {
   }, {
     "field": "Objetivos terminales",
     "exist": false,
+    "input": "terminalobj",
     "start": 0,
     "end": 0,
     "content": ""
@@ -432,53 +501,78 @@ window.addEventListener('load', function () {
   }, {
     "field": "Unidad 1:",
     "exist": false,
+    "input": "unit1",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Unidad 2:",
     "exist": false,
+    "input": "unit2",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Unidad 3:",
     "exist": false,
+    "input": "unit3",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Unidad 4:",
     "exist": false,
+    "input": "unit4",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Unidad 5:",
     "exist": false,
+    "input": "unit5",
     "start": 0,
     "end": 0,
     "content": ""
   }, {
     "field": "Unidad 6:",
     "exist": false,
+    "input": "unit6",
     "start": "",
     "end": 0,
     "content": ""
   }]; //--------------------------- READ PDF ------------------------------
 
   input.addEventListener('change', function () {
+    resetFields(fields);
+    var readPdf = new _ReadPdf.default(fields, input);
+    readPdf.extractText();
+    console.log("get fields", readPdf.getFields());
+    fields = readPdf.getFields(); //console.log(fields);
+
+    fillFields(fields);
+  });
+
+  function fillFields(fields1) {
+    console.log(fields1);
+    console.log(fields1[0]);
+
+    for (var i = 0; i < fields.length; i++) {
+      console.log(fields1[i]);
+    }
+
+    fields1.forEach(function (field) {});
+  }
+
+  function resetFields(fields) {
     fields.forEach(function (field) {
       field.exist = false;
       field.start = 0;
       field.end = 0;
       field.content = "";
     });
-    var readPdf = new _ReadPdf.default(fields, input);
-    readPdf.extractText();
-  });
+  }
 });
-},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ReadPdf":"scripts/classes/ReadPdf.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ReadPdf":"scripts/classes/ReadPdf.js","../classes/FillFields":"scripts/classes/FillFields.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -506,7 +600,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63953" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62853" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -19,7 +19,20 @@
 
         & img{
            // width: 310px;
-            margin-top: 1.5rem;
+            margin: 30px auto;
+            margin-bottom: 0;
+            width: 80%;
+        }
+
+        & h2{
+            font-size: 25px;
+            text-align: center;
+        }
+
+        & p{
+            margin: 15px auto;
+            width: 60%;
+            text-align: center;
         }
     }
 
@@ -29,6 +42,7 @@
         font-size: var(--h1-font-size);
         margin-bottom: 1rem;
         text-align: center;
+        color: var(--second-color);
     }
 
     &__form{
@@ -39,6 +53,17 @@
         display: block;
         width: 40%;
         padding: 2rem 4rem;
+        & .logo{
+            margin-bottom: 40px;
+            display: flex;
+            & img{
+                display: inline;
+            }
+            & h2{
+                display: inline;
+                margin-left: 10px;
+            }
+        }
         
     }
 
@@ -57,7 +82,7 @@
         display: flex;
         position: relative;
         padding: 0.6rem 0.8rem;
-        background-color: #fff;
+        background-color: var(--bg-color);
         margin-top: 0.3rem;
         margin-bottom: 1.8rem;
         border-radius: .5rem;
@@ -65,7 +90,7 @@
 
     &__icon{
         font-size: 1.5rem;
-        color: var(--first-color-light);
+        color: #A7A7A7;
     }
 
     &__input{
@@ -73,18 +98,19 @@
         outline: none;
         width: 100%;
         margin-left: 5px;
+        background-color: var(--bg-color);
         font-size: var(--medium-font-size);
-        color: var(--first-color-dark);
+        color: var(--black-color);
 
         &::placeholder{
             font-size: var(--medium-font-size);
             font-family: var(--body-font);
-            color: var(--first-color-light);
+            color: #A7A7A7;
         }
 
         &Label{
             font-size: var(--medium-font-size);
-            color: var(--first-color-dark); 
+            color: var(--black-color); 
         }
 
         &ErrorMessage{
@@ -92,6 +118,7 @@
             visibility: hidden;
             bottom: -20px;
             left: -2px;
+           
             font-size: var(--xsmall-font-size);
         }
 
@@ -123,7 +150,7 @@
             margin-left: auto;
             font-size: var(--small-font-size);
             font-weight: 600;
-            color: var(--first-color-light);
+            color: var(--second-color);
         }
     }
 
@@ -150,7 +177,7 @@
          &Already{
             font-weight: 600;
             font-size: var(--small-font-size);
-            color: var(--first-color-dark);
+            color: var(--black-color);
             text-align: center;
          }
 
@@ -178,6 +205,8 @@
             width: 100%;
             justify-self: center;
             padding: 1.5rem;
+
+            
         }
 
         &__content{

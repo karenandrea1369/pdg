@@ -1,5 +1,6 @@
 import ExpandMenu from '../classes/ExpandMenu';
 import ReadPdf from '../classes/ReadPdf';
+import FillFields from '../classes/FillFields';
 
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
@@ -37,6 +38,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Código-Curso:",
             "exist" : false,
+            "input" : "name",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -44,6 +46,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Tiene como prerrequisito:",
             "exist" : false,
+            "input" : "pre",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -51,6 +54,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Programa-Semestre:",
             "exist" : false,
+            "input" : "career",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -58,6 +62,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Intensidad semanal:",
             "exist" : false,
+            "input" : "weekhours",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -65,6 +70,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Créditos:",
             "exist" : false,
+            "input" : "credits",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -72,6 +78,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Objetivo General:",
             "exist" : false,
+            "input" : "generalobj",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -86,6 +93,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Objetivos terminales",
             "exist" : false,
+            "input" : "terminalobj",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -100,6 +108,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 1:",
             "exist" : false,
+            "input" : "unit1",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -107,6 +116,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 2:",
             "exist" : false,
+            "input" : "unit2",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -114,6 +124,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 3:",
             "exist" : false,
+            "input" : "unit3",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -121,6 +132,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 4:",
             "exist" : false,
+            "input" : "unit4",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -128,6 +140,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 5:",
             "exist" : false,
+            "input" : "unit5",
             "start" : 0,
             "end" : 0,
             "content" : ""
@@ -135,6 +148,7 @@ window.addEventListener('load',()=>{
         {
             "field" : "Unidad 6:",
             "exist" : false,
+            "input" : "unit6",
             "start" : "",
             "end" : 0,
             "content" : ""
@@ -144,16 +158,34 @@ window.addEventListener('load',()=>{
 
     //--------------------------- READ PDF ------------------------------
     input.addEventListener('change', ()=>{
+        resetFields(fields);
+        var readPdf = new ReadPdf(fields, input);
+        readPdf.extractText();
+        console.log("get fields", readPdf.getFields());
+        fields = readPdf.getFields();
+        //console.log(fields);
+        fillFields(fields);
+    })
+
+    function fillFields(fields1){
+        console.log(fields1);
+        console.log(fields1[0]);
+        for (let i = 0; i < fields.length; i++) {
+            console.log(fields1[i]);
+        }
+        fields1.forEach(field =>{
+        });
+        
+    }
+
+    function resetFields(fields){
         fields.forEach(field =>{
             field.exist = false;
             field.start = 0;
             field.end = 0;
             field.content = "";
         })
-        var readPdf = new ReadPdf(fields, input);
-        readPdf.extractText();
-    })
-
+    }
  
 
 });

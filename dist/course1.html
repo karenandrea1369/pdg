@@ -6,35 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main.48b3db1d.css">
     <title>Document</title>
-<script src="/main.48b3db1d.js"></script></head>
+</head>
 <body>
     
     <div class="container">
+
         <div class="l-navbar course__navbar" id="navBar">
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
-                        <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                        <img src="/logo provisional.565a102b.png" alt="">
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="#" class="nav__link" id="homeBtn">
+                        <a href="/teacherDash.html" class="nav__link">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="#" class="nav__link" id="course1Btn">
+                        <a href="#" class="nav__link">
                             <span class="nav__icon">DS</span>
                             <span class="nav__name">Diseño y sociedad</span>
                         </a>
-                        <a href="#" class="nav__link" id="course2Btn">
+                        <a href="#" class="nav__link">
                             <span class="nav__icon">ED</span>
                             <span class="nav__name">Ética y democracia</span>
                         </a>
-                        <a href="#" class="nav__link" id="course3Btn">
+                        <a href="#" class="nav__link">
                             <span class="nav__icon">F</span>
                             <span class="nav__name">Fotografía</span>
                         </a>
-                        <a href="#" class="nav__link" id="course4Btn">
+                        <a href="/course1.html" class="nav__link">
                             <span class="nav__icon">PI</span>
                             <span class="nav__name">Proyecto integrador II</span>
                         </a>
@@ -43,7 +44,7 @@
                 
                 <a href="#" class="nav__link" id="signOutBtn">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                    <span class="nav__name">Cerrar sesión</span>
+                    <span class="nav__name">Log out</span>
                 </a>
             </nav>
         </div>
@@ -72,44 +73,44 @@
                 <div>
                     <p>O completa los campos</p>
                     <div>
-                        <form action="">
+                        <form action="" class="form" id="form">
                             <div class="createcourse__sectionone">
                                 <h2>Información curso</h2>
                                 <div class="form__inputBox">
-                                        <label for="name" class="form__inputLabel">Nombre del curso*</label>
-                                        <input type="text" name="" id="name" placeholder="Nombre del curso" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="code" class="form__inputLabel">Código del curso*</label>
-                                        <input type="text" name="" id="code" placeholder="Código del curso" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="pre" class="form__inputLabel">Prerrequisito*</label>
-                                        <input type="text" name="" id="pre" placeholder="Prerrequisito" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="career" class="form__inputLabel">Programa*</label>
-                                        <input type="text" name="" id="career" placeholder="Programa" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="semester" class="form__inputLabel">Semestre*</label>
-                                        <input type="text" name="" id="semester" placeholder="Semestre" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="weekhours" class="form__inputLabel">Intensidad semanal*</label>
-                                        <input type="text" name="" id="weekhours" placeholder="Intensidad semanal" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="credits" class="form__inputLabel">Intensidad semanal*</label>
-                                        <input type="text" name="" id="credits" placeholder="Intensidad semanal" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
+                                    <label for="name" class="form__inputLabel">Nombre del curso*</label>
+                                    <input type="text" name="" id="name" placeholder="Nombre del curso" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="code" class="form__inputLabel">Código del curso*</label>
+                                    <input type="text" name="" id="code" placeholder="Código del curso" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="pre" class="form__inputLabel">Prerrequisito*</label>
+                                    <input type="text" name="" id="pre" placeholder="Prerrequisito" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="career" class="form__inputLabel">Programa*</label>
+                                    <input type="text" name="" id="career" placeholder="Programa" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="semester" class="form__inputLabel">Semestre*</label>
+                                    <input type="text" name="" id="semester" placeholder="Semestre" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="weekhours" class="form__inputLabel">Intensidad semanal*</label>
+                                    <input type="text" name="" id="weekhours" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="credits" class="form__inputLabel">Créditos*</label>
+                                    <input type="text" name="" id="credits" placeholder="Créditos" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
                             </div>
                             <div class="createcourse__sectiontwo">
                                 <h2>Objetivo general</h2>
@@ -122,23 +123,73 @@
                             <div class="createcourse__sectionthree">
                                     <h2>Objetivos terminales</h2>
                                     <div class="form__inputBox">
-                                        <label for="terminalcobj" class="form__inputLabel">Objetivos terminales*</label>
-                                        <textarea name="" id="terminalcobj" placeholder="Objetivos terminales" class="form__input form__textarea"></textarea>
+                                        <label for="terminalobj" class="form__inputLabel">Objetivos terminales*</label>
+                                        <textarea name="" id="terminalobj" placeholder="Objetivos terminales" class="form__input form__textarea"></textarea>
                                         <small class="form__inputErrorMessage">Error message</small>
                                     </div>
                             </div>
                             <div class="createcourse__sectionfour">
                                 <h2>Objetivos específicos</h2>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 1*</label>
+                                    <input type="text" name="" id="unit1name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
                                 <div class="form__inputBox">
-                                        <label for="unitname" class="form__inputLabel">Unidad 1*:</label>
-                                        <input type="text" name="" id="credits" placeholder="Intensidad semanal" class="form__input">
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
-                                    <div class="form__inputBox">
-                                        <label for="terminalcobj" class="form__inputLabel">Objetivos de la Unidad 1*</label>
-                                        <textarea name="" id="terminalcobj" placeholder="Objetivo general" class=" form__textarea"></textarea>
-                                        <small class="form__inputErrorMessage">Error message</small>
-                                    </div>
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 1*</label>
+                                    <textarea name="" id="unit1" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 2</label>
+                                    <input type="text" name="" id="unit2name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 2</label>
+                                    <textarea name="" id="unit2" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 3</label>
+                                    <input type="text" name="" id="unit3name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 3</label>
+                                    <textarea name="" id="unit3" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 4</label>
+                                    <input type="text" name="" id="unit4name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 4</label>
+                                    <textarea name="" id="unit4" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 5</label>
+                                    <input type="text" name="" id="unit5name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 5</label>
+                                    <textarea name="" id="unit5" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <!-- <div class="form__inputBox">
+                                    <label for="unitname" class="form__inputLabel">Unidad 6</label>
+                                    <input type="text" name="" id="unit6name" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div> -->
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 6</label>
+                                    <textarea name="" id="unit6" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
                             </div>
                         </form>    
                     </div>

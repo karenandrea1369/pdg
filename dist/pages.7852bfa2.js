@@ -117,58 +117,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"scripts/classes/ExpandMenu.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/* Expander menu */
-var ExpandMenu = /*#__PURE__*/function () {
-  function ExpandMenu(toggleId, navBarId) {
-    _classCallCheck(this, ExpandMenu);
-
-    this.toggle = document.getElementById(toggleId);
-    this.navBar = document.getElementById(navBarId);
-  }
-
-  _createClass(ExpandMenu, [{
-    key: "expand",
-    value: function expand() {
-      var _this = this;
-
-      if (this.toggle && this.navBar) {
-        this.toggle.addEventListener('mouseenter', function () {
-          _this.navBar.classList.add('expand');
-        });
-        this.toggle.addEventListener('mouseleave', function () {
-          _this.navBar.classList.remove('expand');
-        });
-      }
-    }
-  }]);
-
-  return ExpandMenu;
-}();
-
-var _default = ExpandMenu;
-exports.default = _default;
-},{}],"scripts/pages/teacherDash.js":[function(require,module,exports) {
-"use strict";
-
-var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//imports
+})({"scripts/pages/index.js":[function(require,module,exports) {
+// TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
   apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
@@ -182,27 +132,154 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
-  var auth = firebase.auth();
+  //-----------------------------------------------------------
+  var email = document.getElementById('email');
+  var pass = document.getElementById('pass');
   var db = firebase.firestore();
-  var expander = new _ExpandMenu.default('navBar', 'navBar');
-  expander.expand();
-  var signOutBtn = document.getElementById('signOutBtn');
-  console.log("Cerrar sesión", signOutBtn);
-  signOutBtn.addEventListener('click', function () {
-    auth.signOut().then(function () {
-      console.log("Cerró sesión exitosamente");
-      window.location.href = "index.html";
-    }).catch(function (error) {
-      console.log(error.code);
+  var auth = firebase.auth();
+  var loginBtn = document.querySelector('.login__button'); //var cursos = [];
+
+  var confirmUser = true;
+  auth.onAuthStateChanged(function (user) {
+    if (user && confirmUser) {
+      console.log("user", user.uid);
+      var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          console.log(doc.id, ' => ', doc.data());
+          console.log('Este es su idDoc', doc.data().iddoc);
+          goToRole(doc.data().iddoc);
+        });
+      });
+    } else {
+      console.log("No hay usuario");
+    }
+  });
+  loginBtn.addEventListener('click', function () {
+    confirmUser = false;
+
+    if (validate()) {
+      setSuccessFor(email);
+      setSuccessFor(pass);
+      auth.signInWithEmailAndPassword(email.value, pass.value).then(function (userCredential) {
+        // Signed in
+        var user = userCredential.user;
+        console.log('user credential', userCredential);
+        console.log('User', user);
+        auth.onAuthStateChanged(function (user) {
+          console.log("user", user.uid);
+          var actualUser = db.collection("people").where("id", "==", user.uid).get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              //console.log(doc.id, ' => ', doc.data());
+              //console.log('Este es su idDoc', doc.data().iddoc);
+              goToRole(doc.data().iddoc);
+            });
+          });
+        });
+      }).catch(function (error) {
+        if (error.code === 'auth/wrong-password') {
+          setErrorFor(pass, 'Contraseña incorrecta');
+        } else if (error.code === 'auth/user-not-found') {
+          setErrorFor(email, 'El usuario no existe');
+        }
+
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      });
+    }
+  });
+
+  function goToRole(idDoc) {
+    db.collection("people").doc(idDoc).get().then(function (doc) {
+      if (doc.exists) {
+        if (doc.data().student) {
+          window.location.href = "studentDash.html";
+        } else if (doc.data().teacher == true && doc.data().boss == false) {
+          window.location.href = "teacherDash.html";
+        } else if (doc.data().teacher && doc.data().boss) {
+          window.location.href = "teacherBossDash.html";
+        }
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
     });
-  });
-  var createCourse = document.getElementById('course1Btn');
-  createCourse.addEventListener('click', function () {
-    console.log("Crear curso");
-    window.location.href = "course1.html";
-  });
+  }
+
+  function validate() {
+    var emailValue = email.value.trim();
+    var passValue = pass.value.trim();
+    var val1 = false,
+        val2 = false;
+
+    if (emailValue === '') {
+      setErrorFor(email, 'El campo es obligatorio');
+    } else if (!isEmail(emailValue)) {
+      setErrorFor(email, 'El correo no es válido');
+    } else {
+      setSuccessFor(email);
+      val1 = true;
+    }
+
+    if (passValue === '') {
+      setErrorFor(pass, 'El campo es obligatorio');
+    } else {
+      setSuccessFor(pass);
+      val2 = true;
+    }
+
+    if (val1 && val2) {
+      console.log('todo okkkkkkkk');
+      return true;
+    } else {
+      console.log('algo mal');
+      console.log('val1'.val1);
+      console.log('val2', val2);
+      return false;
+    }
+  }
+
+  ;
+
+  function setErrorFor(input, message) {
+    var inputBox = input.parentElement;
+    var small = inputBox.querySelector('small');
+    small.innerText = message;
+    inputBox.classList.add('login__inputError');
+  }
+
+  ;
+
+  function setSuccessFor(input) {
+    var inputBox = input.parentElement;
+    inputBox.classList.remove('login__inputError');
+  }
+
+  ;
+
+  function isEmail(email) {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  }
+
+  ; // db.collection("Cursos").doc("Curso1").collection("2021-1").get().then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //         console.log(`${doc.id} => ${doc.data()}`);
+  //         cursos.push(doc.data());
+  //     });
+  //     // cursos.forEach((curso)=>{
+  //     //     console.log(curso.Semestre);
+  //     // });
+  // });
+  // db.collection("Cursos").doc("Curso1").collection("2021-1").doc("Informacion").get().then((doc) => {
+  //     if (doc.exists) {
+  //         console.log("Document data:", doc.data());
+  //         titulo.innerHTML = `Hola ${doc.data().Profesor}`;
+  //     } else {
+  //         // doc.data() will be undefined in this case
+  //         console.log("No such document!");
+  //     } 
+  // });
 });
-},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -406,5 +483,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/teacherDash.js"], null)
-//# sourceMappingURL=/teacherDash.2246e381.js.map
+},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/index.js"], null)
+//# sourceMappingURL=/pages.7852bfa2.js.map
