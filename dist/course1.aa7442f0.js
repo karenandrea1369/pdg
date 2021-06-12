@@ -546,10 +546,12 @@ window.addEventListener('load', function () {
     resetFields(fields);
     var readPdf = new _ReadPdf.default(fields, input);
     readPdf.extractText();
-    console.log("get fields", readPdf.getFields());
-    fields = readPdf.getFields(); //console.log(fields);
+    setTimeout(function () {
+      console.log("get fields", readPdf.getFields());
+      fields = readPdf.getFields(); //console.log(fields);
 
-    fillFields(fields);
+      fillFields(fields);
+    }, 500);
   });
 
   function fillFields(fields1) {
@@ -557,7 +559,7 @@ window.addEventListener('load', function () {
     console.log(fields1[0]);
 
     for (var i = 0; i < fields.length; i++) {
-      console.log(fields1[i]);
+      console.log(fields1[i].exist, fields[i].content);
     }
 
     fields1.forEach(function (field) {});
@@ -600,7 +602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62853" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54333" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -160,18 +160,22 @@ window.addEventListener('load',()=>{
     input.addEventListener('change', ()=>{
         resetFields(fields);
         var readPdf = new ReadPdf(fields, input);
+        
         readPdf.extractText();
-        console.log("get fields", readPdf.getFields());
-        fields = readPdf.getFields();
-        //console.log(fields);
-        fillFields(fields);
+        setTimeout(() => {
+            console.log("get fields", readPdf.getFields());
+            fields = readPdf.getFields();
+            //console.log(fields);
+            fillFields(fields);   
+        }, 500);
+          
     })
 
     function fillFields(fields1){
         console.log(fields1);
         console.log(fields1[0]);
         for (let i = 0; i < fields.length; i++) {
-            console.log(fields1[i]);
+            console.log(fields1[i].exist, fields[i].content);
         }
         fields1.forEach(field =>{
         });
