@@ -68,6 +68,13 @@
   width: 50px;
   background-color: var(--second-color);
 }
+.nav__link--selected > :first-child {
+  color: var(--first-color);
+}
+.nav__link--selected > :first-child:not(ion-icon) {
+  background-color: var(--first-color);
+  color: var(--white-color);
+}
 .nav__icon {
   font-size: var(--nav-icon-text);
   width: 30px;
@@ -284,30 +291,29 @@
     padding: 1rem 2rem;
   }
 }
-/* Others styles */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+}
+
 .dashboard__container {
   position: absolute;
-  padding-left: 100px;
-  width: 100vw;
+  margin-left: var(--nav-width);
+  width: 68%;
   height: 100vh;
 }
 .dashboard__header {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  height: 3.5rem;
-}
-.dashboard__headerright {
-  display: flex;
-  align-items: center;
-}
-.dashboard__headerleft {
-  align-items: center;
-  margin: auto 0;
-}
-.dashboard__header img {
-  height: 2.5rem;
-  margin: 0 1rem;
+  background-color: var(--white-color);
+  margin: 0px 20px;
+  padding: 30px 30px 20px;
+  border-end-end-radius: 5px;
+  border-end-start-radius: 5px;
 }
 .dashboard__header h2 {
   margin: auto 0;
@@ -316,17 +322,16 @@
   display: flex;
 }
 .dashboard__maininfo {
-  width: 70%;
+  width: 100%;
   padding: 1.5rem;
 }
 .dashboard__maintittle {
   position: relative;
   width: 100%;
-  background-color: var(--lilac-color);
+  background-color: var(--white-color);
   border-radius: 0.5rem;
   display: flex;
-  height: 5.5rem;
-  box-shadow: var(--shadow1);
+  height: 120px;
 }
 .dashboard__maintittle img {
   position: absolute;
@@ -337,6 +342,7 @@
 .dashboard__maingreeting {
   padding-left: 2rem;
   margin: auto 0;
+  width: 70%;
 }
 .dashboard__maingreeting h3 {
   margin: 0;
@@ -344,17 +350,62 @@
 .dashboard__maingreeting p {
   margin: 0;
 }
-.dashboard__mainalerts {
-  width: 100%;
-  margin-top: 1rem;
-}
-.dashboard__mainchartsContainer {
+.dashboard__coursesContainer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.dashboard__mainnotificacions {
-  width: 30%;
-  padding: 1.5rem;
+.dashboard__course {
+  width: 31%;
+  margin-top: 20px;
+  margin-left: 15px;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+}
+.dashboard__course:hover {
+  box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
+  transition: 0.3s;
+  transform: translate(-2px, -2px);
+}
+.dashboard__course p {
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--black-color);
+}
+.dashboard__course p:first-child {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--second-color);
+}
+.dashboard__course p:last-child {
+  margin-top: 5px;
+  font-weight: 300;
+}
+.dashboard__notification {
+  font-weight: 600;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  visibility: hidden;
+}
+.dashboard__notification:hover {
+  color: var(--first-color-dark);
+}
+.dashboard__notification:hover ion-icon {
+  transition: 0.3s;
+  transform: translate(8px);
+}
+.dashboard__notification--visible {
+  visibility: visible;
+}
+.dashboard__notificacions {
+  position: fixed;
+  width: 25%;
+  height: 100vh;
+  right: 0;
+  height: auto;
+  background-color: var(--white-color);
 }
 
 .container {
@@ -366,8 +417,9 @@
 }
 
 .course__container {
+  position: absolute;
   margin-left: var(--nav-width);
-  width: 75%;
+  width: 68%;
   height: 100vh;
 }
 .course__header {
@@ -413,6 +465,7 @@
   width: 75%;
 }
 .course__notes {
+  position: absolute;
   width: 25%;
   right: 0;
   height: auto;
@@ -592,7 +645,7 @@
   --shadow1: 0px 2px 6px rgba(0, 0, 0, 0.16);
   /* Fonts */
   --body-font: "Work Sans", sans-serif;
-  --normal-font-size: 1rem;
+  --normal-font-size: 20px;
   --medium-font-size: .93rem;
   --small-font-size: .875rem;
   --xsmall-font-size: .8rem;

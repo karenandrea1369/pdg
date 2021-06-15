@@ -19,23 +19,23 @@
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="./teacherDash.html" class="nav__link">
+                        <a href="./teacherDash.html" class="nav__link" id="home">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course1">
                             <span class="nav__icon">DS</span>
                             <span class="nav__name">Diseño y sociedad</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course2">
                             <span class="nav__icon">ED</span>
                             <span class="nav__name">Ética y democracia</span>
                         </a>
-                        <a href="#" class="nav__link">
+                        <a href="#" class="nav__link" id="course3">
                             <span class="nav__icon">F</span>
                             <span class="nav__name">Fotografía</span>
                         </a>
-                        <a href="./course1.html" class="nav__link">
+                        <a href="#" class="nav__link" id="course4">
                             <span class="nav__icon">PI</span>
                             <span class="nav__name">Proyecto integrador II</span>
                         </a>
@@ -77,13 +77,8 @@
                             <div class="createcourse__sectionone">
                                 <h2>Información curso</h2>
                                 <div class="form__inputBox">
-                                    <label for="name" class="form__inputLabel">Nombre del curso*</label>
+                                    <label for="name" class="form__inputLabel">Código-Curso:*</label>
                                     <input type="text" name="" id="name" placeholder="Nombre del curso" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div>
-                                <div class="form__inputBox">
-                                    <label for="code" class="form__inputLabel">Código del curso*</label>
-                                    <input type="text" name="" id="code" placeholder="Código del curso" class="form__input">
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
                                 <div class="form__inputBox">
@@ -92,13 +87,8 @@
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
                                 <div class="form__inputBox">
-                                    <label for="career" class="form__inputLabel">Programa*</label>
+                                    <label for="career" class="form__inputLabel">Programa-Semestre:*</label>
                                     <input type="text" name="" id="career" placeholder="Programa" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div>
-                                <div class="form__inputBox">
-                                    <label for="semester" class="form__inputLabel">Semestre*</label>
-                                    <input type="text" name="" id="semester" placeholder="Semestre" class="form__input">
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
                                 <div class="form__inputBox">
@@ -130,61 +120,31 @@
                             </div>
                             <div class="createcourse__sectionfour">
                                 <h2>Objetivos específicos</h2>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 1*</label>
-                                    <input type="text" name="" id="unit1name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 1*</label>
-                                    <textarea  name="" id="unit1" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <textarea  name="" id="unit1" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 2</label>
-                                    <input type="text" name="" id="unit2name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 2</label>
-                                    <textarea  name="" id="unit2" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <textarea  name="" id="unit2" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 3</label>
-                                    <input type="text" name="" id="unit3name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 3</label>
-                                    <textarea  name="" id="unit3" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <textarea  name="" id="unit3" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 4</label>
-                                    <input type="text" name="" id="unit4name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 4</label>
                                     <textarea  name="" id="unit4" placeholder="Objetivo general" class=" form__textarea"></textarea>
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 5</label>
-                                    <input type="text" name="" id="unit5name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 5</label>
                                     <textarea  name="" id="unit5" placeholder="Objetivo general" class=" form__textarea"></textarea>
                                     <small class="form__inputErrorMessage">Error message</small>
                                 </div>
-                                <!-- <div class="form__inputBox">
-                                    <label for="unitname" class="form__inputLabel">Unidad 6</label>
-                                    <input type="text" name="" id="unit6name" placeholder="Intensidad semanal" class="form__input">
-                                    <small class="form__inputErrorMessage">Error message</small>
-                                </div> -->
                                 <div class="form__inputBox">
                                     <label for="terminalcobj" class="form__inputLabel">Unidad 6</label>
                                     <textarea  name="" id="unit6" placeholder="Objetivo general" class=" form__textarea"></textarea>
@@ -199,23 +159,8 @@
         </div>
 
         <div class="course__notes">
-            <h2>Notificaciones</h2>
-            <div class="notification">
-                <h4 class="notification__subject">Diseño y sociedad</h4>
-                <p class="notification__message">Todos tus estudiantes realizaron la evaluación</p>
-                <div class="notification__button">
-                    <a href="#">Ir</a>
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="notification">
-                <h4 class="notification__subject">Diseño y sociedad</h4>
-                <p class="notification__message">Todos tus estudiantes realizaron la evaluación</p>
-                <div class="notification__button">
-                    <a href="#">Ir</a>
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div>
-            </div>  
+            <h2>Anotaciones</h2>
+            <p>En este espacio dentro de cada unidad podrás hacer las anotaciones sobre tu curso</p>            
         </div>
     </div>
 
@@ -233,7 +178,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <!-- mi js-->
-    <script src="./scripts/pages/course1.js"></script>
+    <script src="./scripts/pages/createCourse.js"></script>
 
     <!-- Read pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>

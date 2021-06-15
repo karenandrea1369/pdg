@@ -22,6 +22,7 @@ window.addEventListener('load',()=>{
 
     var expander = new ExpandMenu('navBar', 'navBar');
     expander.expand();
+    expander.navigate();
 
 
     var input = document.getElementById("file-id");
@@ -158,14 +159,12 @@ window.addEventListener('load',()=>{
 
     //--------------------------- READ PDF ------------------------------
     input.addEventListener('change', ()=>{
-        resetFields(fields);
+        resetArray(fields);
+        resetFields();
         var readPdf = new ReadPdf(fields, input);
-        
         readPdf.extractText();
         setTimeout(() => {
-            console.log("get fields", readPdf.getFields());
             fields = readPdf.getFields();
-            //console.log(fields);
             fillFields(fields);   
         }, 500);
           
@@ -175,19 +174,29 @@ window.addEventListener('load',()=>{
         console.log(fields1);
         console.log(fields1[0]);
         for (let i = 0; i < fields.length; i++) {
-            console.log(fields1[i].exist, fields[i].content);
+            if(fields1[i].exist && document.getElementById(fields1[i].input)){               
+                var input = document.getElementById(fields1[i].input);
+                input.value = fields1[i].content;
+            }
         }
         fields1.forEach(field =>{
         });
         
     }
 
-    function resetFields(fields){
+    function resetArray(fields){
         fields.forEach(field =>{
             field.exist = false;
             field.start = 0;
             field.end = 0;
             field.content = "";
+        })
+    }
+
+    function resetFields(){
+        let inputs = document.querySelectorAll(".form__input");
+        inputs.forEach(input =>{
+            input.value = "";
         })
     }
  

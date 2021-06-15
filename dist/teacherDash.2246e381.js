@@ -132,12 +132,25 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* Expander menu */
+// TODO: Replace the following with your app's Firebase project configuration
+// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+var firebaseConfig = {
+  apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
+  authDomain: "pdg-db.firebaseapp.com",
+  projectId: "pdg-db",
+  storageBucket: "pdg-db.appspot.com",
+  messagingSenderId: "848702577304",
+  appId: "1:848702577304:web:89c4212e674efb5c3bceed",
+  measurementId: "G-SBDH6RW0HW"
+}; // Initialize Firebase
+//firebase.initializeApp(firebaseConfig);
+
 var ExpandMenu = /*#__PURE__*/function () {
   function ExpandMenu(toggleId, navBarId) {
     _classCallCheck(this, ExpandMenu);
 
     this.toggle = document.getElementById(toggleId);
-    this.navBar = document.getElementById(navBarId);
+    this.navBar = document.getElementById(navBarId); //this.db = firebase.firestore();
   }
 
   _createClass(ExpandMenu, [{
@@ -153,6 +166,16 @@ var ExpandMenu = /*#__PURE__*/function () {
           _this.navBar.classList.remove('expand');
         });
       }
+    }
+  }, {
+    key: "navigate",
+    value: function navigate() {
+      var options = document.querySelectorAll(".nav__link");
+      options.forEach(function (option) {
+        option.addEventListener('click', function () {
+          console.log("desde expandmenu---->", option.getAttribute('id'));
+        });
+      });
     }
   }]);
 
@@ -196,10 +219,23 @@ window.addEventListener('load', function () {
       console.log(error.code);
     });
   });
-  var createCourse = document.getElementById('course1Btn');
-  createCourse.addEventListener('click', function () {
-    console.log("Crear curso");
-    window.location.href = "course1.html";
+  var notifications = document.querySelectorAll(".dashboard__notification");
+  notifications.forEach(function (notification) {
+    var idCourse = notification.getAttribute("id");
+    db.collection("courses").doc(idCourse).get().then(function (doc) {
+      if (doc.exists) {
+        if (doc.data().notifications) {
+          notification.classList.add("dashboard__notification--visible");
+          notification.innerHTML = doc.data().notifications + ' <ion-icon name="arrow-forward-outline"></ion-icon>';
+          console.log("id", idCourse, doc.data().notifications);
+        }
+      } else {
+        notification.classList.remove("dashboard__notification--visible"); // doc.data() will be undefined in this case
+
+        console.log("No such document!");
+      }
+    });
+    notification.addEventListener('click', function () {});
   });
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -230,7 +266,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54333" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57037" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

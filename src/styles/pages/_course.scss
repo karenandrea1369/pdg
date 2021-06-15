@@ -8,9 +8,9 @@
 
 .course{
     &__container{
-        //position: absolute;
+        position: absolute;
         margin-left:var(--nav-width) ;
-        width:75%;
+        width:68%;
         height: 100vh;
         
     }
@@ -64,7 +64,7 @@
     }
 
     &__notes{
-        //position: absolute;
+        position: absolute;
         width: 25%;
         right: 0;
         height: auto;

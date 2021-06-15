@@ -1,37 +1,29 @@
-/* Others styles */
-
-
-
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: blue;
+}
 
 .dashboard{
     &__container{
         position: absolute;
-        padding-left: 100px ;
-        width: 100vw;
-        height: 100vh;
+        margin-left:var(--nav-width) ;
+        width:68%;
+        height: 100vh;        
         
     }
 
     &__header{
         display: flex;
-        width: 100%;
         justify-content: space-between;
-        height: 3.5rem;
-
-        &right{
-            display: flex;
-            align-items: center;
-        }
-
-        &left{
-            align-items: center;
-            margin: auto 0;    
-        }
-
-        & img{
-            height: 2.5rem;
-            margin: 0 1rem;
-        }
+        background-color: var(--white-color);
+        margin: 0px 20px;
+        padding: 30px 30px 20px;
+        border-end-end-radius: 5px;
+        border-end-start-radius: 5px;
 
         & h2{
             margin: auto 0;
@@ -42,18 +34,17 @@
         display: flex;
 
         &info{
-            width: 70%;
+            width: 100%;
             padding: 1.5rem;
         }
 
         &tittle{
             position: relative;
             width: 100%;
-            background-color: var(--lilac-color);
+            background-color: var(--white-color);
             border-radius: 0.5rem;
             display: flex;
-            height: 5.5rem;
-            box-shadow: var(--shadow1);
+            height: 120px;
 
             & img{
                 position: absolute;
@@ -66,6 +57,7 @@
         &greeting{
             padding-left: 2rem;
             margin: auto 0  ;
+            width: 70%;
             & h3{
                 margin: 0;
             }
@@ -74,21 +66,77 @@
                 margin: 0;
             }
         }
+    }
 
-        &alerts{
-            width: 100%;
-            margin-top: 1rem;
+    &__coursesContainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__course{
+        width: 31%;
+        margin-top: 20px;
+        margin-left: 15px;
+        background-color: var(--white-color);
+        border-radius: 5px;
+        padding: 20px;
+        cursor: pointer;
+
+        &:hover{
+            box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
+            transition: .3s;
+            transform: translate(-2px, -2px);
+        }
+
+        & p{
+            margin-top: 10px;
+            font-weight: 500;
+            color: var(--black-color);
+        }
+
+        & p:first-child{
+            font-size: 30px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--second-color);
+        }
+
+        & p:last-child{
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+    }
+
+    &__notification{
+        font-weight: 600;
+        font-size: var(--small-font-size);
+        color: var(--first-color);
+        visibility: hidden;
+
+        &:hover{
+            color: var(--first-color-dark);
+
+            & ion-icon{
+                transition: .3s;
+                transform: translate(8px);
+            }
 
         }
 
-        &chartsContainer{
-            display: flex;
-            justify-content: space-between;
+        &--visible{
+            visibility: visible;
         }
 
-        &notificacions{
-            width: 30%;
-            padding: 1.5rem;
-        }
+        
+    }
+    
+    &__notificacions{
+        position: fixed;
+        width: 25%;
+        height: 100vh;
+        right: 0;
+        height: auto;
+        background-color: var(--white-color);
     }
 }

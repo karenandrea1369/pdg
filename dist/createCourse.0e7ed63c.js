@@ -424,7 +424,7 @@ var FillFields = /*#__PURE__*/function () {
 
 var _default = FillFields;
 exports.default = _default;
-},{}],"scripts/pages/course1.js":[function(require,module,exports) {
+},{}],"scripts/pages/createCourse.js":[function(require,module,exports) {
 "use strict";
 
 var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
@@ -635,7 +635,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54333" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62966" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -811,5 +811,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/course1.js"], null)
-//# sourceMappingURL=/course1.aa7442f0.js.map
+},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/createCourse.js"], null)
+//# sourceMappingURL=/createCourse.0e7ed63c.js.map
