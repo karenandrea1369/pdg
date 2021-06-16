@@ -17,14 +17,14 @@
 :root{
     --nav-width: 90px;
 
-    --first-color-dark: #E03403;
     --sub-color: blue;
     --third-color: blue; 
     --first-color-lighten: blue;
-
+    
     /* Colors */
     --first-color: #FC440F;
     --first-color-light: #FF7D57;
+    --first-color-dark: #E03403;
     --second-color: #7B2CBF;
     --second-color-medium: #5A189A;
     --second-color-dark: #3C096C;
@@ -35,6 +35,9 @@
     --bg-color: #F1F2F6;
     --tx-color: #162036;
     --color-lighten: #F6EBFF;
+
+    /*Grays*/
+    --gray-color-light: #D9D9D9;
    
 
     /* Box Shadow */

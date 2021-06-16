@@ -117,79 +117,128 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"scripts/classes/ExpandMenu.js":[function(require,module,exports) {
+"use strict";
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* Expander menu */
+// TODO: Replace the following with your app's Firebase project configuration
+// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+var firebaseConfig = {
+  apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
+  authDomain: "pdg-db.firebaseapp.com",
+  projectId: "pdg-db",
+  storageBucket: "pdg-db.appspot.com",
+  messagingSenderId: "848702577304",
+  appId: "1:848702577304:web:89c4212e674efb5c3bceed",
+  measurementId: "G-SBDH6RW0HW"
+}; // Initialize Firebase
+//firebase.initializeApp(firebaseConfig);
+
+var ExpandMenu = /*#__PURE__*/function () {
+  function ExpandMenu(toggleId, navBarId) {
+    _classCallCheck(this, ExpandMenu);
+
+    this.toggle = document.getElementById(toggleId);
+    this.navBar = document.getElementById(navBarId); //this.db = firebase.firestore();
   }
 
-  return bundleURL;
-}
+  _createClass(ExpandMenu, [{
+    key: "expand",
+    value: function expand() {
+      var _this = this;
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+      if (this.toggle && this.navBar) {
+        this.toggle.addEventListener('mouseenter', function () {
+          _this.navBar.classList.add('expand');
+        });
+        this.toggle.addEventListener('mouseleave', function () {
+          _this.navBar.classList.remove('expand');
+        });
       }
     }
+  }, {
+    key: "navigate",
+    value: function navigate() {
+      var options = document.querySelectorAll(".nav__link");
+      options.forEach(function (option) {
+        option.addEventListener('click', function () {
+          console.log("desde expandmenu---->", option.getAttribute('id'));
+        });
+      });
+    }
+  }]);
 
-    cssTimeout = null;
-  }, 50);
-}
+  return ExpandMenu;
+}();
 
-module.exports = reloadCSS;
-},{"./bundle-url":"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
+var _default = ExpandMenu;
+exports.default = _default;
+},{}],"scripts/pages/teacherDash.js":[function(require,module,exports) {
+"use strict";
 
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//imports
+// For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+var firebaseConfig = {
+  apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
+  authDomain: "pdg-db.firebaseapp.com",
+  projectId: "pdg-db",
+  storageBucket: "pdg-db.appspot.com",
+  messagingSenderId: "848702577304",
+  appId: "1:848702577304:web:89c4212e674efb5c3bceed",
+  measurementId: "G-SBDH6RW0HW"
+}; // Initialize Firebase
+
+firebase.initializeApp(firebaseConfig);
+window.addEventListener('load', function () {
+  var auth = firebase.auth();
+  var db = firebase.firestore();
+  var expander = new _ExpandMenu.default('navBar', 'navBar');
+  expander.expand();
+  var signOutBtn = document.getElementById('signOutBtn');
+  console.log("Cerrar sesión", signOutBtn);
+  signOutBtn.addEventListener('click', function () {
+    auth.signOut().then(function () {
+      console.log("Cerró sesión exitosamente");
+      window.location.href = "index.html";
+    }).catch(function (error) {
+      console.log(error.code);
+    });
+  });
+  var notifications = document.querySelectorAll(".dashboard__notification");
+  notifications.forEach(function (notification) {
+    var idCourse = notification.getAttribute("id");
+    db.collection("courses").doc(idCourse).get().then(function (doc) {
+      if (doc.exists) {
+        if (doc.data().notifications) {
+          notification.classList.add("dashboard__notification--visible");
+          notification.innerHTML = doc.data().notifications + ' <ion-icon name="arrow-forward-outline"></ion-icon>';
+          console.log("id", idCourse, doc.data().notifications);
+        }
+      } else {
+        notification.classList.remove("dashboard__notification--visible"); // doc.data() will be undefined in this case
+
+        console.log("No such document!");
+      }
+    });
+    notification.addEventListener('click', function () {});
+  });
+});
+},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +266,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55491" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63690" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -393,5 +442,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.48b3db1d.js.map
+},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/pages/teacherDash.js"], null)
+//# sourceMappingURL=/teacherDash.5fc8f5ba.js.map

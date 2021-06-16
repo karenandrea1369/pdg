@@ -35,7 +35,7 @@
 
         &info{
             width: 100%;
-            padding: 1.5rem;
+            padding: 20px;
         }
 
         &tittle{
@@ -131,12 +131,25 @@
         
     }
     
-    &__notificacions{
-        position: fixed;
+    &__info{
+        position: fixed;  
         width: 25%;
         height: 100vh;
         right: 0;
-        height: auto;
+        padding: 20px 30px;
         background-color: var(--white-color);
+        overflow-y:scroll;
+        overflow-x:hidden;
+
+        &Card{
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #F1F2F6;
+            border-radius: 5px;
+
+            & h4{
+                margin: 0;
+            }
+        }
     }
 }

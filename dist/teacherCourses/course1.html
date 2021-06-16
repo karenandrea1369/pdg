@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/21f4704fbc0ce0dcb8959e31a4f5f258.css">
+    <link rel="stylesheet" href="/main.48b3db1d.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,29 +15,29 @@
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
-                        <img src="/66a46d9458a4e9bd8d137a0876e08fe8.png" alt="">
+                        <img src="/logo provisional.565a102b.png" alt="">
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="/395a16ac45971a3c617f15202b0b00b7.html" class="nav__link" id="home">
+                        <a href="/teacherDash.html" class="nav__link nav__link--selected">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="#" class="nav__link" id="course1">
-                            <span class="nav__icon">DS</span>
-                            <span class="nav__name">Diseño y sociedad</span>
+                        <a href="/teacherCourses\course1.html" class="nav__link">
+                            <span class="nav__icon">PI</span>
+                            <span class="nav__name">Proyecto integrador II</span>
                         </a>
-                        <a href="#" class="nav__link" id="course2">
+                        <a href="/teacherCourses\course1.html" class="nav__link">
                             <span class="nav__icon">ED</span>
                             <span class="nav__name">Ética y democracia</span>
                         </a>
-                        <a href="#" class="nav__link" id="course3">
+                        <a href="/teacherCourses\course1.html" class="nav__link">
                             <span class="nav__icon">F</span>
                             <span class="nav__name">Fotografía</span>
                         </a>
-                        <a href="#" class="nav__link" id="course4">
-                            <span class="nav__icon">PI</span>
-                            <span class="nav__name">Proyecto integrador II</span>
+                        <a href="/teacherCourses\course1.html" class="nav__link">
+                            <span class="nav__icon">DS</span>
+                            <span class="nav__name">Diseño y sociedad</span>
                         </a>
                     </div>
                 </div>
@@ -51,30 +51,36 @@
 
         <div class="course__container">
             <nav class="course__header">
-                <div class="course__headername" id="coursename">
-                    <h2>Proyecto Integrador II</h2>
+                <div class="tabs__header">
+                    <h2 class="tabs__headerTab tabs__headerTab--active">Proyecto Integrador II</h2>
+                    <p class="tabs__headerTab">Unidad 1</p>
+                    <p class="tabs__headerTab">Unidad 2</p>
+                    <p class="tabs__headerTab">Unidad 3</p>
+                    <p class="tabs__headerTab">Reporte</p>
                 </div>
-                <div class="course__headerunits" id="courseunits">
-                    <a href="#">Unidad 1</a>
-                    <a href="#">Unidad 2</a>
-                    <a href="#">Unidad 3</a>
-                    <a href="#">Unidad 4</a>
-                    <a href="#">Unidad 5</a>
-                    <a href="#">Reporte</a>
-                </div>
+                <div class="tabs__headerIndicator"></div>
             </nav>
 
-            <main class="course__main">
-                <h1>Información del curso</h1>
-                <div>
-                    <p>Carga el syllabus del curso para obtener su información</p>
-                    <input type="file" id="file-id" name="file_name">
+            <main class="course__main tabs__body">
+                <div class="course__mainTab course__mainTab--active">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
-                <div>
-                    <p>O completa los campos</p>
-                    <div>
-                           
-                    </div>
+                <div class="course__mainTab">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="course__mainTab">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="course__mainTab">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="course__mainTab">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
             </main>
 
@@ -100,7 +106,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <!-- mi js-->
-    <script src="/9ed1bc9b8f1bcbee7659e8cb6a253baa.js"></script>
+    <script src="/course1.85d248f0.js"></script>
 
     <!-- Read pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>

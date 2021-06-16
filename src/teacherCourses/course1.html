@@ -15,29 +15,29 @@
             <nav class="nav">
                 <div>
                     <div class="nav__brand">
-                        <img src="./resources/logo provisional.png" alt="">
+                        <img src="../resources/logo provisional.png" alt="">
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="./teacherDash.html" class="nav__link" id="home">
+                        <a href="../teacherDash.html" class="nav__link">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="#" class="nav__link" id="course1">
-                            <span class="nav__icon">DS</span>
-                            <span class="nav__name">Diseño y sociedad</span>
+                        <a href="./course1.html" class="nav__link nav__link--selected">
+                            <span class="nav__icon">PI</span>
+                            <span class="nav__name">Proyecto integrador II</span>
                         </a>
-                        <a href="#" class="nav__link" id="course2">
+                        <a href="./course1.html" class="nav__link">
                             <span class="nav__icon">ED</span>
                             <span class="nav__name">Ética y democracia</span>
                         </a>
-                        <a href="#" class="nav__link" id="course3">
+                        <a href="./course1.html" class="nav__link">
                             <span class="nav__icon">F</span>
                             <span class="nav__name">Fotografía</span>
                         </a>
-                        <a href="#" class="nav__link" id="course4">
-                            <span class="nav__icon">PI</span>
-                            <span class="nav__name">Proyecto integrador II</span>
+                        <a href="./course1.html" class="nav__link">
+                            <span class="nav__icon">DS</span>
+                            <span class="nav__name">Diseño y sociedad</span>
                         </a>
                     </div>
                 </div>
@@ -51,30 +51,37 @@
 
         <div class="course__container">
             <nav class="course__header">
-                <div class="course__headername" id="coursename">
-                    <h2>Proyecto Integrador II</h2>
+                <h2 class="">Proyecto Integrador II</h2>
+                <div class="tabs__header">
+                    <p class="tabs__headerTab tabs__headerTab--active">Curso</p>
+                    <p class="tabs__headerTab" >Unidad 1</p>
+                    <p class="tabs__headerTab" >Unidad 2</p>
+                    <p class="tabs__headerTab" >Unidad 3</p>
+                    <p class="tabs__headerTab" >Reporte</p>
                 </div>
-                <div class="course__headerunits" id="courseunits">
-                    <a href="#">Unidad 1</a>
-                    <a href="#">Unidad 2</a>
-                    <a href="#">Unidad 3</a>
-                    <a href="#">Unidad 4</a>
-                    <a href="#">Unidad 5</a>
-                    <a href="#">Reporte</a>
-                </div>
+                <div class="tabs__headerIndicator"></div>
             </nav>
 
             <main class="course__main">
-                <h1>Información del curso</h1>
-                <div>
-                    <p>Carga el syllabus del curso para obtener su información</p>
-                    <input type="file" id="file-id" name="file_name" >
+                <div class="tabs__bodyContent tabs__bodyContent--active">
+                    <h1>Información del curso</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
-                <div>
-                    <p>O completa los campos</p>
-                    <div>
-                           
-                    </div>
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 1</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 2</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 3</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                </div>
+                <div class="tabs__bodyContent">
+                    <h1>Reporte</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
             </main>
 
@@ -100,7 +107,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
 
     <!-- mi js-->
-    <script src="./scripts/pages/createCourse.js"></script>
+    <script src="../scripts/teacherCourses/course1.js"></script>
 
     <!-- Read pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
