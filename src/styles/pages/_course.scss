@@ -1,50 +1,69 @@
-.container{
+.container2{
     position: relative;
     width: 100%;
-    height: 100%;
+    //height: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .course{
     &__container{
-        position: absolute;
-        left:var(--nav-width) ;
-        width:68%;
-        height: 100vh;
+        position: relative;
+        margin-left:var(--nav-width);
+        margin-right: var(--right-aside-width);
+        width:100%;
+        //height: 100%;
         
     }
 
     &__header{
+        height: var(--top-nav-height);
         background-color: var(--white-color);
         margin: 0px 20px;
-        padding: 40px;
+        padding: 30px;
         padding-bottom: 20px;
         border-end-end-radius: 5px;
         border-end-start-radius: 5px;
     }
 
     &__main{
-        height: 100%;
         position: relative;
+        height: calc(100vh - 160px);
         background-color: var(--white-color);
         margin: 20px 20px 0px;
         padding: 40px;
         border-start-start-radius: 5px;
         border-start-end-radius: 5px;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            
+          }
+           
+        &::-webkit-scrollbar-track {
+            background-color: var(--color-lighten);
+            border-radius: 5px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--gray-color-light);
+            border-radius: 5px;
+        }
     }
 
     &__notes{
         position: fixed;
-        width: 25%;
+        width: var(--right-aside-width);
         height: 100vh;
         right: 0;
-        padding: 20px 30px;
+        padding: 30px;
         background-color: var(--white-color);
     }
 }
 
 .tabs{
+    //position: relative;
+    height: 100%;
     &__header{
         display: flex;
         align-items: center;
@@ -53,7 +72,7 @@
 
         &Tab{
             position: relative;
-            margin-top: 25px;
+            margin-top: 15px;
             margin-bottom: 10px;
             color: var(--gray-color-light);
             cursor: pointer;
@@ -100,8 +119,10 @@
     }
 
     &__body{
-        //position: relative;
+        overflow-y: scroll;
+
         &Content{
+            height: 100%;
             position: absolute;
             padding-right: 40px;
             visibility: hidden;
@@ -111,6 +132,7 @@
                 transform 400ms ease-in-out 0ms;
 
                 &--active{
+                    height: 100%;
                     //width: 100%;
                     visibility: visible;
                     opacity: 1;

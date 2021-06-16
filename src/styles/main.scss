@@ -3,10 +3,10 @@
 @import "./pages/signup";
 @import "./pages/signin";
 @import "./pages/dash";
-@import "./pages/course";
 @import "./objects/alert";
 @import "./objects/statisticschart";
 @import "./objects/form";
+@import "./pages/course";
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
@@ -16,6 +16,8 @@
 /* Variables */
 :root{
     --nav-width: 90px;
+    --right-aside-width: 350px;
+    --top-nav-height: 120px;
 
     --sub-color: blue;
     --third-color: blue; 
@@ -62,13 +64,30 @@
     box-sizing: border-box;
 }
 body{
+    
     position: relative;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
     font-family: var(--body-font);
     //font-size: var(--normal-font-size);
     transition: .5s;
     background-color: var(--bg-color);
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+       
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-lighten);
+        border-radius: 5px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--gray-color-light);
+        border-radius: 5px;
+    }
 }
 h1{
     margin: 0;
@@ -79,6 +98,13 @@ h2{
     margin: 0;
     color: var(--second-color);
     font-size: 20px;
+}
+
+h3{
+    margin: 0;
+    color: var(--black-color);
+    font-size: 18px;
+    font-weight: 500;
 }
 ul{
     margin: 0;
@@ -100,6 +126,8 @@ img{
     padding: 0;
     color: var(--black-color);
 }
+
+
 
 @media screen and (min-width: 768px){
     :root{

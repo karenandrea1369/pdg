@@ -184,10 +184,62 @@ var ExpandMenu = /*#__PURE__*/function () {
 
 var _default = ExpandMenu;
 exports.default = _default;
-},{}],"scripts/teacherCourses/course1.js":[function(require,module,exports) {
+},{}],"../scripts/classes/ChangeTabs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ChangeTabs = /*#__PURE__*/function () {
+  function ChangeTabs(tabs__headerTab, tabs__bodyContent) {
+    _classCallCheck(this, ChangeTabs);
+
+    this.tabs = document.querySelectorAll(tabs__headerTab);
+    this.contents = document.querySelectorAll(tabs__bodyContent); //this.db = firebase.firestore();
+  }
+
+  _createClass(ChangeTabs, [{
+    key: "change",
+    value: function change() {
+      var _this = this;
+
+      this.tabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () {
+          _this.tabs.forEach(function (otherTab) {
+            otherTab.classList.remove("tabs__headerTab--active");
+          });
+
+          _this.contents.forEach(function (otherContent) {
+            otherContent.classList.remove("tabs__bodyContent--active");
+          });
+
+          tab.classList.add("tabs__headerTab--active");
+
+          _this.contents[index].classList.add("tabs__bodyContent--active");
+        });
+      });
+    }
+  }]);
+
+  return ChangeTabs;
+}();
+
+var _default = ChangeTabs;
+exports.default = _default;
+},{}],"../scripts/teacherCourses/course1.js":[function(require,module,exports) {
 "use strict";
 
 var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
+
+var _ChangeTabs = _interopRequireDefault(require("../classes/ChangeTabs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -209,6 +261,8 @@ window.addEventListener('load', function () {
   var db = firebase.firestore();
   var expander = new _ExpandMenu.default('navBar', 'navBar');
   expander.expand();
+  var changer = new _ChangeTabs.default(".tabs__headerTab", ".tabs__bodyContent");
+  changer.change();
   var signOutBtn = document.getElementById('signOutBtn');
   signOutBtn.addEventListener('click', function () {
     auth.signOut().then(function () {
@@ -218,7 +272,7 @@ window.addEventListener('load', function () {
     });
   });
 });
-},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -246,7 +300,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55491" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -422,5 +476,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/teacherCourses/course1.js"], null)
+},{}]},{},["C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../scripts/teacherCourses/course1.js"], null)
 //# sourceMappingURL=/course1.85d248f0.js.map

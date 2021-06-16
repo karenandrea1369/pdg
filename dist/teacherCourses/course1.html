@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container2">
 
         <div class="l-navbar course__navbar" id="navBar">
             <nav class="nav">
@@ -19,11 +19,11 @@
                         <a href="#" class="nav__logo">Talkie</a>
                     </div>
                     <div class="nav__list">
-                        <a href="/teacherDash.html" class="nav__link nav__link--selected">
+                        <a href="/teacherDash.html" class="nav__link">
                             <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                             <span class="nav__name">Dashboard</span>
                         </a>
-                        <a href="/teacherCourses\course1.html" class="nav__link">
+                        <a href="/teacherCourses\course1.html" class="nav__link nav__link--selected">
                             <span class="nav__icon">PI</span>
                             <span class="nav__name">Proyecto integrador II</span>
                         </a>
@@ -49,10 +49,11 @@
             </nav>
         </div>
 
-        <div class="course__container">
+        <div class="course__container tabs">
             <nav class="course__header">
+                <h2 class="">Proyecto Integrador II</h2>
                 <div class="tabs__header">
-                    <h2 class="tabs__headerTab tabs__headerTab--active">Proyecto Integrador II</h2>
+                    <p class="tabs__headerTab tabs__headerTab--active">Curso</p>
                     <p class="tabs__headerTab">Unidad 1</p>
                     <p class="tabs__headerTab">Unidad 2</p>
                     <p class="tabs__headerTab">Unidad 3</p>
@@ -62,24 +63,69 @@
             </nav>
 
             <main class="course__main tabs__body">
-                <div class="course__mainTab course__mainTab--active">
-                    <h1>Información del curso</h1>
+                <!-- ----------------------- First Tab ----------------------- -->
+                <div class="tabs__bodyContent tabs__bodyContent--active">
+                    <div>
+                        <h2>Información del curso</h2>
+                        <h3>Código-Curso:</h3>
+                        <p>12160 – Proyecto Integrador II</p>
+                        <h3>Tiene como prerrequisito:</h3>
+                        <p>Interacción Hombre Computador – Investigación en Diseño</p>
+                        <h3>Programa-Semestre:</h3>
+                        <p>Diseño de Medios Interactivos – Séptimo Semestre</p>
+                        <h3>Intensidad semanal:</h3>
+                        <p>3 horas</p>
+                        <h3>Objetivo General:</h3>
+                        <p>Comunicar una solución integral a partir de prototipo funcional que dé respuesta a un problema o
+                            necesidad de un usuario real, aplicando las competencias adquiridas por el estudiante en las diferentes asignaturas
+                            que ha cursado.</p>
+                        <h3>Parte 2: Objetivos terminales</h3>
+                        <p>1. Descubrir problemas, necesidades y/o oportunidades en un entorno real.
+                            2. Definir los elementos que componen el problema, la necesidad y/o oportunidad.
+                            3. Desarrollar una solución de diseño al problema, mediante un prototipo funcional, integrando las competencias
+                            desarrolladas en cursos anteriores.
+                            4. Evaluar las soluciones de diseño con usuarios reales.
+                            5. Comunicar la solución dada al problema, ante el usuario identificado.</p>
+                        <h3>Parte 3: Objetivos Específicos</h3>
+                        <h3>Unidad 1:</h3>
+                        <p>Identificación de problema, necesidades y/o oportunidades
+                            1.1. Identificar algunas herramientas para definir los elementos que componen el problema, la necesidad y/o la
+                            oportunidad
+                            1.2. Descomponer el problema, la necesidad y/o la oportunidad en sus partes</p>
+                        <h3>Unidad 2:</h3>
+                        <p>Desarrollo de la solución de diseño
+                            2.1. Definir la solución, utilizando metodologías para la generación de ideas.
+                            2.2. Desarrollar la solución mediante prototipos funcionales.
+                            2.3. Iterar soluciones a la problemática para acercarse a una solución final.
+                            2.4. Evaluar y ajustar la solución final.</p>
+                        <h3>Unidad 3:</h3>
+                        <p>Justificar y comunicar la solución
+                            3.1. Definir la estrategia de comunicación.
+                            3.2. Comunicar efectivamente la solución al usuario real.</p>
+                    </div>
+                </div>
+                
+                <!-- ----------------------- Second Tab ----------------------- -->
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 1</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
-                <div class="course__mainTab">
-                    <h1>Información del curso</h1>
+
+                <!-- ----------------------- Third Tab ----------------------- -->
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 2</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
-                <div class="course__mainTab">
-                    <h1>Información del curso</h1>
+
+                <!-- ----------------------- Fourth Tab ----------------------- -->
+                <div class="tabs__bodyContent">
+                    <h1>Unidad 3</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
-                <div class="course__mainTab">
-                    <h1>Información del curso</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
-                </div>
-                <div class="course__mainTab">
-                    <h1>Información del curso</h1>
+
+                <!-- ----------------------- Fifth Tab ----------------------- -->
+                <div class="tabs__bodyContent">
+                    <h1>Reporte</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
             </main>
