@@ -283,6 +283,33 @@ window.addEventListener('load', function () {
   console.log(teacherGradeStates[0]);
   var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".textBtn");
   console.log(teacherGradeSeeMore);
+  getTeacherGrade();
+
+  function getTeacherGrade() {
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      console.log(doc);
+
+      if (doc.exists && doc.data().teacherCalificated) {
+        console.log("Calificación", doc.data().teacherCalificated);
+        teacherGradeSections[1].classList.remove("coursecard__section--visible");
+        teacherGradeSections[2].classList.add("coursecard__section--visible");
+        teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
+        teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
+        teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
+        teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
+        unitGradeDiv.innerText = doc.data().teacherCalification;
+        unitCommentDiv.innerText = doc.data().teacherComment;
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }); // db.collection("courses").doc("course1").collection("units").get().then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //         console.log(doc);
+    //     });
+    // });
+  }
+
   var checks = document.querySelectorAll(".coursecard__rateCheck");
   checks.forEach(function (check, index) {
     check.addEventListener('click', function () {
@@ -306,7 +333,7 @@ window.addEventListener('load', function () {
     } else if (unitGrade === "" || unitComment === "") {
       console.log("nel"); //aquí poner mensaje de alertaaaaaa
     } else {
-      gradeUnit(); //poner aquí el estado ya calificado
+      setTeacherGrade(); //poner aquí el estado ya calificado
 
       teacherGradeSections[1].classList.remove("coursecard__section--visible");
       teacherGradeSections[2].classList.add("coursecard__section--visible");
@@ -319,7 +346,7 @@ window.addEventListener('load', function () {
     }
   });
 
-  function gradeUnit() {
+  function setTeacherGrade() {
     db.collection("courses").doc("course1").collection("units").doc("unit3").set({
       teacherCalificated: true,
       teacherCalification: unitGrade,
@@ -331,9 +358,6 @@ window.addEventListener('load', function () {
     }).catch(function (error) {
       console.error("Error writing document: ", error);
     });
-    ; // console.log("doc from db", doc.data().teacherCalificated);
-    // console.log("doc from db", doc.data().teacherCalification);
-    // console.log("doc from db", doc.data().teacherComment);
   }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -364,7 +388,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63690" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61650" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

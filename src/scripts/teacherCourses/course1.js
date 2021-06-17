@@ -52,6 +52,35 @@ window.addEventListener('load',()=>{
 
     var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".textBtn");
     console.log(teacherGradeSeeMore);
+
+    getTeacherGrade();
+    function getTeacherGrade (){
+        db.collection("courses").doc("course1").collection("units").doc("unit3").get().then((doc) =>{
+            console.log(doc);
+            if(doc.exists && doc.data().teacherCalificated){
+                console.log("Calificación", doc.data().teacherCalificated);
+                teacherGradeSections[1].classList.remove("coursecard__section--visible");
+                teacherGradeSections[2].classList.add("coursecard__section--visible");
+                teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
+                teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
+                teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
+                teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
+                unitGradeDiv.innerText = doc.data().teacherCalification;
+                unitCommentDiv.innerText = doc.data().teacherComment;
+            }else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            } 
+        });
+
+        // db.collection("courses").doc("course1").collection("units").get().then((querySnapshot) => {
+        //     querySnapshot.forEach((doc) => {
+        //         console.log(doc);
+                
+        //     });
+        // });
+
+    }
     
     var checks = document.querySelectorAll(".coursecard__rateCheck");
     checks.forEach((check, index) =>{
@@ -80,7 +109,7 @@ window.addEventListener('load',()=>{
             console.log("nel");
             //aquí poner mensaje de alertaaaaaa
         } else {
-            gradeUnit();
+            setTeacherGrade();
             //poner aquí el estado ya calificado
             teacherGradeSections[1].classList.remove("coursecard__section--visible");
             teacherGradeSections[2].classList.add("coursecard__section--visible");
@@ -93,21 +122,17 @@ window.addEventListener('load',()=>{
         }
     })
 
-    function gradeUnit(){
+    function setTeacherGrade(){
         db.collection("courses").doc("course1").collection("units").doc("unit3").set({
-                    teacherCalificated : true,
-                    teacherCalification : unitGrade,
-                    teacherComment : unitComment
-                }, {merge:true}).then(() => {
-                    console.log("Document successfully written!");
-                })
-                .catch((error) => {
-                    console.error("Error writing document: ", error);
-                });;
-                // console.log("doc from db", doc.data().teacherCalificated);
-                // console.log("doc from db", doc.data().teacherCalification);
-                // console.log("doc from db", doc.data().teacherComment);
- 
+            teacherCalificated : true,
+            teacherCalification : unitGrade,
+            teacherComment : unitComment
+        }, {merge:true}).then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
     }
 
 

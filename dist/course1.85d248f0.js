@@ -283,6 +283,25 @@ window.addEventListener('load', function () {
   console.log(teacherGradeStates[0]);
   var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".textBtn");
   console.log(teacherGradeSeeMore);
+  getTeacherCalification();
+
+  function getTeacherCalification() {
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      console.log(doc);
+
+      if (doc.exist) {
+        console.log("Calificación", doc.data().teacherCalificated);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }); // db.collection("courses").doc("course1").collection("units").get().then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //         console.log(doc);
+    //     });
+    // });
+  }
+
   var checks = document.querySelectorAll(".coursecard__rateCheck");
   checks.forEach(function (check, index) {
     check.addEventListener('click', function () {
@@ -331,9 +350,6 @@ window.addEventListener('load', function () {
     }).catch(function (error) {
       console.error("Error writing document: ", error);
     });
-    ; // console.log("doc from db", doc.data().teacherCalificated);
-    // console.log("doc from db", doc.data().teacherCalification);
-    // console.log("doc from db", doc.data().teacherComment);
   }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

@@ -17,6 +17,7 @@
 /* Variables */
 :root{
     --nav-width: 90px;
+    --bottom-card-height: 70px;
     --right-aside-width: 350px;
     --top-nav-height: 120px;
 
@@ -137,10 +138,11 @@ img{
 }
 
 .textBtn{
+    cursor: pointer;
     display: flex;
     align-items: center;
     font-weight: 500;
-    //color: var(--second-color);
+    color: var(--second-color);
 }
 
 .ctaBtn{
