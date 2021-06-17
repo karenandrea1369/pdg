@@ -28,10 +28,10 @@
 
     &__main{
         position: relative;
-        height: calc(100vh - 160px);
-        background-color: var(--white-color);
+        height: calc(100vh - 140px);
+        //background-color: var(--white-color);
         margin: 20px 20px 0px;
-        padding: 40px;
+        //padding: 40px;
         border-start-start-radius: 5px;
         border-start-end-radius: 5px;
 
@@ -48,6 +48,23 @@
         &::-webkit-scrollbar-thumb {
             background-color: var(--gray-color-light);
             border-radius: 5px;
+        }
+
+        &InfoCourse{
+            background-color: var(--white-color);
+            padding: 30px;
+            & div{
+                margin-top: 20px;
+            }
+            & h3{
+                margin: 0;
+                display: inline-block;
+            }
+
+            & p{
+                margin: 0;
+                display: inline-block;
+            }
         }
     }
 
@@ -67,12 +84,12 @@
     &__header{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
         width: 100%;
 
         &Tab{
             position: relative;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 10px;
             color: var(--gray-color-light);
             cursor: pointer;
@@ -124,7 +141,8 @@
         &Content{
             height: 100%;
             position: absolute;
-            padding-right: 40px;
+            //padding-right: 40px;
+            //padding-bottom: 40px;
             visibility: hidden;
             opacity: 0;
             transform: scale(0.98);

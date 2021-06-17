@@ -7,6 +7,7 @@
 @import "./objects/statisticschart";
 @import "./objects/form";
 @import "./pages/course";
+@import "./objects/coursecard";
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
@@ -35,7 +36,7 @@
     --white-color: #FFFFFF;
     --black-color: #162036;
     --bg-color: #F1F2F6;
-    --tx-color: #162036;
+    --tx-color: #474F61;
     --color-lighten: #F6EBFF;
 
     /*Grays*/
@@ -64,7 +65,7 @@
     box-sizing: border-box;
 }
 body{
-    
+    box-sizing: border-box;
     position: relative;
     margin: 0;
     padding: 0;
@@ -106,10 +107,18 @@ h3{
     font-size: 18px;
     font-weight: 500;
 }
+
+p{
+    color: var(--tx-color);
+}
 ul{
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+li{
+    color: var(--tx-color);
 }
 a{
     text-decoration: none;
