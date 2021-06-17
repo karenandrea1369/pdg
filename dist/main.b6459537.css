@@ -872,6 +872,72 @@
   position: relative;
   margin-left: 15px;
 }
+.coursecard__studentQuestion h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.coursecard__studentQuestionBox {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid 1px var(--gray-color-light);
+  border-radius: 5px;
+  padding: 20px;
+}
+.coursecard__studentQuestionVisibility {
+  position: absolute;
+  right: 0px;
+  top: 20px;
+  margin: 0 20px;
+}
+.coursecard__studentQuestionVisibility label {
+  font-weight: 500;
+}
+.coursecard__studentQuestionVisibility input {
+  margin: 0;
+}
+.coursecard__studentQuestionType {
+  margin: 0;
+  margin-top: 15px;
+  font-weight: 500;
+  color: var(--gray-color-medium);
+}
+.coursecard__studentQuestionQuestion {
+  margin: 0;
+  margin-top: 6px;
+}
+.coursecard__studentQuestionInfo {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: var(--first-color);
+}
+.coursecard__studentQuestionInfo p {
+  margin: 0;
+  margin-left: 10px;
+  color: var(--first-color);
+}
+.coursecard__studentQuestionInfo ion-icon {
+  font-size: 20px;
+}
+.coursecard__studentQuestion ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.coursecard__studentQuestion ul li {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.coursecard__studentQuestion ul li p {
+  margin: 0;
+}
+.coursecard__studentQuestion ul li label {
+  width: 20px;
+}
+.coursecard__studentQuestion ul li input {
+  width: 400px;
+}
 
 /* Fonts */
 /* Variables */
@@ -982,6 +1048,10 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.bold {
+  font-weight: 600;
 }
 
 .container {

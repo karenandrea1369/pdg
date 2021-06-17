@@ -113,13 +113,12 @@ h3{
     font-weight: 500;
 }
 
-h4{
-    
-}
+h4{}
 
 p{
     color: var(--tx-color);
 }
+
 ul{
     margin: 0;
     padding: 0;
@@ -136,6 +135,10 @@ img{
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+.bold{
+    font-weight: 600;
 }
 
 .container{

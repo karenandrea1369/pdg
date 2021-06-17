@@ -63,7 +63,7 @@
             </nav>
 
             <main class="course__main tabs__body">
-                <!-- ----------------------- First Tab ----------------------- -->
+    <!-- ----------------------- First Tab ----------------------- -->
                 <div class="tabs__bodyContent ">
                     <div class="course__mainInfoCourse">
                         <h2>Información del curso</h2>
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 
-                <!-- ----------------------- Second Tab ----------------------- -->
+    <!-- ----------------------- Second Tab ----------------------- -->
                 <div class="tabs__bodyContent">
                     <div>
                         <h2>Unidad 1</h2>
@@ -182,17 +182,18 @@
                     </div>
                 </div>
 
-                <!-- ----------------------- Third Tab ----------------------- -->
+    <!-- ----------------------- Third Tab ----------------------- -->
                 <div class="tabs__bodyContent">
                     <h1>Unidad 2</h1>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
                 </div>
 
-                <!-- ----------------------- Fourth Tab ----------------------- -->
+    <!-- ----------------------- Fourth Tab ----------------------- -->
                 <div class="tabs__bodyContent tabs__bodyContent--active">
                     
                     <div class="coursecard__container">
-
+                        
+                        <!-- *********************** CARD *********************** -->
                         <div class="coursecard__card">
                             <div class="coursecard__section">
                                 <h1>Unidad 3</h1>
@@ -208,7 +209,8 @@
                                 </ul>
                             </div>
                         </div>
-
+                        
+                        <!-- *********************** CARD *********************** -->
                         <div class="coursecard__card" id="teacherGrade">
                             <div class="coursecard__section">
                                 <h2>1. Evaluación del curso</h2>
@@ -284,6 +286,7 @@
                             </div>
                         </div>
 
+                        <!-- *********************** CARD *********************** -->
                         <div class="coursecard__card" id="studentsQuestions">
                             <div class="coursecard__section">
                                 <h2>2. Evaluación para Estudiantes</h2>
@@ -291,42 +294,135 @@
                                 <p><strong>Nota: </strong>Todas las preguntas visibles, se les presentarán a los estudiantes como obligatorias. Algunas preguntas de este formulario siempre deben estar visibles.</p>
                             </div>
 
-                            <div class="coursecard__section">
+                            <div class="coursecard__section--visible coursecard__studentQuestion">
                                 <h3>Alineación con el syllabus</h3>
-
-                            </div>
-
-                            <div class="coursecard__bottom">
-                                <div class="coursecard__bottomState">
-                                    <h3>Estado:</h3>
-                                    <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
-                                        <p>Sin calificar</p>
-                                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                                        <!-- <ion-icon name="warning" ></ion-icon> -->
+                                <div class="coursecard__studentQuestionBox">
+                                    <div class="coursecard__studentQuestionVisibility">
+                                        <label for="q1">Visible</label>
+                                        <input id="q1" checked disabled type="checkbox">
                                     </div>
-                                    <div class="coursecard__bottomStateCard ">
-                                        <p>Calificado</p>
-                                        <ion-icon name="checkmark-circle"></ion-icon>
-                                        <!-- <ion-icon name="checkmark" ></ion-icon> -->
+                                    <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">1.</span> ¿En qué medida considera usted que alcanzó los objetivos específicos de esta unidad?</p>
+                                    <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
+                                    <p class="coursecard__studentQuestionQuestion">¿Por qué le da esta calificación?</p>
+                                </div>
+                                <div class="coursecard__studentQuestionBox">
+                                    <div class="coursecard__studentQuestionVisibility">
+                                        <label for="q2">Visible</label>
+                                        <input id="q2" checked type="checkbox">
                                     </div>
+                                    <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">2.</span> ¿En qué medida considera que las actividades de la unidad estaban enfocadas a ayudarte a alcanzar los objetivos específicos?</p>
+                                    <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
+                                    <p class="coursecard__studentQuestionQuestion">¿Por qué le da esta calificación?</p>
+                                </div>
+
+                                <h3>Motivación respecto a la metodología</h3>
+
+                                <div class="coursecard__studentQuestionBox">
+                                    <div class="coursecard__studentQuestionVisibility">
+                                        <label for="q3">Visible</label>
+                                        <input id="q3" checked type="checkbox">
+                                    </div>
+                                    <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">3.</span> ¿En qué medida las actividades de la unidad resultaron motivantes para ti?</p>
+                                </div>
+
+                                <div class="coursecard__studentQuestionBox">
+                                    <div class="coursecard__studentQuestionInfo">
+                                        <ion-icon name="information-circle"></ion-icon>
+                                        <p>Debes agregar las actividades (Máximo 3)</p>
+                                    </div>
+                                    <div class="coursecard__studentQuestionVisibility">
+                                        <label for="q4">Visible</label>
+                                        <input id="q4" checked type="checkbox">
+                                    </div>
+                                    <p class="coursecard__studentQuestionType">(Opción múltiple)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">4.</span> ¿Cual de las actividades que se realizaron en esta unidad te pareció la más chévere?</p>
+                                    <ul>
+                                        <li>
+                                            <label for="">a.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                        </li>
+                                        <li>
+                                            <label for="">b.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                        </li>
+                                        <li>
+                                            <label for="">c.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                        </li>
+                                    </ul>
+                                    <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
+                                    <p class="coursecard__studentQuestionQuestion">¿Por qué?</p>
+                                    <br>
+                                    <p class="coursecard__studentQuestionType">(Opción múltiple)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">5.</span> ¿Cual de las actividades que se realizaron en esta unidad te pareció la más chévere?</p>
+                                    <ul>
+                                        <li>
+                                            <p>a. Actividad 1</p>
+                                        </li>
+                                        <li>
+                                            <p>b. Actividad 2</p>
+                                        </li>
+                                        <li>
+                                            <p>c. Actividad 3</p>
+                                        </li>
+                                    </ul>
+                                    <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
+                                    <p class="coursecard__studentQuestionQuestion">¿Por qué?</p>
+                                    
+                                </div>
+
+                                <h3>Motivación respecto a la metodología</h3>
+                                <div class="coursecard__studentQuestionBox">
+                                    <div class="coursecard__studentQuestionInfo">
+                                        <ion-icon name="information-circle"></ion-icon>
+                                        <p>Puedes agregar aspectos adicionales (Máximo 3)</p>
+                                    </div>
+                                    <div class="coursecard__studentQuestionVisibility">
+                                        <label for="q5">Visible</label>
+                                        <input  id="q5" checked type="checkbox">
+                                    </div>
+                                    <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
+                                    <p class="coursecard__studentQuestionQuestion"><span class="bold">6.</span> En esta unidad, ¿cómo te evaluarías en cuánto a..?</p>
+                                    <ul>
+                                        <li>
+                                            <p>a. Disposición a aprender</p>
+                                        </li>
+                                        <li>
+                                            <p>b. Comprensión de los temas</p>
+                                        </li>
+                                        <li>
+                                            <p>c. Dominio de los conceptos</p>
+                                        </li>
+                                        <li>
+                                            <p>d. Compromiso</p>
+                                        </li>
+                                        <li>
+                                            <label for="">e.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                        </li>
+                                        <li>
+                                            <label for="">f.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                        </li>
+                                        <li>
+                                            <label for="">g.</label>
+                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                        </li>
+                                    </ul>
                                 </div>
                                 
-                                <div class="seeMoreBtn coursecard__bottomBtn  ">
-                                    <p>Ver más</p>
-                                    <ion-icon name="chevron-down-outline"></ion-icon>
-                                </div>
-
-                                <div class="ctaBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
-                                    Calificar
-                                </div>
-                                
                             </div>
+
+                            
 
                         </div>
                     </div>
                 </div>
 
-                <!-- ----------------------- Fifth Tab ----------------------- -->
+    <!-- ----------------------- Fifth Tab ----------------------- -->
                 <div class="tabs__bodyContent">
 
                 </div>
