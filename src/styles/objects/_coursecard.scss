@@ -22,15 +22,16 @@
 
         &:not(:first-child){
             margin: 30px 0;
-            position: relative;
-            visibility: visible;
+            position: absolute;
+            visibility: hidden;
             //background-color: wheat;
         }
 
-        &--hidden{
+        &--visible{
             &:not(:first-child){
-                position: absolute;
-                visibility: hidden;
+                position: relative;
+                visibility: visible;
+                
                 //background-color: wheat;
             } 
         }
@@ -135,6 +136,8 @@
             align-items: center;
 
             &Card{
+                position: absolute;
+                visibility: hidden;
                 display: flex;
                 height: 40px;
                 padding: 0 10px;
@@ -159,26 +162,19 @@
                     }
                 }
 
-                &--hidden{
-                    visibility: hidden;
-                }
-                
-            }
-
-        
-        }
-
-        &TextBtn{
-
-            &--hidden{
-                visibility: hidden;
+                &--visible{
+                    visibility: visible;
+                    position: relative;
+                } 
             }
         }
 
-        &CTA{
-
-            &--hidden{
-                visibility: hidden;
+        &Btn{
+            visibility: hidden;
+            position: absolute;
+            &--visible{
+                visibility: visible;
+                position: relative;
             }
         }
     }

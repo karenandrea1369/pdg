@@ -257,6 +257,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
+  //----------------------initialize variables---------------
   var auth = firebase.auth();
   var db = firebase.firestore();
   var expander = new _ExpandMenu.default('navBar', 'navBar');
@@ -270,44 +271,69 @@ window.addEventListener('load', function () {
     }).catch(function (error) {
       console.log(error.code);
     });
+  }); //----------------------teacher grades unit---------------
+
+  var unitGrade = "";
+  var unitComment = "";
+  var unitGradeDiv = document.getElementById("unitGrade");
+  var unitCommentDiv = document.getElementById("unitComment");
+  var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
+  console.log(teacherGradeSections[1]);
+  var teacherGradeStates = document.getElementById("teacherGrade").querySelectorAll(".coursecard__bottomStateCard");
+  console.log(teacherGradeStates[0]);
+  var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".textBtn");
+  console.log(teacherGradeSeeMore);
+  var checks = document.querySelectorAll(".coursecard__rateCheck");
+  checks.forEach(function (check, index) {
+    check.addEventListener('click', function () {
+      checks.forEach(function (check2) {
+        check2.classList.remove("coursecard__rateCheck--checked");
+      });
+      check.classList.add("coursecard__rateCheck--checked");
+      unitGrade = check.innerText;
+      console.log("nota", unitGrade);
+    });
   });
-  gradeUnit();
+  var teacherGradeComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment");
+  teacherGradeComment.addEventListener('keyup', function () {
+    unitComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment").value;
+    console.log("comment", unitComment);
+  });
+  var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".ctaBtn");
+  teacherGradeCTA.addEventListener('click', function () {
+    if (!teacherGradeSections[1].classList.contains("coursecard__section--visible")) {
+      teacherGradeSections[1].classList.add("coursecard__section--visible"); //aquí poner modo edicioooooooooon
+    } else if (unitGrade === "" || unitComment === "") {
+      console.log("nel"); //aquí poner mensaje de alertaaaaaa
+    } else {
+      gradeUnit(); //poner aquí el estado ya calificado
+
+      teacherGradeSections[1].classList.remove("coursecard__section--visible");
+      teacherGradeSections[2].classList.add("coursecard__section--visible");
+      teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
+      teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
+      teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
+      teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
+      unitGradeDiv.innerText = unitGrade;
+      unitCommentDiv.innerText = unitComment;
+    }
+  });
 
   function gradeUnit() {
-    var grade;
-    var comment;
-    var checks = document.querySelectorAll(".coursecard__rateCheck");
-    checks.forEach(function (check, index) {
-      check.addEventListener('click', function () {
-        checks.forEach(function (check2) {
-          check2.classList.remove("coursecard__rateCheck--checked");
-        });
-        check.classList.add("coursecard__rateCheck--checked");
-        grade = check.innerText;
-        console.log("nota", grade);
-      });
+    db.collection("courses").doc("course1").collection("units").doc("unit3").set({
+      teacherCalificated: true,
+      teacherCalification: unitGrade,
+      teacherComment: unitComment
+    }, {
+      merge: true
+    }).then(function () {
+      console.log("Document successfully written!");
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
     });
-    var teacherGradeComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment");
-    teacherGradeComment.addEventListener('keyup', function () {
-      comment = document.getElementById("teacherGrade").querySelector(".coursecard__comment").value;
-      console.log("comment", comment);
-    });
-    var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
-    console.log(teacherGradeSections[1]);
-    var teacherGradeStates = document.getElementById("teacherGrade").querySelectorAll(".coursecard__bottomStateCard");
-    console.log(teacherGradeStates[0]);
-    var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".coursecard__bottomTextBtn");
-    console.log(teacherGradeSeeMore);
-    var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".coursecard__bottomCTA");
-    console.log(teacherGradeCTA);
-    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
-      if (doc.exists) {
-        console.log("doc from db", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    });
+    ; // console.log("doc from db", doc.data().teacherCalificated);
+    // console.log("doc from db", doc.data().teacherCalification);
+    // console.log("doc from db", doc.data().teacherComment);
   }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

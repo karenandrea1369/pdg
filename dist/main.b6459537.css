@@ -715,12 +715,12 @@
 }
 .coursecard__section:not(:first-child) {
   margin: 30px 0;
-  position: relative;
-  visibility: visible;
-}
-.coursecard__section--hidden:not(:first-child) {
   position: absolute;
   visibility: hidden;
+}
+.coursecard__section--visible:not(:first-child) {
+  position: relative;
+  visibility: visible;
 }
 .coursecard__section:last-child {
   margin-bottom: 20px;
@@ -806,6 +806,8 @@
   align-items: center;
 }
 .coursecard__bottomStateCard {
+  position: absolute;
+  visibility: hidden;
   display: flex;
   height: 40px;
   padding: 0 10px;
@@ -828,14 +830,17 @@
   font-weight: 500;
   margin-right: 5px;
 }
-.coursecard__bottomStateCard--hidden {
-  visibility: hidden;
+.coursecard__bottomStateCard--visible {
+  visibility: visible;
+  position: relative;
 }
-.coursecard__bottomTextBtn--hidden {
+.coursecard__bottomBtn {
   visibility: hidden;
+  position: absolute;
 }
-.coursecard__bottomCTA--hidden {
-  visibility: hidden;
+.coursecard__bottomBtn--visible {
+  visibility: visible;
+  position: relative;
 }
 
 /* Fonts */

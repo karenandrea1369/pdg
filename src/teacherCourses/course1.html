@@ -234,16 +234,16 @@
                                 <textarea class="coursecard__comment" placeholder="Escribe un comentario"></textarea>
                             </div>
 
-                            <div class="coursecard__section coursecard__section--hidden">
+                            <div class="coursecard__section ">
                                 <h3>Alineación con el syllabus</h3>
                                 <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
                                 <div class="coursecard__gradeExplanation">
                                     <div>
-                                        <p class="coursecard__rateCheck--checked">1</p>
+                                        <p class="coursecard__rateCheck--checked" id="unitGrade">1</p>
                                     </div>
                                     <div>
                                         <h3>Das esta calificación porque...</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quas aspernatur dolorum tempore inventore incidunt, eos sit adipisci fugiat vel repudiandae natus corporis explicabo beatae suscipit ut quod minus veniam?</p>
+                                        <p id="unitComment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quas aspernatur dolorum tempore inventore incidunt, eos sit adipisci fugiat vel repudiandae natus corporis explicabo beatae suscipit ut quod minus veniam?</p>
                                     </div>
                                 </div>
                             </div>
@@ -251,24 +251,30 @@
                             <div class="coursecard__bottom">
                                 <div class="coursecard__bottomState">
                                     <h3>Estado:</h3>
-                                    <div class="coursecard__bottomStateCard">
+                                    <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
                                         <p>Sin calificar</p>
                                         <ion-icon name="warning" ></ion-icon>
                                     </div>
-                                    <div class="coursecard__bottomStateCard coursecard__bottomStateCard--hidden">
+                                    <div class="coursecard__bottomStateCard ">
                                         <p>Calificado</p>
                                         <ion-icon name="checkmark" ></ion-icon>
                                     </div>
                                 </div>
                                 
-                                <div class="coursecard__bottomTextBtn textBtn coursecard__bottomTextBtn--hidden">
+                                <div class="textBtn coursecard__bottomBtn  ">
                                     <p>Ver más</p>
                                     <ion-icon name="chevron-down-outline"></ion-icon>
                                 </div>
 
-                                <div class="coursecard__bottomCTA ctaBtn">
+                                <div class="ctaBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
                                     Calificar
                                 </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="coursecard__card" id="studentsQuestions">
+                            <div class="coursecard__section">
                                 
                             </div>
                         </div>
