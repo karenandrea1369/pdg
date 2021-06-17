@@ -36,4 +36,53 @@ window.addEventListener('load',()=>{
           });
     })
 
+    gradeUnit();
+
+    function gradeUnit(){
+
+        var grade;
+        var comment;
+        
+        var checks = document.querySelectorAll(".coursecard__rateCheck");
+        checks.forEach((check, index) =>{
+            check.addEventListener('click', ()=>{
+                checks.forEach(check2 =>{
+                    check2.classList.remove("coursecard__rateCheck--checked")
+                });
+                check.classList.add("coursecard__rateCheck--checked");
+                grade = check.innerText;
+                console.log("nota",grade);
+            });
+        })
+        
+        var teacherGradeComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment");
+        teacherGradeComment.addEventListener('keyup', ()=>{
+            comment = document.getElementById("teacherGrade").querySelector(".coursecard__comment").value;
+            console.log("comment", comment);
+        })
+
+        var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
+        console.log(teacherGradeSections[1]);
+    
+        var teacherGradeStates = document.getElementById("teacherGrade").querySelectorAll(".coursecard__bottomStateCard");
+        console.log(teacherGradeStates[0]);
+    
+        var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".coursecard__bottomTextBtn");
+        console.log(teacherGradeSeeMore);
+    
+        var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".coursecard__bottomCTA");
+        console.log(teacherGradeCTA);
+
+        db.collection("courses").doc("course1").collection("units").doc("unit3").get().then((doc) => {
+            if (doc.exists) {
+                console.log("doc from db", doc.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            } 
+        
+        });
+    }
+
+
 });

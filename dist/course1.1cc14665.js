@@ -271,6 +271,44 @@ window.addEventListener('load', function () {
       console.log(error.code);
     });
   });
+  gradeUnit();
+
+  function gradeUnit() {
+    var grade;
+    var comment;
+    var checks = document.querySelectorAll(".coursecard__rateCheck");
+    checks.forEach(function (check, index) {
+      check.addEventListener('click', function () {
+        checks.forEach(function (check2) {
+          check2.classList.remove("coursecard__rateCheck--checked");
+        });
+        check.classList.add("coursecard__rateCheck--checked");
+        grade = check.innerText;
+        console.log("nota", grade);
+      });
+    });
+    var teacherGradeComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment");
+    teacherGradeComment.addEventListener('keyup', function () {
+      comment = document.getElementById("teacherGrade").querySelector(".coursecard__comment").value;
+      console.log("comment", comment);
+    });
+    var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
+    console.log(teacherGradeSections[1]);
+    var teacherGradeStates = document.getElementById("teacherGrade").querySelectorAll(".coursecard__bottomStateCard");
+    console.log(teacherGradeStates[0]);
+    var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".coursecard__bottomTextBtn");
+    console.log(teacherGradeSeeMore);
+    var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".coursecard__bottomCTA");
+    console.log(teacherGradeCTA);
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      if (doc.exists) {
+        console.log("doc from db", doc.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    });
+  }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

@@ -714,7 +714,16 @@
   position: relative;
 }
 .coursecard__section:not(:first-child) {
-  margin-top: 30px;
+  margin: 30px 0;
+  position: relative;
+  visibility: visible;
+}
+.coursecard__section--hidden:not(:first-child) {
+  position: absolute;
+  visibility: hidden;
+}
+.coursecard__section:last-child {
+  margin-bottom: 20px;
 }
 .coursecard__section textarea {
   resize: none;
@@ -740,44 +749,93 @@
   justify-content: center;
   align-items: center;
 }
-.coursecard__rate input[type=checkbox] {
-  position: fixed;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-.coursecard__rate input[type=checkbox]:checked + label {
-  background-color: var(--second-color-light);
-  color: var(--white-color);
-  border: var(--second-color-light) 3px solid;
-  transition: 0.3s;
-}
-.coursecard__rate label {
-  transition: 0.3s;
-  box-sizing: border-box;
-  padding: 10px 15px;
-  width: 30px;
-  height: 30px;
+.coursecard__rateCheck {
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 30px;
   background-color: var(--white-color);
   border: #758BFD 3px solid;
   color: #758BFD;
   font-weight: 500;
   margin-left: 10px;
+  cursor: pointer;
 }
-.coursecard__rate label:last-child {
+.coursecard__rateCheck:last-child {
   margin-right: 10px;
+}
+.coursecard__rateCheck--checked {
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  width: 45px;
+  height: 45px;
+  border-radius: 30px;
+  background-color: var(--second-color-light);
+  color: var(--white-color);
+  border: var(--second-color-light) 3px solid;
+}
+.coursecard__gradeExplanation {
+  display: flex;
+}
+.coursecard__gradeExplanation div:first-child {
+  width: 10%;
+  margin: 0 20px;
+}
+.coursecard__gradeExplanation div:last-child {
+  width: 90%;
 }
 .coursecard__bottom {
   position: absolute;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 50px;
+  padding: 30px 30px;
+  height: 70px;
   left: 0;
   bottom: calc(-height);
   background-color: var(--gray-color-light);
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;
+}
+.coursecard__bottomState {
+  display: flex;
+  align-items: center;
+}
+.coursecard__bottomStateCard {
+  display: flex;
+  height: 40px;
+  padding: 0 10px;
+  margin-left: 10px;
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  color: var(--first-color);
+}
+.coursecard__bottomStateCard p {
+  color: var(--first-color);
+  font-weight: 500;
+  margin-right: 5px;
+}
+.coursecard__bottomStateCard:last-child {
+  color: var(--second-color);
+}
+.coursecard__bottomStateCard:last-child p {
+  color: var(--second-color);
+  font-weight: 500;
+  margin-right: 5px;
+}
+.coursecard__bottomStateCard--hidden {
+  visibility: hidden;
+}
+.coursecard__bottomTextBtn--hidden {
+  visibility: hidden;
+}
+.coursecard__bottomCTA--hidden {
+  visibility: hidden;
 }
 
 /* Fonts */
@@ -895,6 +953,24 @@ img {
   margin: 0;
   padding: 0;
   color: var(--black-color);
+}
+
+.textBtn {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.ctaBtn {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 768px) {

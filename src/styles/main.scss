@@ -136,6 +136,25 @@ img{
     color: var(--black-color);
 }
 
+.textBtn{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    //color: var(--second-color);
+}
+
+.ctaBtn{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
 
 
 @media screen and (min-width: 768px){
