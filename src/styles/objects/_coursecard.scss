@@ -30,15 +30,12 @@
             margin: 30px 0;
             position: absolute;
             visibility: hidden;
-            //background-color: wheat;
         }
 
         &--visible{
             &:not(:first-child){
                 position: relative;
                 visibility: visible;
-                
-                //background-color: wheat;
             } 
         }
 
@@ -135,11 +132,20 @@
         border-end-end-radius: 5px;
         border-end-start-radius: 5px;
 
-        
-
-        &State{
+        &StatesContainer{
             display: flex;
             align-items: center;
+        }
+        &State{
+            position: absolute;
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+
+            &--visible{
+                position: relative;
+                visibility: visible;
+            }
 
             &Card{
                 position: absolute;
@@ -173,14 +179,32 @@
                     position: relative;
                 } 
             }
+
+            &Alert{
+                display: flex;
+                align-items: center;
+                position: absolute;
+                visibility: hidden;
+                color: var(--first-color);
+
+                &--visible{
+                    position: relative;
+                    visibility: visible;
+                }
+            }
         }
 
+        &BtnsContainer{
+            display: flex;
+            align-items: center;
+        }
         &Btn{
             visibility: hidden;
             position: absolute;
             &--visible{
                 visibility: visible;
                 position: relative;
+                margin-left: 15px;
             }
         }
     }

@@ -45,22 +45,21 @@ window.addEventListener('load',()=>{
     var unitCommentDiv = document.getElementById("unitComment");
 
     var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
-    console.log(teacherGradeSections[1]);
 
     var teacherGradeStates = document.getElementById("teacherGrade").querySelectorAll(".coursecard__bottomStateCard");
-    console.log(teacherGradeStates[0]);
 
-    var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".textBtn");
-    console.log(teacherGradeSeeMore);
+    var teacherGradeSeeMore = document.getElementById("teacherGrade").querySelector(".seeMoreBtn");
 
+    var teacherGradeCancel = document.getElementById("teacherGrade").querySelector(".secondaryBtn");
+    
     getTeacherGrade();
     function getTeacherGrade (){
         db.collection("courses").doc("course1").collection("units").doc("unit3").get().then((doc) =>{
-            console.log(doc);
+            //.log(doc);
             if(doc.exists && doc.data().teacherCalificated){
                 console.log("Calificación", doc.data().teacherCalificated);
                 teacherGradeSections[1].classList.remove("coursecard__section--visible");
-                teacherGradeSections[2].classList.add("coursecard__section--visible");
+                teacherGradeSections[2].classList.remove("coursecard__section--visible");
                 teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
                 teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
                 teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
@@ -69,17 +68,9 @@ window.addEventListener('load',()=>{
                 unitCommentDiv.innerText = doc.data().teacherComment;
             }else {
                 // doc.data() will be undefined in this case
-                console.log("No such document!");
+                //console.log("No such document!");
             } 
         });
-
-        // db.collection("courses").doc("course1").collection("units").get().then((querySnapshot) => {
-        //     querySnapshot.forEach((doc) => {
-        //         console.log(doc);
-                
-        //     });
-        // });
-
     }
     
     var checks = document.querySelectorAll(".coursecard__rateCheck");
@@ -90,7 +81,7 @@ window.addEventListener('load',()=>{
             });
             check.classList.add("coursecard__rateCheck--checked");
             unitGrade = check.innerText;
-            console.log("nota", unitGrade);
+            validateGradeInput();
         });
     })
     
@@ -98,27 +89,72 @@ window.addEventListener('load',()=>{
     teacherGradeComment.addEventListener('keyup', ()=>{
         unitComment = document.getElementById("teacherGrade").querySelector(".coursecard__comment").value;
         console.log("comment", unitComment);
+        validateGradeInput();
     })
 
-    var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".ctaBtn");
+    var teacherGradeCTA = document.getElementById("teacherGrade").querySelector(".primaryBtn");
+
+    validateGradeInput();
+    function validateGradeInput(){
+        if(teacherGradeSections[1].classList.contains("coursecard__section--visible")){
+            if(unitGrade === "" || unitComment === ""){
+                teacherGradeCTA.classList.add("primaryBtn--disabled");
+            } else if(unitGrade != "" && unitComment != ""){
+                teacherGradeCTA.classList.remove("primaryBtn--disabled");
+            }
+        }
+    }
     teacherGradeCTA.addEventListener('click', ()=>{
         if(!teacherGradeSections[1].classList.contains("coursecard__section--visible")){
             teacherGradeSections[1].classList.add("coursecard__section--visible");
+            validateGradeInput();
             //aquí poner modo edicioooooooooon
+            document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.remove("coursecard__bottomState--visible");
+            document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateCard").classList.remove("coursecard__bottomStateCard--visible");
+            teacherGradeCancel.classList.add("coursecard__bottomBtn--visible");
+            //teacherGradeCTA.classList.add("primaryBtn--disabled");
         } else if(unitGrade === "" || unitComment === ""){
             console.log("nel");
+            document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible");
             //aquí poner mensaje de alertaaaaaa
         } else {
             setTeacherGrade();
             //poner aquí el estado ya calificado
+            teacherGradeCTA.classList.remove("primaryBtn--disabled");
+            teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
+            document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+            document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
             teacherGradeSections[1].classList.remove("coursecard__section--visible");
             teacherGradeSections[2].classList.add("coursecard__section--visible");
             teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
             teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
             teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
-            teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
+            teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible", "seeMoreBtn--opened");
+            teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
             unitGradeDiv.innerText = unitGrade;
             unitCommentDiv.innerText = unitComment;
+        }
+    })
+    
+    teacherGradeCancel.addEventListener('click', ()=>{
+        teacherGradeCTA.classList.remove("primaryBtn--disabled");
+        document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+        document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
+        teacherGradeSections[1].classList.remove("coursecard__section--visible");
+        teacherGradeSections[2].classList.remove("coursecard__section--visible");
+        teacherGradeStates[0].classList.add("coursecard__bottomStateCard--visible");
+        teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
+    });
+
+    teacherGradeSeeMore.addEventListener('click', ()=>{
+        if(!teacherGradeSections[2].classList.contains("coursecard__section--visible")){
+            teacherGradeSections[2].classList.add("coursecard__section--visible");
+            teacherGradeSeeMore.classList.add("seeMoreBtn--opened");
+            teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
+        } else {
+            teacherGradeSections[2].classList.remove("coursecard__section--visible");
+            teacherGradeSeeMore.classList.remove("seeMoreBtn--opened");
+            teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
         }
     })
 

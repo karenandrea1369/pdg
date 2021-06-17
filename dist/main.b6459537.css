@@ -687,7 +687,7 @@
   visibility: hidden;
   opacity: 0;
   transform: scale(0.98);
-  transition: opacity 400ms ease-in-out 0ms, transform 400ms ease-in-out 0ms;
+  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms;
 }
 .tabs__bodyContent--active {
   height: 100%;
@@ -805,9 +805,19 @@
   border-end-end-radius: 5px;
   border-end-start-radius: 5px;
 }
-.coursecard__bottomState {
+.coursecard__bottomStatesContainer {
   display: flex;
   align-items: center;
+}
+.coursecard__bottomState {
+  position: absolute;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+}
+.coursecard__bottomState--visible {
+  position: relative;
+  visibility: visible;
 }
 .coursecard__bottomStateCard {
   position: absolute;
@@ -838,6 +848,21 @@
   visibility: visible;
   position: relative;
 }
+.coursecard__bottomStateAlert {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  visibility: hidden;
+  color: var(--first-color);
+}
+.coursecard__bottomStateAlert--visible {
+  position: relative;
+  visibility: visible;
+}
+.coursecard__bottomBtnsContainer {
+  display: flex;
+  align-items: center;
+}
 .coursecard__bottomBtn {
   visibility: hidden;
   position: absolute;
@@ -845,6 +870,7 @@
 .coursecard__bottomBtn--visible {
   visibility: visible;
   position: relative;
+  margin-left: 15px;
 }
 
 /* Fonts */
@@ -867,12 +893,13 @@
   --second-color-light: #9D4EDD;
   --second-color-lilac: #C175FF;
   --white-color: #FFFFFF;
-  --black-color: #162036;
+  --black-color: #474F61;
   --bg-color: #F1F2F6;
   --tx-color: #474F61;
   --color-lighten: #F6EBFF;
   /*Grays*/
   --gray-color-light: #D9D9D9;
+  --gray-color-medium: #BFBCBA;
   /* Box Shadow */
   --shadow1: 0px 2px 6px rgba(0, 0, 0, 0.16);
   /* Fonts */
@@ -900,7 +927,6 @@ body {
   height: 100%;
   width: 100%;
   font-family: var(--body-font);
-  transition: 0.5s;
   background-color: var(--bg-color);
 }
 body ::-webkit-scrollbar {
@@ -917,13 +943,13 @@ body::-webkit-scrollbar-thumb {
 
 h1 {
   margin: 0;
-  color: var(--first-color);
+  color: var(--second-color);
   font-size: 22px;
 }
 
 h2 {
   margin: 0;
-  color: var(--second-color);
+  color: var(--black-color);
   font-size: 20px;
 }
 
@@ -965,24 +991,58 @@ img {
   color: var(--black-color);
 }
 
-.textBtn {
+.seeMoreBtn {
   cursor: pointer;
   display: flex;
   align-items: center;
   font-weight: 500;
+  transition: transform 0.3s;
   color: var(--second-color);
 }
+.seeMoreBtn p {
+  color: var(--second-color);
+}
+.seeMoreBtn--opened ion-icon {
+  transition: transform 0.3s;
+  transform: rotate(0.5turn);
+}
 
-.ctaBtn {
+.primaryBtn {
   display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   background-color: var(--first-color);
   color: var(--white-color);
+  font-weight: 500;
   height: 40px;
+  width: 120px;
   padding: 0 10px;
   border-radius: 5px;
+}
+.primaryBtn--disabled {
+  cursor: default;
+  background-color: var(--gray-color-medium);
+}
+
+.secondaryBtn {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  border: 3px solid var(--first-color);
+  color: var(--first-color);
+  font-weight: 500;
+  height: 40px;
+  width: 120px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+.secondaryBtn--disabled {
+  cursor: default;
+  border: 3px solid var(--gray-color-medium);
+  color: var(--gray-color-medium);
 }
 
 @media screen and (min-width: 768px) {

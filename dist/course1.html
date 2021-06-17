@@ -195,7 +195,7 @@
 
                         <div class="coursecard__card">
                             <div class="coursecard__section">
-                                <h2>Unidad 3</h2>
+                                <h1>Unidad 3</h1>
                                 <h3>Objetivos específicos de la unidad:</h3>
                                 <p>Justificar y comunicar la solución</p>
                                 <ul>
@@ -209,7 +209,6 @@
                             </div>
                         </div>
 
-
                         <div class="coursecard__card" id="teacherGrade">
                             <div class="coursecard__section">
                                 <h2>1. Evaluación del curso</h2>
@@ -218,7 +217,7 @@
 
                             <div class="coursecard__section">
                                 <h3>Alineación con el syllabus</h3>
-                                <p>¿En qué medida considera usted que los estudiantes alcanzaron los objetivos específicos de esta unidad?</p>
+                                <p>¿En qué medida considera usted que los estudiantes alcanzaron los objetivos específicos de esta unidad?*</p>
                                 <div class="coursecard__rate">
                                     <p>Poco</p>
                                     <div>
@@ -230,7 +229,7 @@
                                     </div>
                                     <p>Mucho</p>
                                 </div>
-                                <p>¿Por qué das esta calificación?</p>
+                                <p>¿Por qué das esta calificación?*</p>
                                 <textarea class="coursecard__comment" placeholder="Escribe un comentario"></textarea>
                             </div>
 
@@ -249,25 +248,37 @@
                             </div>
 
                             <div class="coursecard__bottom">
-                                <div class="coursecard__bottomState">
-                                    <h3>Estado:</h3>
-                                    <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
-                                        <p>Sin calificar</p>
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Sin calificar</p>
+                                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        </div>
+                                        <div class="coursecard__bottomStateCard ">
+                                            <p>Calificado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                    <div class="coursecard__bottomStateAlert">
                                         <ion-icon name="warning"></ion-icon>
+                                        <p>Todos los campos son obligatorios</p>
                                     </div>
-                                    <div class="coursecard__bottomStateCard ">
-                                        <p>Calificado</p>
-                                        <ion-icon name="checkmark"></ion-icon>
-                                    </div>
-                                </div>
-                                
-                                <div class="textBtn coursecard__bottomBtn  ">
-                                    <p>Ver más</p>
-                                    <ion-icon name="chevron-down-outline"></ion-icon>
                                 </div>
 
-                                <div class="ctaBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
-                                    Calificar
+                                
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__bottomBtn">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+    
+                                    <div class="secondaryBtn coursecard__bottomBtn ">
+                                        Cancelar
+                                    </div>
+                                    <div class="primaryBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
+                                        Calificar
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -290,15 +301,17 @@
                                     <h3>Estado:</h3>
                                     <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
                                         <p>Sin calificar</p>
-                                        <ion-icon name="warning"></ion-icon>
+                                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        <!-- <ion-icon name="warning" ></ion-icon> -->
                                     </div>
                                     <div class="coursecard__bottomStateCard ">
                                         <p>Calificado</p>
-                                        <ion-icon name="checkmark"></ion-icon>
+                                        <ion-icon name="checkmark-circle"></ion-icon>
+                                        <!-- <ion-icon name="checkmark" ></ion-icon> -->
                                     </div>
                                 </div>
                                 
-                                <div class="textBtn coursecard__bottomBtn  ">
+                                <div class="seeMoreBtn coursecard__bottomBtn  ">
                                     <p>Ver más</p>
                                     <ion-icon name="chevron-down-outline"></ion-icon>
                                 </div>
