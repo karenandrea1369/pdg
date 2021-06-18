@@ -309,5 +309,17 @@
         }
     }
 
+    &__answers{
+        position: absolute !important;
+        display: none !important;
+        visibility: hidden !important;
+
+        &--visible{
+            position: relative !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+    }
+
 
 }

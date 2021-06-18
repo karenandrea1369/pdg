@@ -548,6 +548,24 @@ window.addEventListener('load', function () {
       });
     }
   }
+
+  var answersSections = document.querySelectorAll(".coursecard__answers");
+  var seeMoreAnswers = document.querySelectorAll(".coursecard__answersBtn");
+  seeMoreAnswers.forEach(function (btn, index) {
+    btn.addEventListener('click', function () {
+      if (!btn.classList.contains("seeMoreBtn--disabled")) {
+        if (!btn.classList.contains("seeMoreBtn--opened")) {
+          btn.classList.add("seeMoreBtn--opened");
+          btn.getElementsByTagName("p")[0].innerText = "Ocultar respuestas";
+          answersSections[index].classList.add("coursecard__answers--visible");
+        } else {
+          btn.classList.remove("seeMoreBtn--opened");
+          btn.getElementsByTagName("p")[0].innerText = "Ver respuestas";
+          answersSections[index].classList.remove("coursecard__answers--visible");
+        }
+      }
+    });
+  });
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -577,7 +595,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61650" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53287" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

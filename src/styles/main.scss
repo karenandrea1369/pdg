@@ -221,6 +221,11 @@ img{
             transform: rotate(0.5turn);
         }
     }
+
+    &--disabled{
+        cursor: default;
+        background-color: var(--gray-color-medium);
+    }
 }
 
 .primaryBtn{
@@ -232,8 +237,8 @@ img{
     color: var(--white-color);
     font-weight: 500;
     height: 40px;
-    width: 120px;
-    padding: 0 10px;
+    min-width: 150px;
+    padding: 0 20px;
     border-radius: 5px;
 
     &--disabled{
@@ -252,7 +257,8 @@ img{
     color: var(--first-color);
     font-weight: 500;
     height: 40px;
-    width: 120px;
+    min-width: 150px;
+    padding: 0 20px;
     padding: 0 10px;
     border-radius: 5px;
 

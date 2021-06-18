@@ -684,6 +684,7 @@
 .tabs__bodyContent {
   height: 100%;
   position: absolute;
+  display: none;
   visibility: hidden;
   opacity: 0;
   transform: scale(0.98);
@@ -691,6 +692,7 @@
 }
 .tabs__bodyContent--active {
   height: 100%;
+  display: block;
   visibility: visible;
   opacity: 1;
   transform: scale(1);
@@ -953,6 +955,16 @@
 .coursecard__studentQuestion ul li input {
   width: 400px;
 }
+.coursecard__answers {
+  position: absolute !important;
+  display: none !important;
+  visibility: hidden !important;
+}
+.coursecard__answers--visible {
+  position: relative !important;
+  display: block !important;
+  visibility: visible !important;
+}
 
 /* Fonts */
 /* Variables */
@@ -1146,6 +1158,10 @@ input:checked + .slider:before {
   transition: transform 0.3s;
   transform: rotate(0.5turn);
 }
+.seeMoreBtn--disabled {
+  cursor: default;
+  background-color: var(--gray-color-medium);
+}
 
 .primaryBtn {
   display: flex;
@@ -1156,8 +1172,8 @@ input:checked + .slider:before {
   color: var(--white-color);
   font-weight: 500;
   height: 40px;
-  width: 120px;
-  padding: 0 10px;
+  min-width: 150px;
+  padding: 0 20px;
   border-radius: 5px;
 }
 .primaryBtn--disabled {
@@ -1175,7 +1191,8 @@ input:checked + .slider:before {
   color: var(--first-color);
   font-weight: 500;
   height: 40px;
-  width: 120px;
+  min-width: 150px;
+  padding: 0 20px;
   padding: 0 10px;
   border-radius: 5px;
 }

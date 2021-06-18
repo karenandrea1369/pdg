@@ -143,6 +143,7 @@
             position: absolute;
             //padding-right: 40px;
             //padding-bottom: 40px;
+            display: none;
             visibility: hidden;
             opacity: 0;
             transform: scale(0.98);
@@ -152,6 +153,7 @@
                 &--active{
                     height: 100%;
                     //width: 100%;
+                    display: block;
                     visibility: visible;
                     opacity: 1;
                     transform: scale(1);

@@ -54,9 +54,9 @@
                 <h2 class="">Proyecto Integrador II</h2>
                 <div class="tabs__header">
                     <p class="tabs__headerTab ">Curso</p>
-                    <p class="tabs__headerTab" >Unidad 1</p>
+                    <p class="tabs__headerTab tabs__headerTab--active" >Unidad 1</p>
                     <p class="tabs__headerTab" >Unidad 2</p>
-                    <p class="tabs__headerTab tabs__headerTab--active" >Unidad 3</p>
+                    <p class="tabs__headerTab " >Unidad 3</p>
                     <p class="tabs__headerTab" >Reporte</p>
                 </div>
                 <div class="tabs__headerIndicator"></div>
@@ -166,30 +166,303 @@
                 </div>
                 
     <!-- ----------------------- Second Tab ----------------------- -->
-                <div class="tabs__bodyContent">
-                    <div>
-                        <h2>Unidad 1</h2>
-                        <p>Identificación de problema, necesidades y/o oportunidades</p>
-                        <ul>
-                            <li>
-                                1.1. Identificar algunas herramientas para definir los elementos que componen el problema, la necesidad y/o la
-                                oportunidad
-                            </li>
-                            <li>
-                                1.2. Descomponer el problema, la necesidad y/o la oportunidad en sus partes
-                            </li>
-                        </ul>
+                <div class="tabs__bodyContent tabs__bodyContent--active">
+                    <div class="coursecard__container">
+                        
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card">
+                            <div class="coursecard__section">
+                                <h1>Unidad 1</h1>
+                                <h3>Objetivos específicos de la unidad:</h3>
+                                <p>Identificación de problema, necesidades y/o oportunidades</p>
+                                <ul>
+                                    <li>
+                                        1.1. Identificar algunas herramientas para definir los elementos que componen el problema, la necesidad y/o la oportunidad.
+                                    </li>
+                                    <li>
+                                        1.2. Descomponer el problema, la necesidad y/o la oportunidad en sus partes.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card">
+                            <div class="coursecard__section">
+                                <h2>1. Evaluación del curso</h2>
+                                <p>Califica a los estudiantes respecto a los objetivos especificos de cada unidad, esta información será comparada con la que ellos ingresen.</p>
+                            </div>
+
+                            <div class="coursecard__section ">
+                                <h3>Alineación con el syllabus</h3>
+                                <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
+                                <div class="coursecard__gradeExplanation">
+                                    <div>
+                                        <p class="coursecard__rateCheck--checked" id="unitGrade">4</p>
+                                    </div>
+                                    <div>
+                                        <h3>Das esta calificación porque...</h3>
+                                        <p id="unitComment">
+                                            Los estudiantes lograron gran parte de los objetivos de esta unidad, pero les faltó saber aplicarlos mejor.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Calificado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                         <!-- *********************** CARD *********************** -->
+                         <div class="coursecard__card" >
+                            <div class="coursecard__section">
+                                <h2>2. Evaluación para Estudiantes</h2>
+                                <p>Esta serán las preguntas que se le enviarán a tus estudiantes para que evalúen la unidad.</p>
+                                <p><strong>Nota: </strong>Todas las preguntas visibles, se les presentarán a los estudiantes como obligatorias. Algunas preguntas de este formulario siempre deben estar visibles.</p>
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Enviado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card" >
+                            <div class="coursecard__section">
+                                <h2>3. Resultados de la evaluación para Estudiantes</h2>
+                                <p>Aquí puedes visualizar lo que respondieron tus estudiantes a las preguntas que les enviaste.</p>
+                            </div>
+
+                            <div class="coursecard__section coursecard__answers ">
+                                <h3>Alineación con el syllabus</h3>
+                                <p>1. ¿En qué medida considera usted que alcanzó los objetivos específicos de esta unidad?
+                                </p>
+                                <img src="../resources/unit1_q1_2021-1.png" alt="">
+                                <p>2. ¿En qué medida considera que las actividades de la unidad estaban enfocadas a ayudarte a alcanzar los objetivos específicos?
+                                </p>
+                                <img src="../resources/unit1_q2_2021-1.png" alt="">
+
+                                <br>
+                                <h3>Motivación respecto a la metodología</h3>
+                                <p>3. ¿En qué medida las actividades de la unidad resultaron motivantes para ti?
+                                </p>
+                                <img src="../resources/unit1_q3_2021-1.png" alt="">
+                                <p>4. ¿Cual de las actividades que se realizaron en esta unidad te pareció la más chévere?
+                                </p>
+                                <img src="../resources/unit1_q4_2021-1.png" alt="">
+                                <p>4. ¿Cual de las actividades que se realizaron en esta unidad te pareció la menos chévere?
+                                </p>
+                                <img src="../resources/unit1_q5_2021-1.png" alt="">
+
+                                <br>
+                                <h3>Autoevaluación</h3>
+                                <p>6. En esta unidad, ¿cómo te evaluarías en cuánto a..?
+                                </p>
+                                <img src="../resources/unit1_q6_2021-1.png" alt="">
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard">
+                                            <p>Sin responder</p>
+                                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        </div>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Respondido</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__answersBtn coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
     <!-- ----------------------- Third Tab ----------------------- -->
                 <div class="tabs__bodyContent">
-                    <h1>Unidad 2</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto amet aperiam consequatur autem! Voluptatum voluptates odio ea! Maiores dolor cumque dolorem pariatur cupiditate eaque minima suscipit, voluptas ea nemo deserunt?</p>
+                    <div class="coursecard__container">
+                        
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card">
+                            <div class="coursecard__section">
+                                <h1>Unidad 2</h1>
+                                <h3>Objetivos específicos de la unidad:</h3>
+                                <p>Desarrollo de la solución de diseño</p>
+                                <ul>
+                                    <li>
+                                        2.1. Definir la solución, utilizando metodologías para la generación de ideas.
+                                    </li>
+                                    <li>
+                                        2.2. Desarrollar la solución mediante prototipos funcionales.
+                                    </li>
+                                    <li>
+                                        2.3. Iterar soluciones a la problemática para acercarse a una solución final.
+                                    </li>
+                                    <li>
+                                        2.4. Evaluar y ajustar la solución final.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card">
+                            <div class="coursecard__section">
+                                <h2>1. Evaluación del curso</h2>
+                                <p>Califica a los estudiantes respecto a los objetivos especificos de cada unidad, esta información será comparada con la que ellos ingresen.</p>
+                            </div>
+
+                            <div class="coursecard__section ">
+                                <h3>Alineación con el syllabus</h3>
+                                <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
+                                <div class="coursecard__gradeExplanation">
+                                    <div>
+                                        <p class="coursecard__rateCheck--checked" id="unitGrade">5</p>
+                                    </div>
+                                    <div>
+                                        <h3>Das esta calificación porque...</h3>
+                                        <p id="unitComment">
+                                            Alcanzaron los objetivos y lograron aplicarlos a las actividades propuestas.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Calificado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                         <!-- *********************** CARD *********************** -->
+                         <div class="coursecard__card">
+                            <div class="coursecard__section">
+                                <h2>2. Evaluación para Estudiantes</h2>
+                                <p>Esta serán las preguntas que se le enviarán a tus estudiantes para que evalúen la unidad.</p>
+                                <p><strong>Nota: </strong>Todas las preguntas visibles, se les presentarán a los estudiantes como obligatorias. Algunas preguntas de este formulario siempre deben estar visibles.</p>
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Enviado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card" >
+                            <div class="coursecard__section">
+                                <h2>3. Resultados de la evaluación para Estudiantes</h2>
+                                <p>Aquí puedes visualizar lo que respondieron tus estudiantes a las preguntas que les enviaste.</p>
+                            </div>
+
+                            <div class="coursecard__section coursecard__answers ">
+                                <h3>Alineación con el syllabus</h3>
+                                <p>1. ¿En qué medida considera usted que alcanzó los objetivos específicos de esta unidad?
+                                </p>
+                                <img src="../resources/unit2_q1_2021-1.png" alt="">
+                                <p>2. ¿En qué medida considera que las actividades de la unidad estaban enfocadas a ayudarte a alcanzar los objetivos específicos?
+                                </p>
+                                <img src="../resources/unit2_q2_2021-1.png" alt="">
+
+                                <br>
+                                <h3>Motivación respecto a la metodología</h3>
+                                <p>3. ¿En qué medida las actividades de la unidad resultaron motivantes para ti?
+                                </p>
+                                <img src="../resources/unit2_q3_2021-1.png" alt="">
+
+                                <br>
+                                <h3>Autoevaluación</h3>
+                                <p>6. En esta unidad, ¿cómo te evaluarías en cuánto a..?
+                                </p>
+                                <img src="../resources/unit2_q6_2021-1.png" alt="">
+                            </div>
+                            
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard">
+                                            <p>Sin responder</p>
+                                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        </div>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Respondido</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__answersBtn coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
     <!-- ----------------------- Fourth Tab ----------------------- -->
-                <div class="tabs__bodyContent tabs__bodyContent--active">
+                <div class="tabs__bodyContent ">
                     
                     <div class="coursecard__container">
                         
@@ -393,7 +666,7 @@
                                     
                                 </div>
 
-                                <h3>Motivación respecto a la metodología</h3>
+                                <h3>Autoevaluación</h3>
                                 <div class="coursecard__studentQuestionBox">
                                     <div class="coursecard__studentQuestionInfo">
                                         <ion-icon name="information-circle"></ion-icon>
@@ -468,12 +741,73 @@
                                         Cancelar
                                     </div>
                                     <div class="primaryBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
-                                        Calificar
+                                        Solicitar evaluación
                                     </div>
                                 </div>
                                 
                             </div>                     
 
+                        </div>
+
+                        <!-- *********************** CARD *********************** -->
+                        <div class="coursecard__card" >
+                            <div class="coursecard__section">
+                                <h2>3. Resultados de la evaluación para Estudiantes</h2>
+                                <p>Aquí puedes visualizar lo que respondieron tus estudiantes a las preguntas que les enviaste.</p>
+                            </div>
+
+                            <div class="coursecard__section coursecard__answers ">
+                                <h3>Alineación con el syllabus</h3>
+                                <p>1. ¿En qué medida considera usted que alcanzó los objetivos específicos de esta unidad?
+                                </p>
+                                <img src="../resources/lastunit_q1_2021-1.png" alt="">
+                                <div>
+                                    <p>2. ¿En qué medida considera que las actividades de la unidad estaban enfocadas a ayudarte a alcanzar los objetivos específicos?
+                                    </p>
+                                    <img src="../resources/lastunit_q2_2021-1.png" alt="">
+                                </div>
+
+                                <br>
+                                <h3>Motivación respecto a la metodología</h3>
+                                <p>3. ¿En qué medida las actividades de la unidad resultaron motivantes para ti?
+                                </p>
+                                <img src="../resources/lastunit_q3_2021-1.png" alt="">
+                                <p>4. ¿Cual de las actividades que se realizaron en esta unidad te pareció la más chévere?
+                                </p>
+                                <img src="../resources/lastunit_q4_2_2021-1.png" alt="">
+                                <p>4. ¿Cual de las actividades que se realizaron en esta unidad te pareció la menos chévere?
+                                </p>
+                                <img src="../resources/lastunit_q5_2_2021-1.png" alt="">
+
+                                <br>
+                                <h3>Autoevaluación</h3>
+                                <p>6. En esta unidad, ¿cómo te evaluarías en cuánto a..?
+                                </p>
+                                <img src="../resources/lastunit_q6_0_2021-1.png" alt="">
+                            </div>
+
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard">
+                                            <p>Sin responder</p>
+                                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        </div>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Respondido</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__answersBtn coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -332,4 +332,24 @@ window.addEventListener('load',()=>{
         }
     }
 
+
+    var answersSections = document.querySelectorAll(".coursecard__answers");
+    var seeMoreAnswers = document.querySelectorAll(".coursecard__answersBtn");
+
+    seeMoreAnswers.forEach((btn, index) =>{
+        btn.addEventListener('click', ()=>{
+            if(!btn.classList.contains("seeMoreBtn--disabled")){
+                if(!btn.classList.contains("seeMoreBtn--opened")){
+                    btn.classList.add("seeMoreBtn--opened");
+                    btn.getElementsByTagName("p")[0].innerText = "Ocultar respuestas";
+                    answersSections[index].classList.add("coursecard__answers--visible");
+                } else {
+                    btn.classList.remove("seeMoreBtn--opened");
+                    btn.getElementsByTagName("p")[0].innerText = "Ver respuestas";
+                    answersSections[index].classList.remove("coursecard__answers--visible");
+                }
+            }
+        })
+    })
+
 });
