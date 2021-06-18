@@ -872,6 +872,14 @@
   position: relative;
   margin-left: 15px;
 }
+.coursecard__studentQuestion {
+  position: absolute;
+  display: none;
+}
+.coursecard__studentQuestion--visible {
+  position: relative;
+  display: block;
+}
 .coursecard__studentQuestion h3 {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -884,14 +892,21 @@
   border-radius: 5px;
   padding: 20px;
 }
+.coursecard__studentQuestionBox--disabled {
+  opacity: 0.5;
+}
 .coursecard__studentQuestionVisibility {
   position: absolute;
   right: 0px;
   top: 20px;
+  display: flex;
+  align-items: center;
   margin: 0 20px;
 }
-.coursecard__studentQuestionVisibility label {
+.coursecard__studentQuestionVisibility p {
   font-weight: 500;
+  margin: 0;
+  margin-right: 10px;
 }
 .coursecard__studentQuestionVisibility input {
   margin: 0;
@@ -1052,6 +1067,61 @@ img {
 
 .bold {
   font-weight: 600;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  visibility: hidden;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--second-color);
+}
+
+input:disabled + .slider {
+  cursor: default;
+  background-color: var(--second-color-lilac);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
 }
 
 .container {

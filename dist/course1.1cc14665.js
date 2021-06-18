@@ -394,6 +394,145 @@ window.addEventListener('load', function () {
     }).catch(function (error) {
       console.error("Error writing document: ", error);
     });
+  } //----------------------teacher send questions---------------
+
+
+  var questionsBoxes = document.querySelectorAll(".coursecard__studentQuestionBox");
+  var visibilityCheckboxes = document.querySelectorAll(".checkbox");
+  visibilityCheckboxes.forEach(function (check, index) {
+    check.addEventListener('change', function () {
+      // console.log(check.checked);
+      if (!check.checked) {
+        questionsBoxes[index].classList.add("coursecard__studentQuestionBox--disabled"); // console.log(questionsBoxes[index]);
+      } else if (check.checked) {
+        questionsBoxes[index].classList.remove("coursecard__studentQuestionBox--disabled"); // console.log(questionsBoxes[index]);
+      }
+
+      validateUnitActivities();
+    });
+  });
+  var aspects = [3];
+  var activities = ["", "", "", ""];
+  var aspectsInputs = document.querySelectorAll(".selfEvaluationAspect");
+  aspectsInputs.forEach(function (aspectInput, index) {
+    aspectInput.addEventListener('keyup', function () {
+      aspects[index] = aspectInput.value; //console.log("aspect---->",index, aspects[index]);
+    });
+  });
+  var activitiesInputs = document.querySelectorAll(".unitActivity");
+  activitiesInputs.forEach(function (activityInput, index) {
+    activityInput.addEventListener('keyup', function () {
+      activities[index] = activityInput.value;
+      validateUnitActivities(); // console.log("activity---->", activities);
+    });
+  });
+  var studentsQuestions = document.querySelector(".coursecard__studentQuestion");
+  var studentsQuestionsStates = document.getElementById("studentsQuestions").querySelectorAll(".coursecard__bottomStateCard");
+  var studentsQuestionsCTA = document.getElementById("studentsQuestions").querySelector(".primaryBtn");
+  var studentsQuestionsSeeMore = document.getElementById("studentsQuestions").querySelector(".seeMoreBtn");
+  var studentsQuestionsCancel = document.getElementById("studentsQuestions").querySelector(".secondaryBtn");
+  getEvaluationSent();
+
+  function getEvaluationSent() {
+    console.log("entroooooooo");
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      //.log(doc);
+      if (doc.exists && doc.data().evaluationSent) {
+        console.log("Evaluación enviada", doc.data().evaluationSent);
+        studentsQuestions.classList.remove("coursecard__studentQuestion--visible");
+        studentsQuestionsStates[0].classList.remove("coursecard__bottomStateCard--visible");
+        studentsQuestionsStates[1].classList.add("coursecard__bottomStateCard--visible");
+        studentsQuestionsCTA.classList.remove("coursecard__bottomBtn--visible");
+      } else {// doc.data() will be undefined in this case
+        //console.log("No such document!");
+      }
+    });
+  }
+
+  validateUnitActivities();
+
+  function validateUnitActivities() {
+    if (studentsQuestions.classList.contains("coursecard__studentQuestion--visible")) {
+      var emptyActivities = activities.filter(function (activity) {
+        return activity == "";
+      }); //console.log(emptyActivities);
+
+      if (visibilityCheckboxes[3].checked) {
+        if (emptyActivities.length <= 2) {
+          console.log("actividades activas");
+          studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+        } else {
+          studentsQuestionsCTA.classList.add("primaryBtn--disabled");
+        }
+      } else {
+        console.log("actividades inactivas");
+        studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+      }
+    }
+  }
+
+  studentsQuestionsCTA.addEventListener('click', function () {
+    if (!teacherGradeSections[1].classList.contains("coursecard__section--visible")) {
+      teacherGradeSections[1].classList.add("coursecard__section--visible");
+      validateUnitActivities(); //aquí poner modo edicioooooooooon
+
+      document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.remove("coursecard__bottomState--visible");
+      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateCard").classList.remove("coursecard__bottomStateCard--visible");
+      teacherGradeCancel.classList.add("coursecard__bottomBtn--visible"); //teacherGradeCTA.classList.add("primaryBtn--disabled");
+    } else if (unitGrade === "" || unitComment === "") {
+      console.log("nel");
+      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
+    } else {
+      setTeacherGrade(); //poner aquí el estado ya calificado
+
+      teacherGradeCTA.classList.remove("primaryBtn--disabled");
+      teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
+      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+      document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
+      teacherGradeSections[1].classList.remove("coursecard__section--visible");
+      teacherGradeSections[2].classList.add("coursecard__section--visible");
+      teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
+      teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
+      teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
+      teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible", "seeMoreBtn--opened");
+      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
+      unitGradeDiv.innerText = unitGrade;
+      unitCommentDiv.innerText = unitComment;
+    }
+  });
+  teacherGradeCancel.addEventListener('click', function () {
+    teacherGradeCTA.classList.remove("primaryBtn--disabled");
+    document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+    document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
+    teacherGradeSections[1].classList.remove("coursecard__section--visible");
+    teacherGradeSections[2].classList.remove("coursecard__section--visible");
+    teacherGradeStates[0].classList.add("coursecard__bottomStateCard--visible");
+    teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
+  });
+  teacherGradeSeeMore.addEventListener('click', function () {
+    if (!teacherGradeSections[2].classList.contains("coursecard__section--visible")) {
+      teacherGradeSections[2].classList.add("coursecard__section--visible");
+      teacherGradeSeeMore.classList.add("seeMoreBtn--opened");
+      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
+    } else {
+      teacherGradeSections[2].classList.remove("coursecard__section--visible");
+      teacherGradeSeeMore.classList.remove("seeMoreBtn--opened");
+      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
+    }
+  });
+
+  function setTeacherGrade() {
+    db.collection("courses").doc("course1").collection("units").doc("unit3").set({
+      teacherCalificated: true,
+      teacherCalification: unitGrade,
+      teacherComment: unitComment
+    }, {
+      merge: true
+    }).then(function () {
+      console.log("Document successfully written!");
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
   }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

@@ -294,12 +294,15 @@
                                 <p><strong>Nota: </strong>Todas las preguntas visibles, se les presentarán a los estudiantes como obligatorias. Algunas preguntas de este formulario siempre deben estar visibles.</p>
                             </div>
 
-                            <div class="coursecard__section--visible coursecard__studentQuestion">
+                            <div class="coursecard__studentQuestion coursecard__studentQuestion--visible">
                                 <h3>Alineación con el syllabus</h3>
                                 <div class="coursecard__studentQuestionBox">
                                     <div class="coursecard__studentQuestionVisibility">
-                                        <label for="q1">Visible</label>
-                                        <input id="q1" checked disabled type="checkbox">
+                                        <p>Visible</p>
+                                        <label class="switch" for="q1"> 
+                                            <input class="checkbox" id="q1" checked disabled type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                     <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
                                     <p class="coursecard__studentQuestionQuestion"><span class="bold">1.</span> ¿En qué medida considera usted que alcanzó los objetivos específicos de esta unidad?</p>
@@ -308,8 +311,11 @@
                                 </div>
                                 <div class="coursecard__studentQuestionBox">
                                     <div class="coursecard__studentQuestionVisibility">
-                                        <label for="q2">Visible</label>
-                                        <input id="q2" checked type="checkbox">
+                                        <p>Visible</p>
+                                        <label class="switch" for="q2"> 
+                                            <input class="checkbox" id="q2" checked type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                     <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
                                     <p class="coursecard__studentQuestionQuestion"><span class="bold">2.</span> ¿En qué medida considera que las actividades de la unidad estaban enfocadas a ayudarte a alcanzar los objetivos específicos?</p>
@@ -321,8 +327,11 @@
 
                                 <div class="coursecard__studentQuestionBox">
                                     <div class="coursecard__studentQuestionVisibility">
-                                        <label for="q3">Visible</label>
-                                        <input id="q3" checked type="checkbox">
+                                        <p>Visible</p>
+                                        <label class="switch" for="q3"> 
+                                            <input class="checkbox" id="q3" checked type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                     <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
                                     <p class="coursecard__studentQuestionQuestion"><span class="bold">3.</span> ¿En qué medida las actividades de la unidad resultaron motivantes para ti?</p>
@@ -334,23 +343,30 @@
                                         <p>Debes agregar las actividades (Máximo 3)</p>
                                     </div>
                                     <div class="coursecard__studentQuestionVisibility">
-                                        <label for="q4">Visible</label>
-                                        <input id="q4" checked type="checkbox">
+                                        <p>Visible</p>
+                                        <label class="switch" for="q4"> 
+                                            <input class="checkbox" id="q4" checked type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                     <p class="coursecard__studentQuestionType">(Opción múltiple)</p>
                                     <p class="coursecard__studentQuestionQuestion"><span class="bold">4.</span> ¿Cual de las actividades que se realizaron en esta unidad te pareció la más chévere?</p>
                                     <ul>
                                         <li>
                                             <label for="">a.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                            <input class="form__input unitActivity" type="text" placeholder="Ingrese una actividad">
                                         </li>
                                         <li>
                                             <label for="">b.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                            <input class="form__input unitActivity" type="text" placeholder="Ingrese una actividad">
                                         </li>
                                         <li>
                                             <label for="">c.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese una actividad">
+                                            <input class="form__input unitActivity" type="text" placeholder="Ingrese una actividad">
+                                        </li>
+                                        <li>
+                                            <label for="">d.</label>
+                                            <input class="form__input unitActivity" type="text" placeholder="Ingrese una actividad">
                                         </li>
                                     </ul>
                                     <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
@@ -368,6 +384,9 @@
                                         <li>
                                             <p>c. Actividad 3</p>
                                         </li>
+                                        <li>
+                                            <p>c. Actividad 3</p>
+                                        </li>
                                     </ul>
                                     <p class="coursecard__studentQuestionType">(Pregunta abierta)</p>
                                     <p class="coursecard__studentQuestionQuestion">¿Por qué?</p>
@@ -381,8 +400,11 @@
                                         <p>Puedes agregar aspectos adicionales (Máximo 3)</p>
                                     </div>
                                     <div class="coursecard__studentQuestionVisibility">
-                                        <label for="q5">Visible</label>
-                                        <input  id="q5" checked type="checkbox">
+                                        <p>Visible</p>
+                                        <label class="switch" for="q5"> 
+                                            <input class="checkbox" id="q5" checked type="checkbox">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                     <p class="coursecard__studentQuestionType">(Escala de 1 a 5)</p>
                                     <p class="coursecard__studentQuestionQuestion"><span class="bold">6.</span> En esta unidad, ¿cómo te evaluarías en cuánto a..?</p>
@@ -401,22 +423,56 @@
                                         </li>
                                         <li>
                                             <label for="">e.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                            <input class="form__input selfEvaluationAspect" type="text" placeholder="Ingrese un aspecto">
                                         </li>
                                         <li>
                                             <label for="">f.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                            <input class="form__input selfEvaluationAspect" type="text" placeholder="Ingrese un aspecto">
                                         </li>
                                         <li>
                                             <label for="">g.</label>
-                                            <input class="form__input" type="text" placeholder="Ingrese un aspecto">
+                                            <input class="form__input selfEvaluationAspect" type="text" placeholder="Ingrese un aspecto">
                                         </li>
                                     </ul>
                                 </div>
                                 
                             </div>
+ 
+                            <div class="coursecard__bottom">
+                                <div class="coursecard__bottomStatesContainer">
+                                    <div class="coursecard__bottomState coursecard__bottomState--visible">
+                                        <h3>Estado:</h3>
+                                        <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
+                                            <p>Sin enviar</p>
+                                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                                        </div>
+                                        <div class="coursecard__bottomStateCard ">
+                                            <p>Enviado</p>
+                                            <ion-icon name="checkmark-circle"></ion-icon>
+                                        </div>
+                                    </div>
+                                    <div class="coursecard__bottomStateAlert">
+                                        <ion-icon name="warning"></ion-icon>
+                                        <p>Todos los campos son obligatorios</p>
+                                    </div>
+                                </div>
 
-                            
+                                
+                                <div class="coursecard__bottomBtnsContainer ">
+                                    <div class="seeMoreBtn coursecard__bottomBtn">
+                                        <p>Ver más</p>
+                                        <ion-icon name="chevron-down-outline"></ion-icon>
+                                    </div>
+    
+                                    <div class="secondaryBtn coursecard__bottomBtn ">
+                                        Cancelar
+                                    </div>
+                                    <div class="primaryBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
+                                        Calificar
+                                    </div>
+                                </div>
+                                
+                            </div>                     
 
                         </div>
                     </div>
