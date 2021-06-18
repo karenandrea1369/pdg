@@ -1,0 +1,125 @@
+/* l nav */
+.l-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--white-color);
+    color: var(--white-color);
+    padding: 10px 20px;
+    transition: .5s;
+    z-index: var(--z-fixed);
+}
+
+/* nav */
+.nav{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    &__brand{
+        display: grid;
+        grid-template-columns: max-content max-content;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        & img{
+            padding: 10px 18px;
+        }
+    }
+
+    &__toggle{
+        font-size: var(--nav-icon-text);
+        color: var(--second-color);
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    &__logo{
+        color: var(--second-color);
+        font-weight: 600;
+    }
+
+    &__link{
+        
+        display: grid;
+        grid-template-columns: max-content max-content;
+        align-items: center;
+        column-gap: .75rem;
+        
+        color: var(--white-color);
+        
+        margin-bottom: 25px;
+        transition: .3s;
+        cursor: pointer;
+
+        &:hover{
+            &> :first-child{
+                color: var(--first-color);
+                &:not(ion-icon){
+                background-color: var(--first-color);
+                color: var(--white-color);
+                }
+            }
+        }
+
+        &> :first-child{       
+            padding: 10px 8px;
+            border-radius: 5px;
+            
+            &:not(ion-icon){
+                width: 50px;
+                background-color: var(--second-color);
+            }
+        }
+
+        &--selected{
+            &> :first-child{
+                color: var(--first-color);
+                
+                &:not(ion-icon){
+                    background-color: var(--first-color);
+                    color: var(--white-color);
+                }
+            }
+        }
+    }
+
+    &__icon{
+        font-size: var(--nav-icon-text);
+        width: 30px;
+        text-align: center;
+
+        & span{
+            color: var(--black-color);
+        }
+        
+        &:not(span){
+            color: var(--second-color);
+        }
+    }
+
+    &__name{
+        font-size: var(--small-font-size);
+        width: 100%;
+        padding: 15px 8px;
+            border-radius: 5px;
+        background-color: #F7F8FA;
+            color: var(--black-color);
+    }
+
+    & #signOutBtn{
+        background-color: var(--white-color);
+        color: var(--second-color);
+    }
+}
+
+/* expander */
+.expand{
+    width: calc(var(--nav-width) + 160px);
+    box-shadow: var(--shadow1);
+}

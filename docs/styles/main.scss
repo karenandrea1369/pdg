@@ -1,0 +1,283 @@
+/* Others styles */
+@import "./objects/navbar";
+@import "./pages/signup";
+@import "./pages/signin";
+@import "./pages/dash";
+@import "./objects/alert";
+@import "./objects/statisticschart";
+@import "./objects/form";
+@import "./pages/course";
+@import "./objects/coursecard";
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variables */
+:root{
+    --nav-width: 90px;
+    --bottom-card-height: 70px;
+    --right-aside-width: 350px;
+    --top-nav-height: 120px;
+
+    --sub-color: blue;
+    --third-color: blue; 
+    --first-color-lighten: blue;
+    
+    /* Colors */
+    --first-color: #FC440F;
+    --first-color-light: #FF7D57;
+    --first-color-dark: #E03403;
+    --second-color: #7B2CBF;
+    --second-color-medium: #5A189A;
+    --second-color-dark: #3C096C;
+    --second-color-light: #9D4EDD;
+    --second-color-lilac: #C175FF;
+    --white-color: #FFFFFF;
+    --black-color: #474F61;
+    --bg-color: #F1F2F6;
+    --tx-color: #474F61;
+    --color-lighten: #F6EBFF;
+
+    /*Grays*/
+    --gray-color-light: #D9D9D9;
+    --gray-color-medium : #BFBCBA;
+   
+
+    /* Box Shadow */
+    //--shadow1: 14px 0px 4px -11px rgba(170, 151, 223, 0.38), -14px 17px 8px -11px rgba(170, 151, 223, 0.38);
+    --shadow1: 0px 2px 6px rgba(0, 0, 0, 0.16);
+
+    /* Fonts */
+    --body-font: 'Work Sans', sans-serif;
+    --normal-font-size: 20px;
+    --medium-font-size: .93rem;
+    --small-font-size: .875rem;
+    --xsmall-font-size: .8rem;
+    --h1-font-size: 1.5rem;
+    --nav-icon-text: 25px;
+
+    /*z z index */
+    --z-fixed: 100;
+}
+
+/* Base */
+*,::before,::after{
+    box-sizing: border-box;
+}
+body{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: var(--body-font);
+    //font-size: var(--normal-font-size);
+    //transition: .5s;
+    background-color: var(--bg-color);
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+       
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-lighten);
+        border-radius: 5px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--gray-color-light);
+        border-radius: 5px;
+    }
+}
+h1{
+    margin: 0;
+    //color: var(--first-color);
+    color: var(--second-color);
+    font-size: 22px;
+}
+h2{
+    margin: 0;
+    //color: var(--second-color);
+    color: var(--black-color);
+    font-size: 20px;
+    //font-weight: 700;
+}
+
+h3{
+    margin: 0;
+    color: var(--black-color);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h4{}
+
+p{
+    color: var(--tx-color);
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li{
+    color: var(--tx-color);
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    visibility: hidden;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--second-color);
+  }
+
+  input:disabled + .slider{
+      cursor: default;
+      background-color: var(--second-color-lilac);
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+
+.container{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    color: var(--black-color);
+}
+
+.seeMoreBtn{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    transition: transform 0.3s;
+
+    & p{
+        color: var(--second-color);
+    }
+    color: var(--second-color);
+
+    &--opened{
+        & ion-icon{
+            transition: transform 0.3s;
+            transform: rotate(0.5turn);
+        }
+    }
+
+    &--disabled{
+        cursor: default;
+        background-color: var(--gray-color-medium);
+    }
+}
+
+.primaryBtn{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    font-weight: 500;
+    height: 40px;
+    min-width: 150px;
+    padding: 0 20px;
+    border-radius: 5px;
+
+    &--disabled{
+        cursor: default;
+        background-color: var(--gray-color-medium);
+    }
+}
+
+.secondaryBtn{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-color);
+    border: 3px solid var(--first-color);
+    color: var(--first-color);
+    font-weight: 500;
+    height: 40px;
+    min-width: 150px;
+    padding: 0 20px;
+    padding: 0 10px;
+    border-radius: 5px;
+
+    &--disabled{
+        cursor: default;
+        border: 3px solid var(--gray-color-medium);
+        color: var(--gray-color-medium);
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 768px){
+    :root{
+        /* Fonts */
+        --normal-font-size: 1.2rem;
+        --small-font-size: .9rem;
+
+    }
+}

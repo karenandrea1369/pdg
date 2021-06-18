@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/main.scss">
+        <title>Registrarse</title>
+    </head>
+    <body>
+
+        <main>
+            <div class="login">
+                <div class="login__content">
+                    <div class="login__img">
+                        <h2>Talkie: entorno de comunicación</h2>
+                        <p>La herramienta que permite conectar a todos los actores de los entornos de aprendizaje</p>
+                        <img src="./resources/login img.png" alt="">
+                    </div>
+    
+                    <div class="login__form">
+                        
+                        <form class="login__registre" id="sign-up">
+                            <div class="logo">
+                                <img src="./resources/logo provisional.png" alt="">
+                                <h2>Talkie</h2>
+                            </div>
+                            <h1 class="titulo login__tittle">Registrarse</h1>
+    
+                            <label for="email" class="login__inputLabel">Email*</label>
+                            <div class="login__inputBox">
+                                <ion-icon name="person-outline" class="login__icon"></ion-icon>
+                                <input type="email" name="" id="email" placeholder="Correo" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
+                            </div>
+
+                            <label for="idDoc" class="login__inputLabel">Documento de identificación*</label>
+                            <div class="login__inputBox">
+                                <ion-icon name="id-card-outline" class="login__icon"></ion-icon>
+                                <input type="text" name="" id="idDoc" placeholder="Documento" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
+                            </div>
+    
+                            <label for="pass" class="login__inputLabel">Contraseña*</label>
+                            <div class="login__inputBox">
+                                <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
+                                <input type="password" name="" id="pass" placeholder="Contraseña" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
+                            </div>
+
+                            <label for="confirmPass" class="login__inputLabel">Verifica contraseña*</label>
+                            <div class="login__inputBox">
+                                <ion-icon name="lock-closed-outline" class="login__icon"></ion-icon>
+                                <input type="password" name="" id="confirmPass" placeholder="Verifica contraseña" class="login__input">
+                                <small class="login__inputErrorMessage">Error message</small>
+                            </div>
+
+                            <a href="#" class="login__button">Registrarse</a>
+                            
+                            <div class="login__account">
+                                <span class="login__accountAlready">¿Ya tienes cuenta? </span>
+                                <span class="login__accountChange" id="sign-in-change"><a href="./index.html">Inicia sesión</a></span>
+                            </div>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- <h2>Este es el registro</h2>
+        
+        <form>
+            <label for="email">Email</label>
+            <input type="email" name="" id="email">
+            <label for="idDoc">Documento de identificación</label>
+            <input type="text" name="" id="idDoc">
+            <label for="pass">Contraseña</label>
+            <input type="password" id="pass">
+            <label for="confirmPass">Confirmar contraseña</label>
+            <input type="password" id="confirmPass">
+            <button type="button" id="signUpBtn">Registrarme</button>
+        </form> 
+
+        <p>¿Ya tienes cuenta?</p>
+        <a href="./index.html">Inicia sesión</a> -->
+
+
+        <!-- IonIcons -->
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+        
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+        <!-- mi js-->
+        <script src="./scripts/pages/signUp.js"></script>
+    </body>
+</html>
