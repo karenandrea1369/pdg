@@ -411,7 +411,7 @@ window.addEventListener('load', function () {
       validateUnitActivities();
     });
   });
-  var aspects = [3];
+  var aspects = ["", "", ""];
   var activities = ["", "", "", ""];
   var aspectsInputs = document.querySelectorAll(".selfEvaluationAspect");
   aspectsInputs.forEach(function (aspectInput, index) {
@@ -429,7 +429,6 @@ window.addEventListener('load', function () {
   var studentsQuestions = document.querySelector(".coursecard__studentQuestion");
   var studentsQuestionsStates = document.getElementById("studentsQuestions").querySelectorAll(".coursecard__bottomStateCard");
   var studentsQuestionsCTA = document.getElementById("studentsQuestions").querySelector(".primaryBtn");
-  var studentsQuestionsSeeMore = document.getElementById("studentsQuestions").querySelector(".seeMoreBtn");
   var studentsQuestionsCancel = document.getElementById("studentsQuestions").querySelector(".secondaryBtn");
   getEvaluationSent();
 
@@ -472,60 +471,46 @@ window.addEventListener('load', function () {
   }
 
   studentsQuestionsCTA.addEventListener('click', function () {
-    if (!teacherGradeSections[1].classList.contains("coursecard__section--visible")) {
-      teacherGradeSections[1].classList.add("coursecard__section--visible");
+    if (!studentsQuestions.classList.contains("coursecard__studentQuestion--visible")) {
+      studentsQuestions.classList.add("coursecard__studentQuestion--visible");
       validateUnitActivities(); //aquí poner modo edicioooooooooon
 
-      document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.remove("coursecard__bottomState--visible");
-      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateCard").classList.remove("coursecard__bottomStateCard--visible");
-      teacherGradeCancel.classList.add("coursecard__bottomBtn--visible"); //teacherGradeCTA.classList.add("primaryBtn--disabled");
-    } else if (unitGrade === "" || unitComment === "") {
+      document.getElementById("studentsQuestions").querySelector(".coursecard__bottomState").classList.remove("coursecard__bottomState--visible");
+      document.getElementById("studentsQuestions").querySelector(".coursecard__bottomStateCard").classList.remove("coursecard__bottomStateCard--visible");
+      studentsQuestionsCancel.classList.add("coursecard__bottomBtn--visible");
+    } else if (studentsQuestionsCTA.classList.contains("primaryBtn--disabled")) {
       console.log("nel");
-      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
+      document.getElementById("studentsQuestions").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
     } else {
-      setTeacherGrade(); //poner aquí el estado ya calificado
+      console.log("enviooooooooo");
+      setActivitiesAspects(); //poner aquí el estado ya calificado
 
-      teacherGradeCTA.classList.remove("primaryBtn--disabled");
-      teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
-      document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
-      document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
-      teacherGradeSections[1].classList.remove("coursecard__section--visible");
-      teacherGradeSections[2].classList.add("coursecard__section--visible");
-      teacherGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
-      teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
-      teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
-      teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible", "seeMoreBtn--opened");
-      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
-      unitGradeDiv.innerText = unitGrade;
-      unitCommentDiv.innerText = unitComment;
+      studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+      studentsQuestionsCancel.classList.remove("coursecard__bottomBtn--visible");
+      document.getElementById("studentsQuestions").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+      document.getElementById("studentsQuestions").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
+      studentsQuestions.remove("coursecard__studentQuestion--visible");
+      studentsQuestionsStates[0].classList.remove("coursecard__bottomStateCard--visible");
+      studentsQuestionsStates[1].classList.add("coursecard__bottomStateCard--visible");
+      studentsQuestionsCTA.classList.remove("coursecard__bottomBtn--visible");
     }
   });
-  teacherGradeCancel.addEventListener('click', function () {
-    teacherGradeCTA.classList.remove("primaryBtn--disabled");
-    document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
-    document.getElementById("teacherGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
-    teacherGradeSections[1].classList.remove("coursecard__section--visible");
-    teacherGradeSections[2].classList.remove("coursecard__section--visible");
-    teacherGradeStates[0].classList.add("coursecard__bottomStateCard--visible");
-    teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
-  });
-  teacherGradeSeeMore.addEventListener('click', function () {
-    if (!teacherGradeSections[2].classList.contains("coursecard__section--visible")) {
-      teacherGradeSections[2].classList.add("coursecard__section--visible");
-      teacherGradeSeeMore.classList.add("seeMoreBtn--opened");
-      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
-    } else {
-      teacherGradeSections[2].classList.remove("coursecard__section--visible");
-      teacherGradeSeeMore.classList.remove("seeMoreBtn--opened");
-      teacherGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
-    }
+  studentsQuestionsCancel.addEventListener('click', function () {
+    studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+    document.getElementById("studentsQuestions").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
+    document.getElementById("studentsQuestions").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
+    studentsQuestions.classList.remove("coursecard__studentQuestion--visible");
+    studentsQuestionsStates[0].classList.add("coursecard__bottomStateCard--visible");
+    studentsQuestionsCancel.classList.remove("coursecard__bottomBtn--visible");
   });
 
-  function setTeacherGrade() {
+  function setActivitiesAspects() {
     db.collection("courses").doc("course1").collection("units").doc("unit3").set({
-      teacherCalificated: true,
-      teacherCalification: unitGrade,
-      teacherComment: unitComment
+      evaluationSent: true,
+      question2: visibilityCheckboxes[1].checked,
+      question3: visibilityCheckboxes[2].checked,
+      question4: visibilityCheckboxes[3].checked,
+      question5: visibilityCheckboxes[4].checked
     }, {
       merge: true
     }).then(function () {
@@ -533,6 +518,35 @@ window.addEventListener('load', function () {
     }).catch(function (error) {
       console.error("Error writing document: ", error);
     });
+
+    if (visibilityCheckboxes[3].checked) {
+      db.collection("courses").doc("course1").collection("units").doc("unit3").set({
+        activity1: activities[0],
+        activity2: activities[1],
+        activity3: activities[2],
+        activity4: activities[3]
+      }, {
+        merge: true
+      }).then(function () {
+        console.log("Document successfully written!");
+      }).catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
+    }
+
+    if (visibilityCheckboxes[4].checked) {
+      db.collection("courses").doc("course1").collection("units").doc("unit3").set({
+        aspect1: aspects[0],
+        aspect2: aspects[1],
+        aspect3: aspects[2]
+      }, {
+        merge: true
+      }).then(function () {
+        console.log("Document successfully written!");
+      }).catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
+    }
   }
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js","../classes/ChangeTabs":"../scripts/classes/ChangeTabs.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
