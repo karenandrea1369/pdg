@@ -1014,6 +1014,7 @@
 }
 .termObjGrade__rate li {
   display: flex;
+  margin-bottom: 10px;
 }
 .termObjGrade__rate li .coursecard__rate {
   width: 60%;
