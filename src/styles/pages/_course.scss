@@ -141,10 +141,11 @@
         &Content{
             height: 100%;
             position: absolute;
+            width: 100%;
             //padding-right: 40px;
             //padding-bottom: 40px;
             display: none;
-            visibility: hidden;
+            visibility: hidden; 
             opacity: 0;
             transform: scale(0.98);
             transition: opacity 0.3s ease-in-out 0ms,
@@ -157,7 +158,25 @@
                     visibility: visible;
                     opacity: 1;
                     transform: scale(1);
+                    transition: opacity 0.3s ease-in-out 0ms,
+                    transform 0.3s ease-in-out 0ms;
                 }
         }
     }
+}
+
+.questionGraphic{
+
+    &__image{
+        display: none;
+        &--visible{
+            display: block;
+        }
+    }
+
+    &__text{
+        display: flex;
+    }
+
+        //background-color: blue;
 }

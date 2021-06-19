@@ -18,7 +18,6 @@
         
         &:not(:first-child){
             padding-bottom: var(--bottom-card-height);
-
         }
     }
 
@@ -70,6 +69,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        & p{
+            width: 80px;
+            text-align: center;
+        }
 
         &Check{
             display: inline-block;
@@ -310,16 +313,67 @@
     }
 
     &__answers{
-        position: absolute !important;
-        display: none !important;
-        visibility: hidden !important;
+        position: absolute;
+        display: none;
 
         &--visible{
-            position: relative !important;
-            display: block !important;
-            visibility: visible !important;
+            position: absolute;
+            display: block;
+        }
+
+        & .answerBox{
+        
+                position: absolute;
+                display: none;
+
+                & img{
+                    margin: 0;
+                }
+        
+            &--visible{
+                position: relative;
+                display: block;
+                padding: 20px;
+
+                & p{
+                    margin-bottom: 0px;
+                }
+            }
+        
         }
     }
 
+    &__reportWelcome{
+        width: 100%;
+        overflow: visible;
+        display: flex;
 
+        &Txt{
+            width: 60%;
+        }
+
+        & img{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40%;
+        }
+    }
+}
+
+.termObjGrade__rate{
+
+    & .termObjGrade__obj{
+        width: 40%;
+    }
+
+    & li{
+        display: flex;
+
+
+        & .coursecard__rate{
+            width: 60%;
+            margin-left: 15px;
+        }
+    }
 }

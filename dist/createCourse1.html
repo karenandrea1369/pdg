@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.48b3db1d.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="l-navbar course__navbar" id="navBar">
+            <nav class="nav">
+                <div>
+                    <div class="nav__brand">
+                        <img src="/logo provisional.565a102b.png" alt="">
+                        <a href="#" class="nav__logo">Talkie</a>
+                    </div>
+                    <div class="nav__list">
+                        <a href="/teacherDash.html" class="nav__link" id="home">
+                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Dashboard</span>
+                        </a>
+                        <a href="#" class="nav__link" id="course1">
+                            <span class="nav__icon">DS</span>
+                            <span class="nav__name">Diseño y sociedad</span>
+                        </a>
+                        <a href="#" class="nav__link" id="course2">
+                            <span class="nav__icon">ED</span>
+                            <span class="nav__name">Ética y democracia</span>
+                        </a>
+                        <a href="#" class="nav__link" id="course3">
+                            <span class="nav__icon">F</span>
+                            <span class="nav__name">Fotografía</span>
+                        </a>
+                        <a href="#" class="nav__link" id="course4">
+                            <span class="nav__icon">PI</span>
+                            <span class="nav__name">Proyecto integrador II</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#" class="nav__link" id="signOutBtn">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav__name">Log out</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="course__container">
+            <nav class="course__header">
+                <div class="course__headername" id="coursename">
+                    <h2>Proyecto Integrador II</h2>
+                </div>
+                <div class="course__headerunits" id="courseunits">
+                    <a href="#">Unidad 1</a>
+                    <a href="#">Unidad 2</a>
+                    <a href="#">Unidad 3</a>
+                    <a href="#">Unidad 4</a>
+                    <a href="#">Unidad 5</a>
+                    <a href="#">Reporte</a>
+                </div>
+            </nav>
+
+            <main class="course__main">
+                <h1>Información del curso</h1>
+                <div>
+                    <p>Carga el syllabus del curso para obtener su información</p>
+                    <input type="file" id="file-id" name="file_name">
+                </div>
+                <div>
+                    <p>O completa los campos</p>
+                    <div>
+                        <form action="" class="form" id="form">
+                            <div class="createcourse__sectionone">
+                                <h2>Información curso</h2>
+                                <div class="form__inputBox">
+                                    <label for="name" class="form__inputLabel">Código-Curso:*</label>
+                                    <input type="text" name="" id="name" placeholder="Nombre del curso" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="pre" class="form__inputLabel">Prerrequisito*</label>
+                                    <input type="text" name="" id="pre" placeholder="Prerrequisito" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="career" class="form__inputLabel">Programa-Semestre:*</label>
+                                    <input type="text" name="" id="career" placeholder="Programa" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="weekhours" class="form__inputLabel">Intensidad semanal*</label>
+                                    <input type="text" name="" id="weekhours" placeholder="Intensidad semanal" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="credits" class="form__inputLabel">Créditos*</label>
+                                    <input type="text" name="" id="credits" placeholder="Créditos" class="form__input">
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                            </div>
+                            <div class="createcourse__sectiontwo">
+                                <h2>Objetivo general</h2>
+                                    <div class="form__inputBox">
+                                        <label for="generalobj" class="form__inputLabel">Objetivo general*</label>
+                                        <textarea name="" id="generalobj" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
+                                        <small class="form__inputErrorMessage">Error message</small>
+                                    </div>
+                            </div>
+                            <div class="createcourse__sectionthree">
+                                    <h2>Objetivos terminales</h2>
+                                    <div class="form__inputBox">
+                                        <label for="terminalobj" class="form__inputLabel">Objetivos terminales*</label>
+                                        <textarea name="" id="terminalobj" placeholder="Objetivos terminales" class="form__input form__textarea"></textarea>
+                                        <small class="form__inputErrorMessage">Error message</small>
+                                    </div>
+                            </div>
+                            <div class="createcourse__sectionfour">
+                                <h2>Objetivos específicos</h2>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 1*</label>
+                                    <textarea name="" id="unit1" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 2</label>
+                                    <textarea name="" id="unit2" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 3</label>
+                                    <textarea name="" id="unit3" placeholder="Objetivo general" class="form__input form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 4</label>
+                                    <textarea name="" id="unit4" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 5</label>
+                                    <textarea name="" id="unit5" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                                <div class="form__inputBox">
+                                    <label for="terminalcobj" class="form__inputLabel">Unidad 6</label>
+                                    <textarea name="" id="unit6" placeholder="Objetivo general" class=" form__textarea"></textarea>
+                                    <small class="form__inputErrorMessage">Error message</small>
+                                </div>
+                            </div>
+                        </form>    
+                    </div>
+                </div>
+            </main>
+
+        </div>
+
+        <div class="course__notes">
+            <h2>Anotaciones</h2>
+            <p>En este espacio dentro de cada unidad podrás hacer las anotaciones sobre tu curso</p>            
+        </div>
+    </div>
+
+    <!-- IonIcons -->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+        
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
+
+    <!-- mi js-->
+    <script src="/b1dfa2babf736f1c111723090e7ed63c.js"></script>
+
+    <!-- Read pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.10.100/pdf.worker.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.entry.min.js" ></script> -->
+
+</body>
+</html>
+
+<!--
+     <form action="">
+                    <div class="createcourse__sectionone">
+                        <h2>Información curso</h2>
+                            <label for="name" class="form__inputLabel">Nombre del curso*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="name" placeholder="Nombre del curso" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="code" class="form__inputLabel">Código del curso*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="code" placeholder="Código del curso" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="pre" class="form__inputLabel">Prerrequisito*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="pre" placeholder="Prerrequisito" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="career" class="form__inputLabel">Programa*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="career" placeholder="Programa" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="semester" class="form__inputLabel">Semestre*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="semester" placeholder="Semestre" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="weekhours" class="form__inputLabel">Intensidad semanal*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="weekhours" placeholder="Intensidad semanal" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="credits" class="form__inputLabel">Intensidad semanal*</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="credits" placeholder="Intensidad semanal" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                    </div>
+                    <div class="createcourse__sectiontwo">
+                        <h2>Objetivo general</h2>
+                            <label for="generalobj" class="form__inputLabel">Objetivo general*</label>
+                            <div class="form__inputBox">
+                                <input type="textarea" name="" id="generalobj" placeholder="Objetivo general" class="form__input form__textarea">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                        </div>
+                        <div class="createcourse__sectionthree">
+                            <h2>Objetivos terminales</h2>
+                            <label for="terminalcobj" class="form__inputLabel">Objetivo general*</label>
+                            <div class="form__inputBox">
+                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="form__input form__textarea">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                    </div>
+                    <div class="createcourse__sectionfour">
+                        <h2>objetivos específicos</h2>
+                            <label for="unitname" class="form__inputLabel">Unidad 1:</label>
+                            <div class="form__inputBox">
+                                <input type="text" name="" id="credits" placeholder="Intensidad semanal" class="form__input">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                            <label for="terminalcobj" class="form__inputLabel">Objetivos de la Unidad 1*</label>
+                            <div class="form__inputBox">
+                                <input type="textarea" name="" id="terminalcobj" placeholder="Objetivo general" class="form__input form__textarea">
+                                <small class="form__inputErrorMessage">Error message</small>
+                            </div>
+                    </div>
+                </form>
+-->

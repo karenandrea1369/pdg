@@ -224,7 +224,11 @@ img{
 
     &--disabled{
         cursor: default;
-        background-color: var(--gray-color-medium);
+        color: var(--gray-color-medium);
+
+        & p{
+            color: var(--gray-color-medium);
+        }
     }
 }
 
