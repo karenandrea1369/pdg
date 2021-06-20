@@ -660,9 +660,10 @@
   height: 3px;
   background-color: var(--second-color-lilac);
   border-radius: 5px;
+  transition: 0.3s ease-in-out;
 }
 .tabs__headerTab:hover::after {
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
   width: 100%;
 }
 .tabs__headerTab--active {
@@ -689,7 +690,7 @@
   visibility: hidden;
   opacity: 0;
   transform: scale(0.98);
-  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms;
+  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms, display 0.3s ease-in-out 0ms;
 }
 .tabs__bodyContent--active {
   height: 100%;
@@ -697,7 +698,7 @@
   visibility: visible;
   opacity: 1;
   transform: scale(1);
-  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms;
+  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms, display 0.3s ease-in-out 0ms;
 }
 
 .questionGraphic__image {
@@ -718,7 +719,7 @@
 .coursecard__card {
   position: relative;
   margin-bottom: 20px;
-  padding: 30px;
+  padding: 40px;
   background-color: var(--white-color);
   width: 100%;
   height: calc(100% + var(--bottom-card-height));
@@ -798,6 +799,10 @@
   background-color: var(--second-color-light);
   color: var(--white-color);
   border: var(--second-color-light) 3px solid;
+}
+.coursecard__rate--hidden {
+  position: absolute;
+  display: none;
 }
 .coursecard__gradeExplanation {
   display: flex;
@@ -1010,15 +1015,95 @@
 }
 
 .termObjGrade__rate .termObjGrade__obj {
-  width: 40%;
+  margin-left: 10px;
 }
 .termObjGrade__rate li {
   display: flex;
-  margin-bottom: 10px;
+  align-items: center;
+  min-height: 60px;
+  max-height: 120px;
+}
+.termObjGrade__rate li p {
+  margin: 0;
 }
 .termObjGrade__rate li .coursecard__rate {
-  width: 60%;
+  min-width: 60%;
   margin-left: 15px;
+}
+.termObj1Grade {
+  position: absolute;
+  display: none;
+}
+.termObj1Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj2Grade {
+  position: absolute;
+  display: none;
+}
+.termObj2Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj3Grade {
+  position: absolute;
+  display: none;
+}
+.termObj3Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj4Grade {
+  position: absolute;
+  display: none;
+}
+.termObj4Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj5Grade {
+  position: absolute;
+  display: none;
+}
+.termObj5Grade--visible {
+  position: relative;
+  display: block;
+}
+
+.reportGraphic {
+  display: none;
+  position: absolute;
+}
+.reportGraphic--visible {
+  display: block;
+  position: relative;
+}
+.reportGraphic__comment {
+  display: none;
+  position: absolute;
+}
+.reportGraphic__comment--visible {
+  display: block;
+  position: relative;
+}
+
+.emptyCalification {
+  display: none;
+  position: absolute;
+}
+.emptyCalification:not(ul) {
+  text-align: center;
+  margin: 40px 0;
+}
+.emptyCalification--visible {
+  display: block;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
 }
 
 /* Fonts */
@@ -1208,6 +1293,7 @@ input:checked + .slider:before {
 }
 .seeMoreBtn p {
   color: var(--second-color);
+  margin-right: 8px;
 }
 .seeMoreBtn--opened ion-icon {
   transition: transform 0.3s;

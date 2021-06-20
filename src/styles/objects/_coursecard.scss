@@ -9,7 +9,7 @@
     &__card{
         position: relative;
         margin-bottom: 20px;
-        padding: 30px;
+        padding: 40px;
         background-color: var(--white-color);
         width: 100%;
         height: calc(100% + var(--bottom-card-height));
@@ -104,6 +104,12 @@
                 border: var(--second-color-light) 3px solid;
                 //transition: 0.98s;
             }
+        }
+
+        &--hidden{
+            position: absolute;
+            display: none;
+
         }
     }
 
@@ -361,19 +367,119 @@
     }
 }
 
-.termObjGrade__rate{
+.termObj{
+    &Grade__rate{
 
-    & .termObjGrade__obj{
-        width: 40%;
-    }
+        & .termObjGrade__obj{
+            //width: 40%;
+            margin-left: 10px;
+        }
 
-    & li{
-        display: flex;
-        margin-bottom: 10px;
+        & li{
+            display: flex;
+            align-items: center;
+            min-height: 60px;
+            max-height: 120px;
+            //margin-bottom: 10px;
 
-        & .coursecard__rate{
-            width: 60%;
-            margin-left: 15px;
+            & p{
+                margin: 0;
+            }
+
+            & .coursecard__rate{
+                min-width: 60%;
+                margin-left: 15px;
+            }
         }
     }
+
+    &1Grade{
+        position: absolute;
+        display: none;
+
+        &--visible{
+            position: relative;
+            display: block;
+        }
+    }
+
+    &2Grade{
+        position: absolute;
+        display: none;
+
+        &--visible{
+            position: relative;
+            display: block;
+        }
+    }
+
+    &3Grade{
+        position: absolute;
+        display: none;
+
+        &--visible{
+            position: relative;
+            display: block;
+        }
+    }
+
+    &4Grade{
+        position: absolute;
+        display: none;
+
+        &--visible{
+            position: relative;
+            display: block;
+        }
+    }
+
+    &5Grade{
+        position: absolute;
+        display: none;
+
+        &--visible{
+            position: relative;
+            display: block;
+        }
+    }
+}
+
+.reportGraphic{
+    display: none;
+    position: absolute;
+
+    &--visible{
+        display: block;
+        position: relative;
+    }
+
+    &__comment{
+        display: none;
+        position: absolute;
+
+        &--visible{
+            display: block;
+            position: relative; 
+        }
+    }
+}
+
+.emptyCalification{
+    &:not(ul){
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    display: none;
+    position: absolute;
+
+    &--visible{
+        display: block;
+        position: relative; 
+    }
+}
+
+.hidden{
+    display: none;
+    position: absolute;
 }

@@ -189,7 +189,7 @@
                         </div>
 
                         <!-- *********************** CARD *********************** -->
-                        <div class="coursecard__card">
+                        <div class="coursecard__card" id="unit1SeeMore">
                             <div class="coursecard__section">
                                 <h2>1. Evaluación del curso</h2>
                                 <p>Califica a los estudiantes respecto a los objetivos especificos de cada unidad, esta información será comparada con la que ellos ingresen.</p>
@@ -200,11 +200,11 @@
                                 <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
                                 <div class="coursecard__gradeExplanation">
                                     <div>
-                                        <p class="coursecard__rateCheck--checked" id="unitGrade">4</p>
+                                        <p class="coursecard__rateCheck--checked">4</p>
                                     </div>
                                     <div>
                                         <h3>Das esta calificación porque...</h3>
-                                        <p id="unitComment">
+                                        <p>
                                             Los estudiantes lograron gran parte de los objetivos de esta unidad, pero les faltó saber aplicarlos mejor.
                                         </p>
                                     </div>
@@ -345,7 +345,7 @@
                         </div>
 
                         <!-- *********************** CARD *********************** -->
-                        <div class="coursecard__card">
+                        <div class="coursecard__card" id="unit2SeeMore">
                             <div class="coursecard__section">
                                 <h2>1. Evaluación del curso</h2>
                                 <p>Califica a los estudiantes respecto a los objetivos especificos de cada unidad, esta información será comparada con la que ellos ingresen.</p>
@@ -356,11 +356,11 @@
                                 <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
                                 <div class="coursecard__gradeExplanation">
                                     <div>
-                                        <p class="coursecard__rateCheck--checked" id="unitGrade">5</p>
+                                        <p class="coursecard__rateCheck--checked">5</p>
                                     </div>
                                     <div>
                                         <h3>Das esta calificación porque...</h3>
-                                        <p id="unitComment">
+                                        <p>
                                             Alcanzaron los objetivos y lograron aplicarlos a las actividades propuestas.
                                         </p>
                                     </div>
@@ -756,7 +756,7 @@
                         </div>
 
                         <!-- *********************** ANSWERS CARD *********************** -->
-                        <div class="coursecard__card">
+                        <div class="coursecard__card" id="studentsAnswers">
                             <div class="coursecard__section">
                                 <h2>3. Resultados de la evaluación para Estudiantes</h2>
                                 <p>Aquí puedes visualizar lo que respondieron tus estudiantes a las preguntas que les enviaste.</p>
@@ -852,9 +852,12 @@
 
                             <div class="coursecard__section">
                                 <h3>Objetivos Terminales Proyecto Integrador II</h3>
-                                <p>Califica el nivel en que consideras que los estudiantes alcanzaron cada Objetivo Terminal</p>
+                                <p id="termObjGradeChange">Califica el nivel en que consideras que los estudiantes alcanzaron cada Objetivo Terminal</p>
                                 <ul class="termObjGrade__rate">
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj1Grade">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">1. Descubrir problemas, necesidades y/o oportunidades en un entorno real.</p>
                                         <div id="termObj1Rate" class="coursecard__rate">
                                             <p>Poco</p>
@@ -867,11 +870,11 @@
                                             </div>
                                             <p>Mucho</p>
                                         </div>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj1Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj2Grade">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">2. Definir los elementos que componen el problema, la necesidad y/o oportunidad.</p>
                                         <div id="termObj2Rate" class="coursecard__rate">
                                             <p>Poco</p>
@@ -883,12 +886,12 @@
                                                 <div class="coursecard__rateCheck">5</div>
                                             </div>
                                             <p>Mucho</p>
-                                        </div>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj2Grade">1</p>
                                         </div>    
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj3Grade">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">3. Desarrollar una solución de diseño al problema, mediante un prototipo funcional, integrando las competencias desarrolladas en cursos anteriores.</p>
                                         <div id="termObj3Rate" class="coursecard__rate">
                                             <p>Poco</p>
@@ -901,11 +904,11 @@
                                             </div>
                                             <p>Mucho</p>
                                         </div>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj3Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj4Grade">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">4. Evaluar las soluciones de diseño con usuarios reales.</p>
                                         <div id="termObj4Rate" class="coursecard__rate">
                                             <p>Poco</p>
@@ -918,11 +921,11 @@
                                             </div>
                                             <p>Mucho</p>
                                         </div>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj4Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj5Grade">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">5. Comunicar la solución dada al problema, ante el usuario identificado.</p>
                                         <div id="termObj5Rate" class="coursecard__rate">
                                             <p>Poco</p>
@@ -934,9 +937,6 @@
                                                 <div class="coursecard__rateCheck">5</div>
                                             </div>
                                             <p>Mucho</p>
-                                        </div>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj5Grade">1</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -981,47 +981,94 @@
                         </div>
 
                         <!-- *********************** REPORT CARD *********************** -->
-                        <div class="coursecard__card">
+                        <div class="coursecard__card" id="report">
                             <div class="coursecard__section">
-                                <h2>Reporte del curso</h2>
-                                <p>Una vez los evaluados los Objetivos Terminales, podrás quenerar el reporte del curso y enviarlo a tu Jefe de Departamento y a los Directores de programa relacionados con el curso.</p>
+                                <h2>2. Reporte del curso</h2>
+                                <p>Una vez evaluados los Objetivos Terminales, podrás generar el reporte del curso y enviarlo a tu Jefe de Departamento y a los Directores de programa relacionados con el curso.</p>
                             </div>
 
-                            <div class="coursecard__section ">
-                                <h3>Alineación con el syllabus</h3>
-                                <p>Medida en que consideras que los estudiantes alcanzaron los objetivos específicos de esta unidad.</p>
-                                <ul class="termObjGrade__rate">
+                            <div class="coursecard__section coursecard__section--visible ">
+                                <p class="coursecard__studentQuestionType">(Previsualización del reporte)</p>
+                                <br>
+                                <h1>Proyecto Integrador II - Reporte 2021-1 </h1>
+                                <br>
+                                <h2>Objetivos Terminales Proyecto Integrador II</h2>
+                                <p>Grado en que los estudiantes alcanzaron los objetivos terminales del curso.</p>
+                                <p class="emptyCalification emptyCalification--visible coursecard__studentQuestionType"><strong>(Aún no calificas los Objetivos Terminales)</strong></p>
+                                <ul class="emptyCalification termObjGrade__rate">
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj1Grade termObj1Grade--visible">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">1. Descubrir problemas, necesidades y/o oportunidades en un entorno real.</p>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj1Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
-                                        <p class="termObjGrade__obj">2. Definir los elementos que componen el problema, la necesidad y/o oportunidad.</p>
                                         <div>
-                                            <p class="coursecard__rateCheck--checked termObj2Grade">1</p>
+                                            <p class="coursecard__rateCheck--checked termObj2Grade termObj2Grade--visible">1</p>
                                         </div>    
+                                        <p class="termObjGrade__obj">2. Definir los elementos que componen el problema, la necesidad y/o oportunidad.</p>
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj3Grade termObj3Grade--visible">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">3. Desarrollar una solución de diseño al problema, mediante un prototipo funcional, integrando las competencias desarrolladas en cursos anteriores.</p>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj3Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
+                                        <div>
+                                            <p class="coursecard__rateCheck--checked termObj4Grade termObj4Grade--visible">1</p>
+                                        </div>
                                         <p class="termObjGrade__obj">4. Evaluar las soluciones de diseño con usuarios reales.</p>
-                                        <div>
-                                            <p class="coursecard__rateCheck--checked termObj4Grade">1</p>
-                                        </div>
                                     </li>
                                     <li>
-                                        <p class="termObjGrade__obj">5. Comunicar la solución dada al problema, ante el usuario identificado.</p>
                                         <div>
-                                            <p class="coursecard__rateCheck--checked termObj5Grade">1</p>
+                                            <p class="coursecard__rateCheck--checked termObj5Grade termObj5Grade--visible">1</p>
                                         </div>
+                                        <p class="termObjGrade__obj">5. Comunicar la solución dada al problema, ante el usuario identificado.</p>
                                     </li>
                                 </ul>
+
+                                <br> <br>
+                                <h2>Alineación con el syllabus</h2>
+                                <p>Comparativo autoevaluación de los estudiantes con la calificación del profesor sobre el grado en que los estudiantes alcanzaron los objetivos específicos de la unidad.</p>
+                                <br>
+                                <h3>Unidad 1</h3>
+                                <img src="/reportunit1.330b6c30.png" alt="">
+                                <p><strong>El profesor dio esta calificación porque:</strong></p>
+                                <p>
+                                    Los estudiantes lograron gran parte de los objetivos de esta unidad, pero les faltó saber aplicarlos mejor.
+                                </p>
+                                
+                                <br> <br>
+                                <br>
+                                <h3>Unidad 2</h3>
+                                <img src="/reportunit2.4a57e468.png" alt="">
+                                <p><strong>El profesor dio esta calificación porque:</strong></p>
+                                <p>
+                                    Alcanzaron los objetivos y lograron aplicarlos a las actividades propuestas.
+                                </p>
+
+                                <br> <br>
+                                <br>
+                                <h3>Unidad 3</h3>
+                                <p class="emptyCalification emptyCalification--visible reportGraphic coursecard__studentQuestionType"><strong>(Aún no se evalúa la Unidad 3)</strong></p>
+                                <img class="reportGraphic" src="/reportunit3_c1.0322dc8f.png" alt="">
+                                <img class="reportGraphic" src="/reportunit3_c2.2dc4ecc9.png" alt="">
+                                <img class="reportGraphic" src="/reportunit3_c3.7d3e40bd.png" alt="">
+                                <img class="reportGraphic" src="/reportunit3_c4.02e4b795.png" alt="">
+                                <img class="reportGraphic" src="/reportunit3_c5.6cd5e460.png" alt="">
+                                <div id="reportUnit3CommentDiv" class="reportGraphic__comment">
+                                    <p><strong>El profesor dio esta calificación porque:</strong></p>
+                                    <p id="reportUnit3Comment">
+                                        Alcanzaron los objetivos y lograron aplicarlos a las actividades propuestas.
+                                    </p>
+                                </div>
+                                
+                                <br><br>
+                                <h2>Reflexión abierta</h2>
+                                <br>
+                                <p id="reportReflectionText" class="hidden"></p>
+                                <textarea id="reportReflectionInput" class="coursecard__comment" placeholder="Escribe una reflexión"></textarea>
                             </div>
 
                             <div class="coursecard__bottom">
@@ -1029,17 +1076,17 @@
                                     <div class="coursecard__bottomState coursecard__bottomState--visible">
                                         <h3>Estado:</h3>
                                         <div class="coursecard__bottomStateCard coursecard__bottomStateCard--visible">
-                                            <p>Sin calificar</p>
+                                            <p>Sin enviar</p>
                                             <ion-icon name="checkmark-circle-outline"></ion-icon>
                                         </div>
-                                        <div class="coursecard__bottomStateCard ">
-                                            <p>Calificado</p>
+                                        <div class="coursecard__bottomStateCard">
+                                            <p>Enviado para revisión</p>
                                             <ion-icon name="checkmark-circle"></ion-icon>
                                         </div>
                                     </div>
-                                    <div class="coursecard__bottomStateAlert">
+                                    <div id="reportAlert" class="coursecard__bottomStateAlert">
                                         <ion-icon name="warning"></ion-icon>
-                                        <p>Todos los campos son obligatorios</p>
+                                        <p>Faltan campos en el reporte</p>
                                     </div>
                                 </div>
 
@@ -1053,8 +1100,8 @@
                                     <div class="secondaryBtn coursecard__bottomBtn ">
                                         Cancelar
                                     </div>
-                                    <div class="primaryBtn coursecard__bottomBtn coursecard__bottomBtn--visible ">
-                                        Calificar
+                                    <div class="primaryBtn primaryBtn--disabled coursecard__bottomBtn coursecard__bottomBtn--visible">
+                                        Enviar reporte
                                     </div>
                                 </div>
                                 

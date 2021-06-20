@@ -273,10 +273,40 @@ window.addEventListener('load', function () {
     });
   });
   var studentsQuestionsCTA = document.getElementById("studentsQuestions").querySelector(".primaryBtn");
-  var seeMoreAnswers = document.querySelectorAll(".coursecard__answersBtn"); //----------------------teacher grades unit---------------
+  var seeMoreAnswers = document.querySelectorAll(".coursecard__answersBtn"); //----------------------see more unit 1 and 2---------------
+  //id="unit2SeeMore"
 
-  var unitGrade = "";
+  var unit1Sections = document.getElementById("unit1SeeMore").querySelectorAll(".coursecard__section");
+  var unit1SeeMore = document.getElementById("unit1SeeMore").querySelector(".seeMoreBtn");
+  unit1SeeMore.addEventListener('click', function () {
+    if (!unit1Sections[1].classList.contains("coursecard__section--visible")) {
+      unit1Sections[1].classList.add("coursecard__section--visible");
+      unit1SeeMore.classList.add("seeMoreBtn--opened");
+      unit1SeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
+    } else {
+      unit1Sections[1].classList.remove("coursecard__section--visible");
+      unit1SeeMore.classList.remove("seeMoreBtn--opened");
+      unit1SeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
+    }
+  });
+  var unit2Sections = document.getElementById("unit2SeeMore").querySelectorAll(".coursecard__section");
+  var unit2SeeMore = document.getElementById("unit2SeeMore").querySelector(".seeMoreBtn");
+  unit2SeeMore.addEventListener('click', function () {
+    if (!unit2Sections[1].classList.contains("coursecard__section--visible")) {
+      unit2Sections[1].classList.add("coursecard__section--visible");
+      unit2SeeMore.classList.add("seeMoreBtn--opened");
+      unit2SeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
+    } else {
+      unit2Sections[1].classList.remove("coursecard__section--visible");
+      unit2SeeMore.classList.remove("seeMoreBtn--opened");
+      unit2SeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
+    }
+  }); //----------------------teacher grades unit---------------
+
+  var unitGrade = "0";
   var unitComment = "";
+  var termObjGraded = false;
+  var teacherCalificated = false;
   var unitGradeDiv = document.getElementById("unitGrade");
   var unitCommentDiv = document.getElementById("unitComment");
   var teacherGradeSections = document.getElementById("teacherGrade").querySelectorAll(".coursecard__section");
@@ -296,9 +326,16 @@ window.addEventListener('load', function () {
         teacherGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
         teacherGradeCTA.classList.remove("coursecard__bottomBtn--visible");
         teacherGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
+        console.log("calification", doc.data().teacherCalification);
+        console.log("comment", doc.data().teacherComment);
         unitGradeDiv.innerText = doc.data().teacherCalification;
+        unitGrade = doc.data().teacherCalification;
         unitCommentDiv.innerText = doc.data().teacherComment;
+        unitComment = doc.data().teacherComment;
         studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+        setGradeToReportGraphic();
+        emptyCalifications[2].classList.remove("emptyCalification--visible");
+        validateReportSend();
       } else {// doc.data() will be undefined in this case
         //console.log("No such document!");
       }
@@ -351,7 +388,7 @@ window.addEventListener('load', function () {
       console.log("nel");
       document.getElementById("teacherGrade").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
     } else {
-      setTeacherGrade(); //poner aquí el estado ya calificado
+      emptyCalifications[2].classList.remove("emptyCalification--visible"); //poner aquí el estado ya calificado
 
       teacherGradeCTA.classList.remove("primaryBtn--disabled");
       teacherGradeCancel.classList.remove("coursecard__bottomBtn--visible");
@@ -367,6 +404,9 @@ window.addEventListener('load', function () {
       unitGradeDiv.innerText = unitGrade;
       unitCommentDiv.innerText = unitComment;
       studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+      setTeacherGrade();
+      setGradeToReportGraphic();
+      validateReportSend();
     }
   });
   teacherGradeCancel.addEventListener('click', function () {
@@ -407,6 +447,7 @@ window.addEventListener('load', function () {
 
   var questionsBoxes = document.querySelectorAll(".coursecard__studentQuestionBox");
   var visibilityCheckboxes = document.querySelectorAll(".checkbox");
+  var studentsAnswersStates = document.getElementById("studentsAnswers").querySelectorAll(".coursecard__bottomStateCard");
   visibilityCheckboxes.forEach(function (check, index) {
     check.addEventListener('change', function () {
       // console.log(check.checked);
@@ -432,6 +473,8 @@ window.addEventListener('load', function () {
         studentsQuestions.classList.remove("coursecard__studentQuestion--visible");
         studentsQuestionsStates[0].classList.remove("coursecard__bottomStateCard--visible");
         studentsQuestionsStates[1].classList.add("coursecard__bottomStateCard--visible");
+        studentsAnswersStates[0].classList.remove("coursecard__bottomStateCard--visible");
+        studentsAnswersStates[1].classList.add("coursecard__bottomStateCard--visible");
         studentsQuestionsCTA.classList.remove("coursecard__bottomBtn--visible");
         seeMoreAnswers[2].classList.remove("seeMoreBtn--disabled");
       } else {// doc.data() will be undefined in this case
@@ -440,6 +483,8 @@ window.addEventListener('load', function () {
     });
   }
 
+  var aspects = ["", "", ""];
+  var activities = ["", "", "", ""];
   validateUnitActivities();
 
   function validateUnitActivities() {
@@ -475,7 +520,12 @@ window.addEventListener('load', function () {
         console.log("nel");
         document.getElementById("studentsQuestions").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
       } else {
-        setAnswersVisibility(); //poner aquí el estado ya calificado
+        setAnswersVisibility(); //volver visibles las gráficas
+
+        if (visibilityCheckboxes[1].checked) answersBoxes[1].classList.add("answerBox--visible");
+        if (visibilityCheckboxes[2].checked) answersBoxes[2].classList.add("answerBox--visible");
+        if (visibilityCheckboxes[3].checked) answersBoxes[3].classList.add("answerBox--visible");
+        if (visibilityCheckboxes[4].checked) answersBoxes[4].classList.add("answerBox--visible"); //poner aquí el estado ya calificado
 
         studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
         studentsQuestionsCancel.classList.remove("coursecard__bottomBtn--visible");
@@ -484,6 +534,8 @@ window.addEventListener('load', function () {
         studentsQuestions.remove("coursecard__studentQuestion--visible");
         studentsQuestionsStates[0].classList.remove("coursecard__bottomStateCard--visible");
         studentsQuestionsStates[1].classList.add("coursecard__bottomStateCard--visible");
+        studentsAnswersStates[0].classList.remove("coursecard__bottomStateCard--visible");
+        studentsAnswersStates[1].classList.add("coursecard__bottomStateCard--visible");
         studentsQuestionsCTA.classList.remove("coursecard__bottomBtn--visible");
         seeMoreAnswers[2].classList.remove("seeMoreBtn--disabled");
       }
@@ -499,6 +551,7 @@ window.addEventListener('load', function () {
   });
 
   function setAnswersVisibility() {
+    console.log("holaaaaaaaaaaaaaaaa2");
     db.collection("courses").doc("course1").collection("units").doc("unit3").set({
       evaluationSent: true,
       question2: visibilityCheckboxes[1].checked,
@@ -528,14 +581,16 @@ window.addEventListener('load', function () {
         answersBoxesVisibility[1] = doc.data().question3;
         answersBoxesVisibility[2] = doc.data().question4;
         answersBoxesVisibility[3] = doc.data().question6;
-        setAnswersVisibility();
+        setAnswersDivVisibility();
+        console.log("holaaaaaaaaaaaaaaaaaaaaa");
+        seeMoreAnswers[2].classList.remove("seeMoreBtn--disabled");
       } else {// doc.data() will be undefined in this case
         //console.log("No such document!");
       }
     });
   }
 
-  function setAnswersVisibility() {
+  function setAnswersDivVisibility() {
     if (answersBoxesVisibility[0]) answersBoxes[1].classList.add("answerBox--visible");
     if (answersBoxesVisibility[1]) answersBoxes[2].classList.add("answerBox--visible");
     if (answersBoxesVisibility[2]) answersBoxes[3].classList.add("answerBox--visible");
@@ -558,28 +613,29 @@ window.addEventListener('load', function () {
     });
   }); //----------------------teacher grade term obj---------------
 
-  var termObjtGrades = []; //from db
+  var termObjtGrades = ["", "", "", "", ""]; //from db
 
   var termObj1RateChecks = document.getElementById("termObj1Rate").querySelectorAll(".coursecard__rateCheck");
   var termObj1Grades = document.querySelectorAll(".termObj1Grade");
-  reportChecks(termObj1RateChecks);
+  reportChecks(termObj1RateChecks, 0);
   var termObj2RateChecks = document.getElementById("termObj2Rate").querySelectorAll(".coursecard__rateCheck");
   var termObj2Grades = document.querySelectorAll(".termObj2Grade");
-  reportChecks(termObj2RateChecks);
+  reportChecks(termObj2RateChecks, 1);
   var termObj3RateChecks = document.getElementById("termObj3Rate").querySelectorAll(".coursecard__rateCheck");
   var termObj3Grades = document.querySelectorAll(".termObj3Grade");
-  reportChecks(termObj3RateChecks);
+  reportChecks(termObj3RateChecks, 2);
   var termObj4RateChecks = document.getElementById("termObj4Rate").querySelectorAll(".coursecard__rateCheck");
   var termObj4Grades = document.querySelectorAll(".termObj4Grade");
-  reportChecks(termObj4RateChecks);
+  reportChecks(termObj4RateChecks, 3);
   var termObj5RateChecks = document.getElementById("termObj5Rate").querySelectorAll(".coursecard__rateCheck");
   var termObj5Grades = document.querySelectorAll(".termObj5Grade");
-  reportChecks(termObj5RateChecks);
+  reportChecks(termObj5RateChecks, 4);
   var termObjGradeSections = document.getElementById("termObjGrade").querySelectorAll(".coursecard__section");
   var termObjGradeStates = document.getElementById("termObjGrade").querySelectorAll(".coursecard__bottomStateCard");
   var termObjGradeSeeMore = document.getElementById("termObjGrade").querySelector(".seeMoreBtn");
   var termObjGradeCancel = document.getElementById("termObjGrade").querySelector(".secondaryBtn");
-  var termObjGradeCTA = document.getElementById("termObjGrade").querySelector(".primaryBtn"); //listaaaa
+  var termObjGradeCTA = document.getElementById("termObjGrade").querySelector(".primaryBtn");
+  var emptyCalifications = document.querySelectorAll(".emptyCalification"); //listaaaa
 
   getTermObjGrade();
 
@@ -592,7 +648,23 @@ window.addEventListener('load', function () {
         termObjGradeCTA.classList.remove("coursecard__bottomBtn--visible");
         termObjGradeSeeMore.classList.add("coursecard__bottomBtn--visible");
         termObjtGrades = [doc.data().termObj1, doc.data().termObj2, doc.data().termObj3, doc.data().termObj4, doc.data().termObj5];
-        settermObjGradeToDivs(termObjtGrades); //studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+        settermObjGradeToDivs(termObjtGrades);
+        validateReportSend(); //ocultar los rates
+
+        emptyCalifications[0].classList.remove("emptyCalification--visible");
+        emptyCalifications[1].classList.add("emptyCalification--visible");
+        document.getElementById("termObj1Rate").classList.add("coursecard__rate--hidden");
+        document.getElementById("termObj2Rate").classList.add("coursecard__rate--hidden");
+        document.getElementById("termObj3Rate").classList.add("coursecard__rate--hidden");
+        document.getElementById("termObj4Rate").classList.add("coursecard__rate--hidden");
+        document.getElementById("termObj5Rate").classList.add("coursecard__rate--hidden"); //mostrar los resultados
+
+        document.getElementById("termObjGradeChange").innerText = "Grado en que los estudiantes alcanzaron los objetivos terminales del curso.";
+        termObj1Grades[0].classList.add("termObj1Grade--visible");
+        termObj2Grades[0].classList.add("termObj2Grade--visible");
+        termObj3Grades[0].classList.add("termObj3Grade--visible");
+        termObj4Grades[0].classList.add("termObj4Grade--visible");
+        termObj5Grades[0].classList.add("termObj5Grade--visible"); //studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
       } else {// doc.data() will be undefined in this case
           //console.log("No such document!");
         }
@@ -618,6 +690,7 @@ window.addEventListener('load', function () {
     termObj5Grades[1].innerText = array[4];
   }
 
+  validateTermObjGrade();
   termObjGradeCTA.addEventListener('click', function () {
     if (!termObjGradeSections[1].classList.contains("coursecard__section--visible")) {
       termObjGradeSections[1].classList.add("coursecard__section--visible"); //aquí poner modo edicioooooooooon
@@ -626,41 +699,58 @@ window.addEventListener('load', function () {
       document.getElementById("termObjGrade").querySelector(".coursecard__bottomStateCard").classList.remove("coursecard__bottomStateCard--visible");
       termObjGradeCancel.classList.add("coursecard__bottomBtn--visible");
       termObjGradeCTA.classList.add("primaryBtn--disabled");
-    } else if (unitGrade === "" || unitComment === "") {
-      console.log("nel");
+    } else if (termObjtGrades.includes("")) {
       document.getElementById("termObjGrade").querySelector(".coursecard__bottomStateAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
     } else {
-      settermObjGrade(); //poner aquí el estado ya calificado
+      settermObjGrade();
+      validateReportSend(); //poner aquí el estado ya calificado
 
       termObjGradeCTA.classList.remove("primaryBtn--disabled");
+      termObjGradeCTA.classList.remove("coursecard__bottomBtn--visible");
       termObjGradeCancel.classList.remove("coursecard__bottomBtn--visible");
       document.getElementById("termObjGrade").querySelector(".coursecard__bottomStateAlert").classList.remove("coursecard__bottomStateAlert--visible");
       document.getElementById("termObjGrade").querySelector(".coursecard__bottomState").classList.add("coursecard__bottomState--visible");
-      termObjGradeSections[1].classList.remove("coursecard__section--visible");
-      termObjGradeSections[2].classList.add("coursecard__section--visible");
       termObjGradeStates[0].classList.remove("coursecard__bottomStateCard--visible");
       termObjGradeStates[1].classList.add("coursecard__bottomStateCard--visible");
-      termObjGradeCTA.classList.remove("coursecard__bottomBtn--visible");
       termObjGradeSeeMore.classList.add("coursecard__bottomBtn--visible", "seeMoreBtn--opened");
       termObjGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
-      unitGradeDiv.innerText = unitGrade;
-      unitCommentDiv.innerText = unitComment;
       studentsQuestionsCTA.classList.remove("primaryBtn--disabled");
+      settermObjGradeToDivs(termObjtGrades); //ocultar los rates
+
+      emptyCalifications[0].classList.remove("emptyCalification--visible");
+      emptyCalifications[1].classList.add("emptyCalification--visible");
+      document.getElementById("termObj1Rate").classList.add("coursecard__rate--hidden");
+      document.getElementById("termObj2Rate").classList.add("coursecard__rate--hidden");
+      document.getElementById("termObj3Rate").classList.add("coursecard__rate--hidden");
+      document.getElementById("termObj4Rate").classList.add("coursecard__rate--hidden");
+      document.getElementById("termObj5Rate").classList.add("coursecard__rate--hidden"); //mostrar los resultados
+
+      document.getElementById("termObjGradeChange").innerText = "Grado en que los estudiantes alcanzaron los objetivos terminales del curso.";
+      termObj1Grades[0].classList.add("termObj1Grade--visible");
+      termObj2Grades[0].classList.add("termObj2Grade--visible");
+      termObj3Grades[0].classList.add("termObj3Grade--visible");
+      termObj4Grades[0].classList.add("termObj4Grade--visible");
+      termObj5Grades[0].classList.add("termObj5Grade--visible");
     }
-  });
+  }); //listaaaa
 
-  function getTermObjGradeFromRate() {}
+  function validateTermObjGrade() {
+    if (!termObjtGrades.includes("")) {
+      termObjGradeCTA.classList.remove("primaryBtn--disabled");
+    }
+  } //listaaaa
 
-  function reportChecks(checksArray) {
+
+  function reportChecks(checksArray, objNum) {
     checksArray.forEach(function (check, index) {
       check.addEventListener('click', function () {
-        console.log("función otraaaa");
-        checks.forEach(function (check2) {
+        checksArray.forEach(function (check2) {
           check2.classList.remove("coursecard__rateCheck--checked");
         });
         check.classList.add("coursecard__rateCheck--checked");
-        unitGrade = check.innerText;
-        validateGradeInput();
+        termObjtGrades[objNum] = check.innerText;
+        validateTermObjGrade(); //unitGrade = check.innerText;
+        //validateGradeInput();
       });
     });
   } //listaaaa
@@ -673,24 +763,100 @@ window.addEventListener('load', function () {
     termObjGradeSections[1].classList.remove("coursecard__section--visible");
     termObjGradeStates[0].classList.add("coursecard__bottomStateCard--visible");
     termObjGradeCancel.classList.remove("coursecard__bottomBtn--visible");
-  });
+  }); //listaaaa
+
   termObjGradeSeeMore.addEventListener('click', function () {
-    if (!termObjGradeSections[2].classList.contains("coursecard__section--visible")) {
-      termObjGradeSections[2].classList.add("coursecard__section--visible");
+    if (!termObjGradeSections[1].classList.contains("coursecard__section--visible")) {
+      termObjGradeSections[1].classList.add("coursecard__section--visible");
       termObjGradeSeeMore.classList.add("seeMoreBtn--opened");
       termObjGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver menos";
     } else {
-      termObjGradeSections[2].classList.remove("coursecard__section--visible");
+      termObjGradeSections[1].classList.remove("coursecard__section--visible");
       termObjGradeSeeMore.classList.remove("seeMoreBtn--opened");
       termObjGradeSeeMore.getElementsByTagName("p")[0].innerText = "Ver más";
     }
-  });
+  }); //listaaaa
 
   function settermObjGrade() {
     db.collection("courses").doc("course1").collection("units").doc("unit3").set({
-      teacherCalificated: true,
-      teacherCalification: unitGrade,
-      teacherComment: unitComment
+      termObjGraded: true,
+      termObj1: termObjtGrades[0],
+      termObj2: termObjtGrades[1],
+      termObj3: termObjtGrades[2],
+      termObj4: termObjtGrades[3],
+      termObj5: termObjtGrades[4]
+    }, {
+      merge: true
+    }).then(function () {
+      console.log("Document successfully written!");
+    }).catch(function (error) {
+      console.error("Error writing document: ", error);
+    });
+    termObjGraded = true;
+  } //----------------------teacher sends report---------------
+
+
+  var reportGraphics = document.querySelectorAll(".reportGraphic");
+  var reportUnit3Comment = document.getElementById("reportUnit3Comment");
+  var reportUnit3CommentDiv = document.getElementById("reportUnit3CommentDiv");
+  setGradeToReportGraphic();
+
+  function setGradeToReportGraphic() {
+    reportGraphics.forEach(function (graphic) {
+      graphic.classList.remove("reportGraphic--visible");
+    });
+    console.log(parseInt(unitGrade)); //que se muestre solo la gráfica en la posición del valor de la calificación
+
+    reportGraphics[parseInt(unitGrade)].classList.add("reportGraphic--visible");
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      //.log(doc);
+      if (doc.exists && doc.data().teacherCalificated) {
+        reportUnit3Comment.innerText = doc.data().teacherComment;
+        reportUnit3CommentDiv.classList.add("reportGraphic__comment--visible");
+      } else {// doc.data() will be undefined in this case
+        //console.log("No such document!");
+      }
+    });
+  }
+
+  var reportCTABtn = document.getElementById("report").querySelector(".primaryBtn");
+  var reportReflectionInput = document.getElementById("reportReflectionInput");
+  var reportReflectionText = document.getElementById("reportReflectionText");
+  var reportAlert = document.getElementById("reportAlert");
+  var reportStates = document.getElementById("report").querySelectorAll(".coursecard__bottomStateCard");
+  console.log(reportStates[1]);
+
+  function validateReportSend() {
+    db.collection("courses").doc("course1").collection("units").doc("unit3").get().then(function (doc) {
+      //.log(doc);
+      if (doc.exists && doc.data().termObjGraded && doc.data().teacherCalificated) {
+        reportCTABtn.classList.remove("primaryBtn--disabled");
+      } else {// doc.data() will be undefined in this case
+        //console.log("No such document!");
+      }
+    });
+  }
+
+  reportCTABtn.addEventListener('click', function () {
+    if (reportCTABtn.classList.contains("primaryBtn--disabled")) {
+      document.getElementById("reportAlert").classList.add("coursecard__bottomStateAlert--visible"); //aquí poner mensaje de alertaaaaaa
+    } else {
+      //poner aquí el estado ya calificado
+      reportCTABtn.classList.remove("primaryBtn--disabled", "coursecard__bottomBtn--visible");
+      reportStates[0].classList.remove("coursecard__bottomStateCard--visible");
+      reportStates[1].classList.add("coursecard__bottomStateCard--visible");
+      reportReflectionText.innerText = reportReflectionInput.value;
+      reportReflectionText.classList.remove("hidden");
+      reportReflectionInput.classList.add("hidden");
+      console.log(reportReflectionInput.value);
+      setResport();
+    }
+  });
+
+  function setResport() {
+    db.collection("courses").doc("course1").collection("units").doc("unit3").set({
+      reportSent: true,
+      reportReflection: reportReflectionInput.value
     }, {
       merge: true
     }).then(function () {
@@ -699,12 +865,11 @@ window.addEventListener('load', function () {
       console.error("Error writing document: ", error);
     });
   }
-}); ///-------------- code that I can't delete, just in case -------------
+}); //-------------- code that I can't delete, just in case -------------
 
 /*
 
-var aspects = ["","",""];
-    var activities = ["","","",""];
+
 
     var aspectsInputs = document.querySelectorAll(".selfEvaluationAspect");
     aspectsInputs.forEach((aspectInput, index) =>{
@@ -779,7 +944,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60796" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62518" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
