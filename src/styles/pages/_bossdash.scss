@@ -1,3 +1,4 @@
+
 .container{
     position: relative;
     width: 100%;
@@ -6,24 +7,13 @@
     justify-content: space-between;
 }
 
-.dashboard{
+.bossDashboard{
     &__container{
         position: absolute;
         margin-left:var(--nav-width) ;
-        width:68%;
+        width:90%;
         height: 100vh;        
         
-    }
-
-    &__containerBoss{
-        position: absolute;
-        margin-left:var(--nav-width) ;
-        width:90%;
-        height: 100vh;
-
-        & .dashboard__course{
-            width: 18%;
-        }
     }
 
     &__header{
@@ -84,7 +74,7 @@
     }
 
     &__course{
-        width: 31%;
+        width: 18%;
         margin-top: 20px;
         margin-left: 15px;
         background-color: var(--white-color);
@@ -100,22 +90,24 @@
             box-shadow: 0px 0px 6px rgba(138, 138, 138, 0.35);
         }
 
-        & p{
-            margin-top: 10px;
-            font-weight: 500;
-            color: var(--black-color);
-        }
-
-        & p:first-child{
+        & h1{
             font-size: 30px;
             font-weight: 600;
             margin: 0;
             color: var(--second-color);
         }
 
-        & p:last-child{
-            margin-top: 5px;
-            font-weight: 300;
+        & h3{
+            margin-bottom: 10px;
+        }
+
+        & p{
+            margin: 0;
+            font-size: 14px;
+        }
+
+        & span{
+            color: var(--first-color);
         }
 
     }
@@ -164,4 +156,9 @@
             }
         }
     }
+}
+
+.hidden{
+    display: none;
+    position: absolute;
 }

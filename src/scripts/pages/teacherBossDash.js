@@ -20,16 +20,53 @@ window.addEventListener('load',()=>{
     var auth = firebase.auth();
     var db = firebase.firestore();
 
-    var expander = new ExpandMenu('nav-toggle', 'navBar');
+    var expander = new ExpandMenu('navBar', 'navBar');
     expander.expand();
 
     var signOutBtn = document.getElementById('signOutBtn');
     signOutBtn.addEventListener('click', ()=>{
         auth.signOut().then(() => {
             console.log("Cerró sesión exitosamente");
+            window.location.href = "index.html";
           }).catch((error) => {
             console.log(error.code);
           });
     })
+
+    var curriculars = document.querySelectorAll(".curricular");
+    var electives = document.querySelectorAll(".elective");
+
+    var filter = document.getElementById("filter");
+    var filterOptions = filter.options;
+    var searchInput = document.getElementById("searchInput");
+    var searchBtn = document.getElementById("searchBtn");
+
+    filter.addEventListener('change', ()=>{
+      if(filterOptions[filter.selectedIndex].innerText == "Mostrar todos"){
+        curriculars.forEach(subject =>{
+          subject.classList.remove("hidden");
+        })
+        electives.forEach(subject =>{
+          subject.classList.remove("hidden");
+        })
+      }
+      if(filterOptions[filter.selectedIndex].innerText == "Curso curricular"){
+        curriculars.forEach(subject =>{
+          subject.classList.remove("hidden");
+        })
+        electives.forEach(subject =>{
+          subject.classList.add("hidden");
+        })
+      }
+      if(filterOptions[filter.selectedIndex].innerText == "Electiva profesional"){
+        curriculars.forEach(subject =>{
+          subject.classList.add("hidden");
+        })
+        electives.forEach(subject =>{
+          subject.classList.remove("hidden");
+        })
+      }
+      
+    });
 
 });
