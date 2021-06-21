@@ -22,6 +22,8 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  transition: color 0.3s;
+  transition: background-color 0.3s;
 }
 .nav__brand {
   display: grid;
@@ -54,11 +56,12 @@
   cursor: pointer;
 }
 .nav__link:hover > :first-child {
-  color: var(--first-color);
+  color: var(--second-color);
 }
 .nav__link:hover > :first-child:not(ion-icon) {
-  background-color: var(--first-color);
+  background-color: var(--second-color);
   color: var(--white-color);
+  transition: 0.3s;
 }
 .nav__link > :first-child {
   padding: 10px 8px;
@@ -66,14 +69,17 @@
 }
 .nav__link > :first-child:not(ion-icon) {
   width: 50px;
-  background-color: var(--second-color);
+  background-color: var(--second-color-lilac);
+  transition: 0.3s;
 }
 .nav__link--selected > :first-child {
-  color: var(--first-color);
+  color: var(--second-color);
+  transition: 0.3s;
 }
 .nav__link--selected > :first-child:not(ion-icon) {
-  background-color: var(--first-color);
+  background-color: var(--second-color);
   color: var(--white-color);
+  transition: 0.3s;
 }
 .nav__icon {
   font-size: var(--nav-icon-text);
@@ -84,7 +90,7 @@
   color: var(--black-color);
 }
 .nav__icon:not(span) {
-  color: var(--second-color);
+  color: var(--second-color-lilac);
 }
 .nav__name {
   font-size: var(--small-font-size);
@@ -358,14 +364,16 @@
   margin-top: 20px;
   margin-left: 15px;
   background-color: var(--white-color);
+  box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
   border-radius: 5px;
   padding: 20px;
   cursor: pointer;
+  transition: 0.3s;
 }
 .dashboard__course:hover {
-  box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
   transition: 0.3s;
-  transform: translate(-2px, -2px);
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 6px rgba(138, 138, 138, 0.35);
 }
 .dashboard__course p {
   margin-top: 10px;
@@ -606,27 +614,12 @@
   background-color: var(--gray-color-light);
   border-radius: 5px;
 }
-.course__mainInfoCourse {
-  background-color: var(--white-color);
-  padding: 30px;
-}
-.course__mainInfoCourse div {
-  margin-top: 20px;
-}
-.course__mainInfoCourse h3 {
-  margin: 0;
-  display: inline-block;
-}
-.course__mainInfoCourse p {
-  margin: 0;
-  display: inline-block;
-}
 .course__notes {
   position: fixed;
   width: var(--right-aside-width);
   height: 100vh;
   right: 0;
-  padding: 30px;
+  padding: 40px;
   background-color: var(--white-color);
 }
 
@@ -660,9 +653,10 @@
   height: 3px;
   background-color: var(--second-color-lilac);
   border-radius: 5px;
+  transition: 0.3s ease-in-out;
 }
 .tabs__headerTab:hover::after {
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
   width: 100%;
 }
 .tabs__headerTab--active {
@@ -684,11 +678,12 @@
 .tabs__bodyContent {
   height: 100%;
   position: absolute;
+  width: 100%;
   display: none;
   visibility: hidden;
   opacity: 0;
   transform: scale(0.98);
-  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms;
+  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms, display 0.3s ease-in-out 0ms;
 }
 .tabs__bodyContent--active {
   height: 100%;
@@ -696,6 +691,17 @@
   visibility: visible;
   opacity: 1;
   transform: scale(1);
+  transition: opacity 0.3s ease-in-out 0ms, transform 0.3s ease-in-out 0ms, display 0.3s ease-in-out 0ms;
+}
+
+.questionGraphic__image {
+  display: none;
+}
+.questionGraphic__image--visible {
+  display: block;
+}
+.questionGraphic__text {
+  display: flex;
 }
 
 .coursecard__container {
@@ -706,7 +712,7 @@
 .coursecard__card {
   position: relative;
   margin-bottom: 20px;
-  padding: 30px;
+  padding: 40px;
   background-color: var(--white-color);
   width: 100%;
   height: calc(100% + var(--bottom-card-height));
@@ -755,6 +761,10 @@
   justify-content: center;
   align-items: center;
 }
+.coursecard__rate p {
+  width: 80px;
+  text-align: center;
+}
 .coursecard__rateCheck {
   display: inline-block;
   text-align: center;
@@ -782,6 +792,10 @@
   background-color: var(--second-color-light);
   color: var(--white-color);
   border: var(--second-color-light) 3px solid;
+}
+.coursecard__rate--hidden {
+  position: absolute;
+  display: none;
 }
 .coursecard__gradeExplanation {
   display: flex;
@@ -956,14 +970,147 @@
   width: 400px;
 }
 .coursecard__answers {
-  position: absolute !important;
-  display: none !important;
-  visibility: hidden !important;
+  position: absolute;
+  display: none;
 }
 .coursecard__answers--visible {
-  position: relative !important;
-  display: block !important;
-  visibility: visible !important;
+  position: absolute;
+  display: block;
+}
+.coursecard__answers .answerBox {
+  position: absolute;
+  display: none;
+}
+.coursecard__answers .answerBox img {
+  margin: 0;
+}
+.coursecard__answers .answerBox--visible {
+  position: relative;
+  display: block;
+  padding: 20px;
+}
+.coursecard__answers .answerBox--visible p {
+  margin-bottom: 0px;
+}
+.coursecard__reportWelcome {
+  width: 100%;
+  overflow: visible;
+  display: flex;
+}
+.coursecard__reportWelcomeTxt {
+  width: 60%;
+}
+.coursecard__reportWelcome img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40%;
+}
+.coursecard__InfoCourse {
+  background-color: var(--white-color);
+}
+.coursecard__InfoCourse div {
+  margin-top: 20px;
+}
+.coursecard__InfoCourse h3 {
+  margin: 0;
+  display: inline-block;
+}
+.coursecard__InfoCourse p {
+  margin: 0;
+  display: inline-block;
+}
+
+.termObjGrade__rate .termObjGrade__obj {
+  margin-left: 10px;
+}
+.termObjGrade__rate li {
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  max-height: 120px;
+}
+.termObjGrade__rate li p {
+  margin: 0;
+}
+.termObjGrade__rate li .coursecard__rate {
+  min-width: 60%;
+  margin-left: 15px;
+}
+.termObj1Grade {
+  position: absolute;
+  display: none;
+}
+.termObj1Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj2Grade {
+  position: absolute;
+  display: none;
+}
+.termObj2Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj3Grade {
+  position: absolute;
+  display: none;
+}
+.termObj3Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj4Grade {
+  position: absolute;
+  display: none;
+}
+.termObj4Grade--visible {
+  position: relative;
+  display: block;
+}
+.termObj5Grade {
+  position: absolute;
+  display: none;
+}
+.termObj5Grade--visible {
+  position: relative;
+  display: block;
+}
+
+.reportGraphic {
+  display: none;
+  position: absolute;
+}
+.reportGraphic--visible {
+  display: block;
+  position: relative;
+}
+.reportGraphic__comment {
+  display: none;
+  position: absolute;
+}
+.reportGraphic__comment--visible {
+  display: block;
+  position: relative;
+}
+
+.emptyCalification {
+  display: none;
+  position: absolute;
+}
+.emptyCalification:not(ul) {
+  text-align: center;
+  margin: 40px 0;
+}
+.emptyCalification--visible {
+  display: block;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
 }
 
 /* Fonts */
@@ -1036,17 +1183,26 @@ body::-webkit-scrollbar-thumb {
 
 h1 {
   margin: 0;
-  color: var(--second-color);
+  color: var(--first-color);
   font-size: 22px;
+  font-weight: 600;
 }
 
 h2 {
   margin: 0;
-  color: var(--black-color);
+  color: var(--second-color);
   font-size: 20px;
+  font-weight: 600;
 }
 
 h3 {
+  margin: 0;
+  color: var(--black-color);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h4 {
   margin: 0;
   color: var(--black-color);
   font-size: 18px;
@@ -1055,6 +1211,7 @@ h3 {
 
 p {
   color: var(--tx-color);
+  font-size: 16px;
 }
 
 ul {
@@ -1079,6 +1236,10 @@ img {
 
 .bold {
   font-weight: 600;
+}
+
+strong {
+  font-weight: 500;
 }
 
 /* The switch - the box around the slider */
@@ -1148,11 +1309,13 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   font-weight: 500;
-  transition: transform 0.3s;
   color: var(--second-color);
+  transition: transform 0.3s;
+  transition: 0.3s;
 }
 .seeMoreBtn p {
   color: var(--second-color);
+  margin-right: 8px;
 }
 .seeMoreBtn--opened ion-icon {
   transition: transform 0.3s;
@@ -1160,7 +1323,18 @@ input:checked + .slider:before {
 }
 .seeMoreBtn--disabled {
   cursor: default;
-  background-color: var(--gray-color-medium);
+  color: var(--gray-color-medium);
+}
+.seeMoreBtn--disabled p {
+  color: var(--gray-color-medium);
+}
+.seeMoreBtn:hover {
+  transition: 0.3s;
+  color: var(--second-color-lilac);
+}
+.seeMoreBtn:hover p {
+  transition: 0.3s;
+  color: var(--second-color-lilac);
 }
 
 .primaryBtn {
@@ -1175,10 +1349,15 @@ input:checked + .slider:before {
   min-width: 150px;
   padding: 0 20px;
   border-radius: 5px;
+  transition: 0.3s;
 }
 .primaryBtn--disabled {
   cursor: default;
   background-color: var(--gray-color-medium);
+}
+.primaryBtn:hover {
+  transition: 0.3s;
+  background-color: var(--first-color-dark);
 }
 
 .secondaryBtn {

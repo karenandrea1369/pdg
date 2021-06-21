@@ -34,6 +34,7 @@ window.addEventListener('load',()=>{
         });
     })
     
+    /*
     var notifications = document.querySelectorAll(".dashboard__notification");
     notifications.forEach(notification =>{
         var idCourse = notification.getAttribute("id");
@@ -54,6 +55,6 @@ window.addEventListener('load',()=>{
         notification.addEventListener('click', ()=>{
             
         });
-    })
+    })*/
 
 });

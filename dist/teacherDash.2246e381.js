@@ -219,24 +219,28 @@ window.addEventListener('load', function () {
       console.log(error.code);
     });
   });
+  /*
   var notifications = document.querySelectorAll(".dashboard__notification");
-  notifications.forEach(function (notification) {
-    var idCourse = notification.getAttribute("id");
-    db.collection("courses").doc(idCourse).get().then(function (doc) {
-      if (doc.exists) {
-        if (doc.data().notifications) {
-          notification.classList.add("dashboard__notification--visible");
-          notification.innerHTML = doc.data().notifications + ' <ion-icon name="arrow-forward-outline"></ion-icon>';
-          console.log("id", idCourse, doc.data().notifications);
-        }
-      } else {
-        notification.classList.remove("dashboard__notification--visible"); // doc.data() will be undefined in this case
-
-        console.log("No such document!");
-      }
-    });
-    notification.addEventListener('click', function () {});
-  });
+  notifications.forEach(notification =>{
+      var idCourse = notification.getAttribute("id");
+      
+      db.collection("courses").doc(idCourse).get().then((doc) => {
+          if (doc.exists) {
+              if(doc.data().notifications){
+                  notification.classList.add("dashboard__notification--visible");
+                  notification.innerHTML = doc.data().notifications + ' <ion-icon name="arrow-forward-outline"></ion-icon>';
+                  console.log("id", idCourse, doc.data().notifications);
+              }
+          } else {
+              notification.classList.remove("dashboard__notification--visible");
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      });
+      notification.addEventListener('click', ()=>{
+          
+      });
+  })*/
 });
 },{"../classes/ExpandMenu":"scripts/classes/ExpandMenu.js"}],"C:/Users/karen/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -266,7 +270,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56471" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63408" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

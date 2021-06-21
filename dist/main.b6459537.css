@@ -22,6 +22,8 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  transition: color 0.3s;
+  transition: background-color 0.3s;
 }
 .nav__brand {
   display: grid;
@@ -54,11 +56,12 @@
   cursor: pointer;
 }
 .nav__link:hover > :first-child {
-  color: var(--first-color);
+  color: var(--second-color);
 }
 .nav__link:hover > :first-child:not(ion-icon) {
-  background-color: var(--first-color);
+  background-color: var(--second-color);
   color: var(--white-color);
+  transition: 0.3s;
 }
 .nav__link > :first-child {
   padding: 10px 8px;
@@ -66,14 +69,17 @@
 }
 .nav__link > :first-child:not(ion-icon) {
   width: 50px;
-  background-color: var(--second-color);
+  background-color: var(--second-color-lilac);
+  transition: 0.3s;
 }
 .nav__link--selected > :first-child {
-  color: var(--first-color);
+  color: var(--second-color);
+  transition: 0.3s;
 }
 .nav__link--selected > :first-child:not(ion-icon) {
-  background-color: var(--first-color);
+  background-color: var(--second-color);
   color: var(--white-color);
+  transition: 0.3s;
 }
 .nav__icon {
   font-size: var(--nav-icon-text);
@@ -84,7 +90,7 @@
   color: var(--black-color);
 }
 .nav__icon:not(span) {
-  color: var(--second-color);
+  color: var(--second-color-lilac);
 }
 .nav__name {
   font-size: var(--small-font-size);
@@ -606,27 +612,12 @@
   background-color: var(--gray-color-light);
   border-radius: 5px;
 }
-.course__mainInfoCourse {
-  background-color: var(--white-color);
-  padding: 30px;
-}
-.course__mainInfoCourse div {
-  margin-top: 20px;
-}
-.course__mainInfoCourse h3 {
-  margin: 0;
-  display: inline-block;
-}
-.course__mainInfoCourse p {
-  margin: 0;
-  display: inline-block;
-}
 .course__notes {
   position: fixed;
   width: var(--right-aside-width);
   height: 100vh;
   right: 0;
-  padding: 30px;
+  padding: 40px;
   background-color: var(--white-color);
 }
 
@@ -1013,6 +1004,20 @@
   right: 0;
   width: 40%;
 }
+.coursecard__InfoCourse {
+  background-color: var(--white-color);
+}
+.coursecard__InfoCourse div {
+  margin-top: 20px;
+}
+.coursecard__InfoCourse h3 {
+  margin: 0;
+  display: inline-block;
+}
+.coursecard__InfoCourse p {
+  margin: 0;
+  display: inline-block;
+}
 
 .termObjGrade__rate .termObjGrade__obj {
   margin-left: 10px;
@@ -1176,17 +1181,26 @@ body::-webkit-scrollbar-thumb {
 
 h1 {
   margin: 0;
-  color: var(--second-color);
+  color: var(--first-color);
   font-size: 22px;
+  font-weight: 600;
 }
 
 h2 {
   margin: 0;
-  color: var(--black-color);
+  color: var(--second-color);
   font-size: 20px;
+  font-weight: 600;
 }
 
 h3 {
+  margin: 0;
+  color: var(--black-color);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h4 {
   margin: 0;
   color: var(--black-color);
   font-size: 18px;
@@ -1195,6 +1209,7 @@ h3 {
 
 p {
   color: var(--tx-color);
+  font-size: 16px;
 }
 
 ul {
@@ -1219,6 +1234,10 @@ img {
 
 .bold {
   font-weight: 600;
+}
+
+strong {
+  font-weight: 500;
 }
 
 /* The switch - the box around the slider */
@@ -1288,8 +1307,9 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   font-weight: 500;
-  transition: transform 0.3s;
   color: var(--second-color);
+  transition: transform 0.3s;
+  transition: 0.3s;
 }
 .seeMoreBtn p {
   color: var(--second-color);
@@ -1306,6 +1326,14 @@ input:checked + .slider:before {
 .seeMoreBtn--disabled p {
   color: var(--gray-color-medium);
 }
+.seeMoreBtn:hover {
+  transition: 0.3s;
+  color: var(--second-color-lilac);
+}
+.seeMoreBtn:hover p {
+  transition: 0.3s;
+  color: var(--second-color-lilac);
+}
 
 .primaryBtn {
   display: flex;
@@ -1319,10 +1347,15 @@ input:checked + .slider:before {
   min-width: 150px;
   padding: 0 20px;
   border-radius: 5px;
+  transition: 0.3s;
 }
 .primaryBtn--disabled {
   cursor: default;
   background-color: var(--gray-color-medium);
+}
+.primaryBtn:hover {
+  transition: 0.3s;
+  background-color: var(--first-color-dark);
 }
 
 .secondaryBtn {

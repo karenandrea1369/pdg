@@ -365,6 +365,23 @@
             width: 40%;
         }
     }
+
+    &__InfoCourse{
+        background-color: var(--white-color);
+
+        & div{
+            margin-top: 20px;
+        }
+        & h3{
+            margin: 0;
+            display: inline-block;
+        }
+
+        & p{
+            margin: 0;
+            display: inline-block;
+        }
+    }
 }
 
 .termObj{

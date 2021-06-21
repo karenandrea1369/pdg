@@ -282,6 +282,23 @@ window.addEventListener('load',()=>{
     var aspects = ["","",""];
     var activities = ["","","",""];
 
+    var aspectsInputs = document.querySelectorAll(".selfEvaluationAspect");
+    aspectsInputs.forEach((aspectInput, index) =>{
+        aspectInput.addEventListener('keyup', ()=>{
+            aspects[index] = aspectInput.value;
+            //console.log("aspect---->",index, aspects[index]);
+        })
+    });
+
+    var activitiesInputs = document.querySelectorAll(".unitActivity");
+    activitiesInputs.forEach((activityInput, index) =>{
+        activityInput.addEventListener('keyup', ()=>{
+            activities[index] = activityInput.value;
+            validateUnitActivities();
+           // console.log("activity---->", activities);
+        })
+    });
+
     validateUnitActivities();
     function validateUnitActivities(){
         if(studentsQuestions.classList.contains("coursecard__studentQuestion--visible")){
@@ -524,7 +541,7 @@ window.addEventListener('load',()=>{
         } else {
             
             settermObjGrade();
-            validateReportSend ();
+            validateReportSend();
             //poner aquí el estado ya calificado
             termObjGradeCTA.classList.remove("primaryBtn--disabled");
             termObjGradeCTA.classList.remove("coursecard__bottomBtn--visible");
@@ -629,7 +646,7 @@ window.addEventListener('load',()=>{
     var reportUnit3CommentDiv = document.getElementById("reportUnit3CommentDiv");
     
     setGradeToReportGraphic();
-    function setGradeToReportGraphic (){
+    function setGradeToReportGraphic(){
         reportGraphics.forEach(graphic =>{
             graphic.classList.remove("reportGraphic--visible");
         })
@@ -656,7 +673,7 @@ window.addEventListener('load',()=>{
     var reportStates = document.getElementById("report").querySelectorAll(".coursecard__bottomStateCard");
 
     console.log(reportStates[1]);
-    function validateReportSend (){
+    function validateReportSend(){
         db.collection("courses").doc("course1").collection("units").doc("unit3").get().then((doc) =>{
             //.log(doc);
             if(doc.exists && doc.data().termObjGraded && doc.data().teacherCalificated){
@@ -708,22 +725,7 @@ window.addEventListener('load',()=>{
 
 
 
-    var aspectsInputs = document.querySelectorAll(".selfEvaluationAspect");
-    aspectsInputs.forEach((aspectInput, index) =>{
-        aspectInput.addEventListener('keyup', ()=>{
-            aspects[index] = aspectInput.value;
-            //console.log("aspect---->",index, aspects[index]);
-        })
-    });
-
-    var activitiesInputs = document.querySelectorAll(".unitActivity");
-    activitiesInputs.forEach((activityInput, index) =>{
-        activityInput.addEventListener('keyup', ()=>{
-            activities[index] = activityInput.value;
-            validateUnitActivities();
-           // console.log("activity---->", activities);
-        })
-    });
+    
 
     if(visibilityCheckboxes[3].checked){
             db.collection("courses").doc("course1").collection("units").doc("unit3").set({

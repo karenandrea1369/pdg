@@ -95,28 +95,36 @@ body{
 h1{
     margin: 0;
     //color: var(--first-color);
-    color: var(--second-color);
+    color: var(--first-color);
     font-size: 22px;
+    font-weight: 600;
 }
 h2{
     margin: 0;
     //color: var(--second-color);
-    color: var(--black-color);
+    color: var(--second-color);
     font-size: 20px;
-    //font-weight: 700;
+    font-weight: 600;
 }
 
 h3{
     margin: 0;
     color: var(--black-color);
     font-size: 18px;
+    font-weight: 600;
+}
+
+h4{
+    margin: 0;
+    color: var(--black-color);
+    font-size: 18px;
     font-weight: 500;
 }
 
-h4{}
-
 p{
     color: var(--tx-color);
+    font-size: 16px;
+    
 }
 
 ul{
@@ -139,6 +147,10 @@ img{
 
 .bold{
     font-weight: 600;
+}
+
+strong{
+    font-weight: 500;
 }
 
 /* The switch - the box around the slider */
@@ -208,13 +220,14 @@ img{
     display: flex;
     align-items: center;
     font-weight: 500;
+    color: var(--second-color);
     transition: transform 0.3s;
+    transition: 0.3s;
 
     & p{
         color: var(--second-color);
         margin-right: 8px;
     }
-    color: var(--second-color);
 
     &--opened{
         & ion-icon{
@@ -231,6 +244,16 @@ img{
             color: var(--gray-color-medium);
         }
     }
+
+    &:hover{
+        transition: 0.3s;
+        color: var(--second-color-lilac);
+        & p{
+            transition: 0.3s;
+            color: var(--second-color-lilac);
+        }
+    
+    }
 }
 
 .primaryBtn{
@@ -245,10 +268,17 @@ img{
     min-width: 150px;
     padding: 0 20px;
     border-radius: 5px;
+    transition: 0.3s;
 
     &--disabled{
         cursor: default;
         background-color: var(--gray-color-medium);
+    }
+
+    &:hover{
+        transition: 0.3s;
+        background-color: var(--first-color-dark);
+        
     }
 }
 

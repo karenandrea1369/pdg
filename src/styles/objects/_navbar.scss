@@ -19,6 +19,8 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    transition: color .3s;
+    transition: background-color .3s;
 
     &__brand{
         display: grid;
@@ -59,10 +61,11 @@
 
         &:hover{
             &> :first-child{
-                color: var(--first-color);
+                color: var(--second-color);
                 &:not(ion-icon){
-                background-color: var(--first-color);
+                background-color: var(--second-color);
                 color: var(--white-color);
+                transition: .3s;
                 }
             }
         }
@@ -73,17 +76,20 @@
             
             &:not(ion-icon){
                 width: 50px;
-                background-color: var(--second-color);
+                background-color: var(--second-color-lilac);
+                transition: .3s;
             }
         }
 
         &--selected{
             &> :first-child{
-                color: var(--first-color);
+                color: var(--second-color);
+                transition: .3s;
                 
                 &:not(ion-icon){
-                    background-color: var(--first-color);
+                    background-color: var(--second-color);
                     color: var(--white-color);
+                    transition: .3s;
                 }
             }
         }
@@ -99,7 +105,7 @@
         }
         
         &:not(span){
-            color: var(--second-color);
+            color: var(--second-color-lilac);
         }
     }
 

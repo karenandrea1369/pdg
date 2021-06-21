@@ -77,14 +77,16 @@
         margin-top: 20px;
         margin-left: 15px;
         background-color: var(--white-color);
+        box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
         border-radius: 5px;
         padding: 20px;
         cursor: pointer;
-
+        transition: .3s;
+        
         &:hover{
-            box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
             transition: .3s;
-            transform: translate(-2px, -2px);
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 6px rgba(138, 138, 138, 0.35);
         }
 
         & p{
