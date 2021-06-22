@@ -244,6 +244,12 @@ strong{
         & p{
             color: var(--gray-color-medium);
         }
+
+        &:hover{
+            cursor: default;
+            color: var(--gray-color-medium);
+        
+        }
     }
 
     &:hover{
@@ -274,6 +280,11 @@ strong{
     &--disabled{
         cursor: default;
         background-color: var(--gray-color-medium);
+
+        &:hover{
+            cursor: default;
+            background-color: var(--gray-color-medium);
+        }
     }
 
     &:hover{

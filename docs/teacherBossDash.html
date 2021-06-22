@@ -6,53 +6,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main.48b3db1d.css">
     <title>Document</title>
-</head>
+<script src="/main.48b3db1d.js"></script></head>
 <body>
-    <h1>Dashboard teacher and boss</h1>
-
-    <div class="l-navbar" id="navBar">
-        <nav class="nav">
-            <div>
-                <div class="nav__brand">
-                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">Talkie</a>
+    
+    <div class="container">
+        <div class="l-navbar" id="navBar">
+            <nav class="nav">
+                <div>
+                    <div class="nav__brand">
+                        <img src="/logo provisional.565a102b.png" alt="">
+                        <a href="#" class="nav__logo">Talkie</a>
+                    </div>
+                    <div class="nav__list">
+                        <a href="/teacherDash.html" class="nav__link nav__link--selected">
+                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Inicio</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="nav__list">
-                    <a href="#" class="nav__link">
-                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Dashboard</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="chatbubble-ellipses-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Messenger</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Projects</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Analytics</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="people-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Team</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Settings</span>
-                    </a>
+                
+                <a href="#" class="nav__link" id="signOutBtn">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav__name">Cerrar sesión</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="bossDashboard__container">
+            <div class="bossDashboard__header">
+                <div class="bossDashboard__headerleft">
+                    <h1>Inicio</h1>
                 </div>
             </div>
-            
-            <a href="#" class="nav__link" id="signOutBtn">
-                <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                <span class="nav__name">Log out</span>
-            </a>
-        </nav>
-    </div>
+    
+            <main class="bossDashboard__main">
+                <div class="bossDashboard__maininfo">
+                    <div class="bossDashboard__maintittle">
+                        <div class="bossDashboard__maingreeting">
+                            <h3>Hola de nuevo</h3>
+                            <p>
+                                Bienvenido a Talkie, la herramienta que busca facilitar tu comunicación con estudiantes, jefes de Departamento y Directores de Programa.
+                            </p>
+                        </div>
+                        <img src="/welcome.1bcee97a.png" alt="">
+                    </div>
+        
+                    <div class="bossDashboard__searchFilter">
+                        <div>
+                            <input type="text" name="" id="searchInput" placeholder="Buscar...">
+                            <div>
+                                <ion-icon id="searchBtn" name="search-outline"></ion-icon>
+                            </div>
+                        </div>
 
-    <!-- <a href="" id="signOutBtn">Cerrar sesión</a> -->
+                        <div>
+                            <select name="select" id="filter">
+                                <option value="value1" selected="">Mostrar todos</option>
+                                <option value="value1">Curso curricular</option>
+                                <option value="value2">Electiva profesional</option>
+                              </select>
+                        </div>
+                    </div>
+
+                    <div class="bossDashboard__coursesContainer">
+                        <a href="/course1.html">
+                            <div class="bossDashboard__course curricular">
+                                <h1>PI</h1>
+                                <h3 class="bossDashboard__courseSubject">Proyecto Integrador II</h3>
+                                <p>Unidades del curso: 3</p>
+                                <p>Unidades evaluadas: <span>2</span></p>
+                                <a href="" class="bossDashboard__notification" id="course1">Evaluar Unidad 1 
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </a>
+                        <a href="/course1.html">
+                            <div class="bossDashboard__course elective">
+                                <h1>AP</h1>
+                                <h3 class="bossDashboard__courseSubject">Alfarería: pensamiento y materia</h3>
+                                <p>Unidades del curso: 3</p>
+                                <p>Unidades evaluadas: <span>2</span></p>
+                                <a href="" class="bossDashboard__notification" id="course1">Evaluar Unidad 1 
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </a>
+                        <a href="/course1.html">
+                            <div class="bossDashboard__course curricular">
+                                <h1>PI</h1>
+                                <h3 class="bossDashboard__courseSubject">Proyecto Integrador I</h3>
+                                <p>Unidad 2</p>
+                                <a href="" class="bossDashboard__notification" id="course2">Evaluar Unidad 1 
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </a>
+                        <a href="/course1.html">
+                            <div class="bossDashboard__course curricular">
+                                <p>F</p>
+                                <h3 class="bossDashboard__courseSubject">Fotografía</h3>
+                                <p>Unidad 2</p>
+                                <a href="" class="bossDashboard__notification" id="course3">Evaluar Unidad 1 
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </a>
+                        <a href="/course1.html">
+                            <div class="bossDashboard__course elective">
+                                <p>DS</p>
+                                <h3 class="bossDashboard__courseSubject">Diseño y Sociedad</h3>
+                                <p>Unidad 3</p>
+                                <a href="" class="bossDashboard__notification" id="course4">Evaluar Unidad 1 
+                                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+
+            </main>
+
+        </div>
+
+
+    </div>
 
 
 

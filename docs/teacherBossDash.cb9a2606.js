@@ -191,7 +191,8 @@ var _ExpandMenu = _interopRequireDefault(require("../classes/ExpandMenu"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//imports
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
 var firebaseConfig = {
   apiKey: "AIzaSyDjl6bYnNz0DdeWM7hWxITVpn1BQq6SSjI",
@@ -207,14 +208,68 @@ firebase.initializeApp(firebaseConfig);
 window.addEventListener('load', function () {
   var auth = firebase.auth();
   var db = firebase.firestore();
-  var expander = new _ExpandMenu.default('nav-toggle', 'navBar');
+  var expander = new _ExpandMenu.default('navBar', 'navBar');
   expander.expand();
   var signOutBtn = document.getElementById('signOutBtn');
   signOutBtn.addEventListener('click', function () {
     auth.signOut().then(function () {
       console.log("Cerró sesión exitosamente");
+      window.location.href = "index.html";
     }).catch(function (error) {
       console.log(error.code);
+    });
+  });
+  var curriculars = document.querySelectorAll(".curricular");
+  var electives = document.querySelectorAll(".elective");
+  var courses = document.querySelectorAll(".bossDashboard__course");
+  var filter = document.getElementById("filter");
+  var filterOptions = filter.options;
+  var searchInput = document.getElementById("searchInput");
+  var searchBtn = document.getElementById("searchBtn");
+  filter.addEventListener('change', function () {
+    if (filterOptions[filter.selectedIndex].innerText == "Mostrar todos") {
+      curriculars.forEach(function (subject) {
+        subject.classList.remove("hidden");
+      });
+      electives.forEach(function (subject) {
+        subject.classList.remove("hidden");
+      });
+    }
+
+    if (filterOptions[filter.selectedIndex].innerText == "Curso curricular") {
+      curriculars.forEach(function (subject) {
+        subject.classList.remove("hidden");
+      });
+      electives.forEach(function (subject) {
+        subject.classList.add("hidden");
+      });
+    }
+
+    if (filterOptions[filter.selectedIndex].innerText == "Electiva profesional") {
+      curriculars.forEach(function (subject) {
+        subject.classList.add("hidden");
+      });
+      electives.forEach(function (subject) {
+        subject.classList.remove("hidden");
+      });
+    }
+  });
+  searchInput.addEventListener('keydown', function () {
+    var searchValue = searchInput.value.toLowerCase();
+    console.log(_typeof(searchValue));
+    courses.forEach(function (course) {
+      var subject = course.querySelector(".bossDashboard__courseSubject").innerText.toLowerCase();
+
+      if (subject.includes(searchValue)) {
+        courses.forEach(function (course2) {
+          course2.classList.add("hidden");
+        });
+        course.classList.remove("hidden");
+      } else {
+        course.classList.remove("hidden");
+      }
+
+      if (searchValue == "") course.classList.remove("hidden");
     });
   });
 });
@@ -246,7 +301,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56471" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57338" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

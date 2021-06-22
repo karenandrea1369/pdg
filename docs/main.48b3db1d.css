@@ -311,6 +311,15 @@
   width: 68%;
   height: 100vh;
 }
+.dashboard__containerBoss {
+  position: absolute;
+  margin-left: var(--nav-width);
+  width: 90%;
+  height: 100vh;
+}
+.dashboard__containerBoss .dashboard__course {
+  width: 18%;
+}
 .dashboard__header {
   display: flex;
   justify-content: space-between;
@@ -1106,6 +1115,141 @@
 .emptyCalification--visible {
   display: block;
   position: relative;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bossDashboard__container {
+  position: absolute;
+  margin-left: var(--nav-width);
+  width: 90%;
+  height: 100vh;
+}
+.bossDashboard__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white-color);
+  margin: 0px 20px;
+  padding: 30px 30px 20px;
+  border-end-end-radius: 5px;
+  border-end-start-radius: 5px;
+}
+.bossDashboard__header h2 {
+  margin: auto 0;
+}
+.bossDashboard__main {
+  display: flex;
+}
+.bossDashboard__maininfo {
+  width: 100%;
+  padding: 20px;
+}
+.bossDashboard__maintittle {
+  position: relative;
+  width: 100%;
+  background-color: var(--white-color);
+  border-radius: 0.5rem;
+  display: flex;
+  height: 120px;
+}
+.bossDashboard__maintittle img {
+  position: absolute;
+  height: 120%;
+  right: 20px;
+  bottom: 0;
+}
+.bossDashboard__maingreeting {
+  padding-left: 2rem;
+  margin: auto 0;
+  width: 70%;
+}
+.bossDashboard__maingreeting h3 {
+  margin: 0;
+}
+.bossDashboard__maingreeting p {
+  margin: 0;
+}
+.bossDashboard__coursesContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bossDashboard__course {
+  width: 18%;
+  margin-top: 20px;
+  margin-left: 15px;
+  background-color: var(--white-color);
+  box-shadow: 2px 0px 10px rgba(138, 138, 138, 0.25);
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.bossDashboard__course:hover {
+  transition: 0.3s;
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 6px rgba(138, 138, 138, 0.35);
+}
+.bossDashboard__course h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--second-color);
+}
+.bossDashboard__course h3 {
+  margin-bottom: 10px;
+}
+.bossDashboard__course p {
+  margin: 0;
+  font-size: 14px;
+}
+.bossDashboard__course span {
+  color: var(--first-color);
+}
+.bossDashboard__notification {
+  font-weight: 600;
+  font-size: var(--small-font-size);
+  color: var(--first-color);
+  visibility: hidden;
+}
+.bossDashboard__notification:hover {
+  color: var(--first-color-dark);
+}
+.bossDashboard__notification:hover ion-icon {
+  transition: 0.3s;
+  transform: translate(8px);
+}
+.bossDashboard__notification--visible {
+  visibility: visible;
+}
+.bossDashboard__info {
+  position: fixed;
+  width: 25%;
+  height: 100vh;
+  right: 0;
+  padding: 20px 30px;
+  background-color: var(--white-color);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.bossDashboard__infoCard {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #F1F2F6;
+  border-radius: 5px;
+}
+.bossDashboard__infoCard h4 {
+  margin: 0;
 }
 
 .hidden {

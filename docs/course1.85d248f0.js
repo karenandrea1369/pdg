@@ -268,6 +268,7 @@ window.addEventListener('load', function () {
   signOutBtn.addEventListener('click', function () {
     auth.signOut().then(function () {
       console.log("Cerró sesión exitosamente");
+      window.location.href = "index.html";
     }).catch(function (error) {
       console.log(error.code);
     });
@@ -942,7 +943,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63408" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57338" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

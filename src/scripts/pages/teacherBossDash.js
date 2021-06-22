@@ -35,6 +35,7 @@ window.addEventListener('load',()=>{
 
     var curriculars = document.querySelectorAll(".curricular");
     var electives = document.querySelectorAll(".elective");
+    var courses = document.querySelectorAll(".bossDashboard__course");
 
     var filter = document.getElementById("filter");
     var filterOptions = filter.options;
@@ -68,5 +69,23 @@ window.addEventListener('load',()=>{
       }
       
     });
+
+    searchInput.addEventListener('keydown', ()=>{
+      var searchValue = searchInput.value.toLowerCase();
+      console.log(typeof( searchValue));
+
+      courses.forEach(course =>{
+        var subject = course.querySelector(".bossDashboard__courseSubject").innerText.toLowerCase();
+        if(subject.includes(searchValue)){
+            courses.forEach(course2 =>{
+              course2.classList.add("hidden");
+            })
+            course.classList.remove("hidden");
+        } else {
+          course.classList.remove("hidden");
+        }
+        if(searchValue == "") course.classList.remove("hidden");
+      });
+    })
 
 });
